@@ -1,0 +1,45 @@
+<div>
+    <div class="d-flex flex-row-reverse">
+        <button routerLink="/Departements/FormDep" class=" btn btn-gradient-success btn-fw p-2">
+            create new Departement
+        </button>
+    </div>
+</div>
+<mat-label style="margin-left:100px">Filter</mat-label>
+<input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input style="margin-left:50px">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-left:100px;margin-top:50px">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell class="px-12" *matHeaderCellDef> name </th>
+        <td mat-cell class="px-12" *matCellDef="let element">{{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell class="px-12" *matHeaderCellDef> description </th>
+        <td mat-cell class="px-12" *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+
+
+
+
+
+    <!--stickyEnd ma3neh dima ijiblik il column hethi dima fil le5er-->
+    <ng-container matColumnDef="Actions" stickyEnd>
+        <th mat-header-cell class="px-12" *matHeaderCellDef>Actions </th>
+        <td mat-cell class="px-12" *matCellDef="let element">
+            <div>
+
+                <button routerLink="{{element.id}}/edit">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="delete(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </td>
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

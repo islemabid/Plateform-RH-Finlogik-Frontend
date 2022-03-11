@@ -1,0 +1,137 @@
+<div class="example-container" style="margin:150px">
+    <form [formGroup]="form" (ngSubmit)="onsubmit()">
+        <mat-form-field>
+            <input matInput placeholder="firstName" formControlName="firstName">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="lastName" formControlName="lastName">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="personnelEmail" formControlName="personnelEmail">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="personnelPhone" formControlName="personnelPhone">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="adress" formControlName="adress">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="password" formControlName="password">
+
+        </mat-form-field>
+        <br>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="gender" formControlName="gender">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="city" formControlName="city">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="region" formControlName="region">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="contry" formControlName="contry">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="postalCode" formControlName="postalCode">
+
+        </mat-form-field>
+        <br>
+
+
+        <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="diplome" formControlName="diplome">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="birthDate" formControlName="birthDate" type="date">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="postalCode" formControlName="postalCode">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Cin" formControlName="Cin">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="ContratType" formControlName="contratType">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="workEmail" formControlName="workEmail">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="workPhone" formControlName="workPhone">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="cnssNumber" formControlName="cnssNumber">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="hoursPerWeek" formControlName="hoursPerWeek">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="idRole" formControlName="idRole">
+
+        </mat-form-field>
+        <br>
+        <!--mat-form-field>
+            <mat-form-field appearance="fill">
+
+                <mat-select formControlName="departementID" placeholder="departement">
+                    <mat-option *ngFor="let i of dep" [value]="i.id">
+                        {{i.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-form-field>
+        <br><br-->
+
+
+
+
+
+
+
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>

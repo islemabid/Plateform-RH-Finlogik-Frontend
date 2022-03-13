@@ -20,14 +20,11 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListRoleComponent } from './Roles/list-role/list-role.component';
+import { FormRoleComponent } from './Roles/form-role/form-role.component';
+import { RoleModule } from './Roles/role.module';
 
 
-
-
-
-export function tokenGetter() {
-  return localStorage.getItem("jwt");
-}
 
 
 
@@ -40,7 +37,8 @@ export function tokenGetter() {
     DashboardComponent,
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+
 
 
 
@@ -60,13 +58,7 @@ export function tokenGetter() {
     HttpClientModule,
     ConfirmDialogModule,
     EmployeeModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ["localhost:7152"],
-        blacklistedRoutes: []
-      }
-    })
+    RoleModule
 
 
 

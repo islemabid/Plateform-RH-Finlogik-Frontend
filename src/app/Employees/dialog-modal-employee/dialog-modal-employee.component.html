@@ -28,8 +28,9 @@
         </label>
         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
             formControlName="gender">
-            <mat-radio-button class="example-radio-button" [value]="Male">Male </mat-radio-button>
-            <mat-radio-button class="example-radio-button" [value]="Femelle">Femelle</mat-radio-button>
+            <mat-radio-button class="example-radio-button" *ngFor="let i of gender" [value]="i">{{i}}
+            </mat-radio-button>
+
         </mat-radio-group>
         <mat-form-field appearance="outline">
             <mat-label>Cin </mat-label>
@@ -136,15 +137,12 @@
                 <mat-label>Contrat Type </mat-label>
 
                 <mat-select formControlName="contratType" placeholder="Contrat Type">
-                    <mat-option [value]="FullTime">
-                        FullTime
+                    <mat-option *ngFor="let i of Contrats" [value]="i">
+                        {{i}}
+
                     </mat-option>
-                    <mat-option [value]="PartTime">
-                        PartTime
-                    </mat-option>
-                    <mat-option [value]="Freelance">
-                        Freelance
-                    </mat-option>
+
+
                 </mat-select>
             </mat-form-field>
         </mat-form-field>

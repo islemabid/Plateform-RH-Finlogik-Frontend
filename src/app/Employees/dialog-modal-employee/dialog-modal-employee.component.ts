@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { EmployeeService } from 'src/services/employee.service';
 
@@ -18,16 +17,19 @@ export class DialogModalEmployeeComponent implements OnInit {
   matcher: any;
   action: string = "save";
   hide = true;
+  Contrats: string[] = ["FullTime", "PartTime", "Freelance"];
+  gender: string[] = ["Femelle", "Male"];
   constructor(
     private ms: EmployeeService,
     private formBuilder: FormBuilder,
-    private router: Router,
     private dialog: MatDialogRef<DialogModalEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any) { }
 
   ngOnInit(): void {
     this.initform();
+    console.log(this.editData);
     if (this.editData) {
+      this.titre = "Update Employee"
       this.action = "edit";
       this.form.controls["firstName"].setValue(this.editData.firstName);
       this.form.controls["lastName"].setValue(this.editData.lastName);

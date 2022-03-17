@@ -1,0 +1,203 @@
+<h1 mat-dialog-title>{{titre}}</h1>
+<mat-dialog-content>
+
+    <form [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>First Name </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="firstName" formControlName="firstName">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="lastName" formControlName="lastName">
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Birth Date </mat-label>
+            <input matInput [matDatepicker]="picker" [errorStateMatcher]="matcher" placeholder="birthDate"
+                formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+
+        </mat-form-field>
+        <label id="example-radio-group-label">
+            Choose Gender
+        </label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            formControlName="gender">
+            <mat-radio-button class="example-radio-button" [value]="Male">Male </mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="Femelle">Femelle</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <mat-label>Cin </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="Cin" formControlName="Cin">
+
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Personnel Email </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com"
+                formControlName="personnelEmail" type="email">
+
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Work Email </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com" formControlName="workEmail"
+                type="email">
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password </mat-label>
+            <input matInput [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'"
+                formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label> PersonnelPhone </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="personnelPhone" formControlName="personnelPhone">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Work Phone </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="workPhone" formControlName="workPhone">
+
+        </mat-form-field>
+
+        <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Diplome </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="diplome" formControlName="diplome">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Adress </mat-label>
+
+            <input matInput placeholder="adress" [errorStateMatcher]="matcher" formControlName="adress">
+
+        </mat-form-field>
+
+
+
+
+
+
+
+
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>City </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="city" formControlName="city">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>region </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="region" formControlName="region">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Contry</mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="contry" formControlName="contry">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Postal Code </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="postalCode" formControlName="postalCode">
+
+        </mat-form-field>
+
+
+
+
+
+
+
+
+        <mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contrat Type </mat-label>
+
+                <mat-select formControlName="contratType" placeholder="Contrat Type">
+                    <mat-option [value]="FullTime">
+                        FullTime
+                    </mat-option>
+                    <mat-option [value]="PartTime">
+                        PartTime
+                    </mat-option>
+                    <mat-option [value]="Freelance">
+                        Freelance
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-form-field>
+
+
+
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>CNSS Number </mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="cnssNumber" formControlName="cnssNumber">
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>Hours per Week</mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="hoursPerWeek" formControlName="hoursPerWeek">
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+            <mat-label>idRole</mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="idRole" formControlName="idRole">
+
+        </mat-form-field>
+
+        <!--mat-form-field>
+                <mat-form-field appearance="fill">
+    
+                    <mat-select formControlName="departementID" placeholder="departement">
+                        <mat-option *ngFor="let i of dep" [value]="i.id">
+                            {{i.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-form-field>
+            <br><br-->
+
+
+
+
+
+
+
+
+
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+
+    <button mat-raised-button (click)="onsubmit()">{{action}}</button>
+
+</mat-dialog-actions>

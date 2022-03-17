@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormEmployeeComponent } from './form-employee.component';
+import { AffectEmployeePostComponent } from './affect-employee-post.component';
 
-describe('FormEmployeeComponent', () => {
-  let component: FormEmployeeComponent;
-  let fixture: ComponentFixture<FormEmployeeComponent>;
+describe('AffectEmployeePostComponent', () => {
+  let component: AffectEmployeePostComponent;
+  let fixture: ComponentFixture<AffectEmployeePostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormEmployeeComponent ]
+      declarations: [ AffectEmployeePostComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormEmployeeComponent);
+    fixture = TestBed.createComponent(AffectEmployeePostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

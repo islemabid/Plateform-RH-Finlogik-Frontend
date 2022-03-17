@@ -37,8 +37,8 @@ export class EmployeeService {
 
 
   }
-  EditEmp(id: any, e: Employees): Promise<Employees> {
-    return this.httpClient.put<Employees>('https://localhost:7023/api/Employee/update/' + id, e).toPromise();
+  EditEmp(e: Employees): Promise<Employees> {
+    return this.httpClient.put<Employees>('https://localhost:7152/api/Employee', e, this.header).toPromise();
 
 
   }

@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+
     // Scroll to top after route change
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {

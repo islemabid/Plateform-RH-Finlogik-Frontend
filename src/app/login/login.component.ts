@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
     const token: string = localStorage.getItem("jwt");
     if (token) {
       this.isLoggedIn = true;
-      this.decodedToken = this.loginService.decodejwt(token);
-      console.log(this.decodedToken);
-      this.role = this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-      console.log(this.role);
+      /*this.decodedToken = this.loginService.decodejwt(token);
+    console.log(this.decodedToken);
+    this.role = this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+    console.log(this.role);*/
 
     }
 

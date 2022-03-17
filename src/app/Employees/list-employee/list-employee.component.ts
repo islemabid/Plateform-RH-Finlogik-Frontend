@@ -1,9 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { Employees } from 'src/models/Employee';
 import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
+import { DialogModalEmployeeComponent } from '../dialog-modal-employee/dialog-modal-employee.component';
+
 
 
 @Component({
@@ -13,15 +20,18 @@ import { LoginService } from 'src/services/login.service';
 })
 export class ListEmployeeComponent implements OnInit {
 
-  employees: any;
-  Employees: any;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   isLoggedIn = false;
   role: any;
   decode: any;
   rh = false;
+  dataSource: MatTableDataSource<Employees> = new MatTableDataSource(this.ms.tab);
+  displayedColumns: string[] = ["Image", "FullName", "Email", "Adress", "PhoneNumber", "Actions"];
 
-  constructor(private ms: EmployeeService, private login: LoginService, private dialog: MatDialog, private http: HttpClient) {
-
+  constructor(private ms: EmployeeService, private login: LoginService, private dialog: MatDialog) {
+    const Employees = Array.from({ length: 100 });
+    this.dataSource = new MatTableDataSource(this.ms.tab);
   }
 
   delete(id: string) {
@@ -40,15 +50,30 @@ export class ListEmployeeComponent implements OnInit {
 
     )
   }
-
+  create() {
+    this.dialog.open(DialogModalEmployeeComponent, { width: "30%" }).afterClosed().subscribe(val => {
+      if (val == 'Save') {
+        this.GetEmployees();
+      }
+    });
+  }
+  edit(row: any) {
+    this.dialog.open(DialogModalEmployeeComponent, { width: "30%", data: row }).afterClosed().subscribe(val => {
+      if (val == 'Update') {
+        this.GetEmployees();
+      }
+    });
+  }
 
   GetEmployees(): void {
     console.log(localStorage.getItem("jwt"));
 
     this.ms.GetALL()
       .then((data) => {
-        this.employees = data;
-        console.log(this.employees);
+        this.dataSource.data = data;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log(this.dataSource.data);
 
       });
 
@@ -60,12 +85,17 @@ export class ListEmployeeComponent implements OnInit {
     return `https://localhost:7152/${serverPath}`;
 
   }
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.employees.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
+
 
 
   ngOnInit(): void {

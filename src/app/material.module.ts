@@ -30,7 +30,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatRippleModule } from "@angular/material/core";
+import { MatNativeDateModule, MatRippleModule } from "@angular/material/core";
+
 
 
 
@@ -41,7 +42,6 @@ import { MatRippleModule } from "@angular/material/core";
         MatButtonModule,
         MatInputModule,
         MatAutocompleteModule,
-        MatDatepickerModule,
         MatFormFieldModule,
         MatRadioModule,
         MatSelectModule,
@@ -69,6 +69,7 @@ import { MatRippleModule } from "@angular/material/core";
         MatSortModule,
         MatPaginatorModule,
         MatRippleModule,
+
     ],
     exports: [
         MatCheckboxModule,
@@ -79,6 +80,7 @@ import { MatRippleModule } from "@angular/material/core";
         MatFormFieldModule,
         MatRadioModule,
         MatSelectModule,
+        MatNativeDateModule,
         MatSliderModule,
         MatSlideToggleModule,
         MatMenuModule,
@@ -102,6 +104,7 @@ import { MatRippleModule } from "@angular/material/core";
         MatSortModule,
         MatPaginatorModule,
         MatRippleModule,
+
     ]
 })
 export class MaterialModule {

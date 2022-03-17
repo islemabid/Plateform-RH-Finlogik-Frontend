@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Departements } from 'src/models/Departement';
@@ -17,6 +19,10 @@ export class ListDepartementComponent implements OnInit {
 
   dataSource: MatTableDataSource<Departements> = new MatTableDataSource(this.ms.tab);
   displayedColumns: string[] = ["name", "description", "Actions"];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+
   constructor(private ms: DepartementService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.ms.tab);
   }

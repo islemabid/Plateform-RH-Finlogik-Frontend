@@ -20,11 +20,19 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListRoleComponent } from './Roles/list-role/list-role.component';
-import { FormRoleComponent } from './Roles/form-role/form-role.component';
+
 import { RoleModule } from './Roles/role.module';
+import { AffectEmployeePostComponent } from './AffectEmployeePosts/affect-employee-post/affect-employee-post.component';
 
 
+
+
+
+
+
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
 
 
 
@@ -38,6 +46,9 @@ import { RoleModule } from './Roles/role.module';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
+    AffectEmployeePostComponent,
+
+
 
 
 
@@ -58,6 +69,13 @@ import { RoleModule } from './Roles/role.module';
     HttpClientModule,
     ConfirmDialogModule,
     EmployeeModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:7152"],
+        blacklistedRoutes: []
+      }
+    }),
     RoleModule
 
 

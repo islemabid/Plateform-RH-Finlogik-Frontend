@@ -12,7 +12,6 @@ import { LoginService } from 'src/services/login.service';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
-  isLoggedIn = false;
 
   constructor(config: NgbDropdownConfig, private login: LoginService, private router: Router) {
     config.placement = 'bottom-right';
@@ -47,8 +46,6 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     this.login.logOut();
-    this.isLoggedIn = true;
-    this.router.navigate(['./login'])
 
   }
 

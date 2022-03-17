@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Routes, RouterModule } from '@angular/router';
-import { FormEmployeeComponent } from './form-employee/form-employee.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { MaterialModule } from '../material.module';
 import { EmployeeService } from 'src/services/employee.service';
 import { UploadComponent } from '../upload/upload.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModalEmployeeComponent } from './dialog-modal-employee/dialog-modal-employee.component';
+import { DetailsEmployeePostsComponent } from './details-employee-posts/details-employee-posts.component';
+
 
 
 
 const routes: Routes = [
-  { path: 'employees', pathMatch: 'full', component: ListEmployeeComponent },
-  { path: 'FormEmp', pathMatch: 'full', component: FormEmployeeComponent },
-  { path: 'employees/:id/edit', pathMatch: 'full', component: FormEmployeeComponent },
+  { path: '', pathMatch: 'full', component: ListEmployeeComponent },
+  { path: ':id/details', pathMatch: 'full', component: DetailsEmployeePostsComponent },
+
 ]
 
 @NgModule({
-  declarations: [ListEmployeeComponent, FormEmployeeComponent, UploadComponent],
+  declarations: [ListEmployeeComponent, UploadComponent, DialogModalEmployeeComponent, DetailsEmployeePostsComponent],
+  entryComponents: [
+    DialogModalEmployeeComponent,
+
+  ],
   imports: [
 
     MaterialModule,

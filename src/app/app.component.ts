@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/services/login.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { LoginService } from 'src/services/login.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'demo1';
+
   isLoggedIn = false;
   role = '';
   templateEmployee = false;
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
 
 
 
-  constructor(private login: LoginService) { }
+  constructor(private login: LoginService, private router: Router) { }
 
 
 
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
       else if (this.role == "employee") {
         this.templateEmployee = true;
       }
+
     }
 
   }

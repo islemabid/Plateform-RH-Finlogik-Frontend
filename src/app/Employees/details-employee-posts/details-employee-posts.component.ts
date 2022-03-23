@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { HistoryemployeeService } from 'src/services/History-employee.service';
+
 
 
 @Component({
@@ -9,19 +11,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetailsEmployeePostsComponent implements OnInit {
   currentid: any;
-  details: any;
-  constructor(private acivateRoute: ActivatedRoute) { }
+  detailsPosts: any;
+  detailsContrats: any;
+  constructor(private acivateRoute: ActivatedRoute, private historyService: HistoryemployeeService) { }
 
   ngOnInit(): void {
-    /* this.currentid = this.acivateRoute.snapshot.params.id;
-     if (!!this.currentid) {
-       this.ms.GetPostsByIdEmployee(this.currentid).then(
-         (item) => {
-           this.details = item;
-           console.log(this.details);
-         }
-       );
-     }*/
-  }
+    this.currentid = this.acivateRoute.snapshot.params.id;
+    if (!!this.currentid) {
+      this.historyService.GetHistoryPostsByIdEmployee(this.currentid).then(
+        (item) => {
+          this.detailsPosts = item;
+          console.log(this.detailsContrats);
+        }
 
+
+      );
+      this.historyService.GetHistoryContratsByIdEmployee(this.currentid).then(
+        (item) => {
+          this.detailsContrats = item;
+          console.log(this.detailsContrats);
+        });
+
+
+    }
+
+  }
 }

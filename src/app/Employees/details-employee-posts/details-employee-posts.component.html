@@ -2,13 +2,21 @@
     <div id="grid"></div>
     <h1 style="margin-top:auto;">Employee Post History </h1>
 
-    <div class="vtl" *ngFor="let e of details">
+    <div class="vtl" *ngFor="let e of detailsPosts">
         <div class="event">
             <p class="date">{{e.startDate |date}}</p>
             <p class="txt">{{e.post.shortDescription}}</p>
         </div>
 
     </div>
+    <div class="vtl" *ngFor="let e of detailsContrats">
+        <div class="event">
+            <p class="date">{{e.startDate |date}}</p>
+            <p class="txt">{{e.contrat.shortDescription}}</p>
+        </div>
+
+    </div>
+
 
 
 </div>

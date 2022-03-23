@@ -1,4 +1,4 @@
-export interface Departements {
+export interface Contrats {
 
     shortDescription: string;
     longDescription: string;

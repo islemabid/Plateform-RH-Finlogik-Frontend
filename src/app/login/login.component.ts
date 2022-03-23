@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
     })
   }
   login() {
-    const credentials = { ...this.form.value }
-    this.loginService.authentication(credentials)
+    this.loginService.authentication(this.form.value)
       .then(response => {
         console.log(response);
         const token = (<any>response).token;
@@ -44,25 +43,11 @@ export class LoginComponent implements OnInit {
         this.decodedToken = this.loginService.decodejwt(token);
         this.role = this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
         console.log(this.role);
-        this.reloadPage();
-        /*this.decodedToken = this.loginService.decodejwt(token);
-        console.log(this.decodedToken);
-        
-        this.invalidLogin = false;
-        if (this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == "Ressources Humaines") {
-          this.router.navigate(["dashboard"]);
-          console.log("rh")
-        }
-        else {
-          console.log("autre role")
-        }*/
-
+        this.router.navigate(['Employees']);
       }, err => {
         this.invalidLogin = true;
       });
   }
-  reloadPage(): void {
-    window.location.reload();
-  }
+
 
 }

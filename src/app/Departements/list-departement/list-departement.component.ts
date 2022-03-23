@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Departements } from 'src/models/Departement';
 import { DepartementService } from 'src/services/departement.service';
+import { LoginService } from 'src/services/login.service';
+import { DialogModalDepartementComponent } from '../dialog-modal-departement/dialog-modal-departement.component';
 
 
 @Component({
@@ -15,15 +17,20 @@ import { DepartementService } from 'src/services/departement.service';
 })
 export class ListDepartementComponent implements OnInit {
 
-
-
-  dataSource: MatTableDataSource<Departements> = new MatTableDataSource(this.ms.tab);
-  displayedColumns: string[] = ["name", "description", "Actions"];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  isLoggedIn = false;
+  role: any;
+  decode: any;
+  rh = false;
+
+  dataSource: MatTableDataSource<Departements> = new MatTableDataSource(this.ms.tab);
+  displayedColumns: string[] = ["Name", "Description", "Actions"];
 
 
-  constructor(private ms: DepartementService, private dialog: MatDialog) {
+
+  constructor(private ms: DepartementService, private login: LoginService, private dialog: MatDialog) {
+    const Departements = Array.from({ length: 100 });
     this.dataSource = new MatTableDataSource(this.ms.tab);
   }
 
@@ -43,11 +50,28 @@ export class ListDepartementComponent implements OnInit {
 
     )
   }
+  create() {
+    this.dialog.open(DialogModalDepartementComponent, { width: "600px" }).afterClosed().subscribe(val => {
+      if (val == 'Save') {
+        this.GetDepartements();
+      }
+    });
+  }
+  edit(row: any) {
+    this.dialog.open(DialogModalDepartementComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
+      if (val == 'Update') {
+        this.GetDepartements();
+      }
+    });
+  }
   GetDepartements(): void {
+    console.log(localStorage.getItem("jwt"));
 
     this.ms.GetALL()
       .then((data) => {
         this.dataSource.data = data;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         console.log(this.dataSource.data);
 
       });
@@ -58,13 +82,24 @@ export class ListDepartementComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
 
   }
 
 
   ngOnInit(): void {
     this.GetDepartements();
+    if (localStorage.getItem("jwt")) {
+      this.isLoggedIn = true;
+      this.decode = this.login.decodejwt(localStorage.getItem("jwt"));
+      this.role = this.decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+      if (this.role == 'Ressources Humaines') {
+        this.rh = true;
+      }
+
+    }
   }
 
 }

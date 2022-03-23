@@ -2,7 +2,7 @@
     <div class="d-flex flex-row-reverse">
         <button (click)="create()" class="  mdi mdi-account-plus  " style="background-color:#696969;">
 
-            Add New Role
+            Add New Contrat
         </button>
     </div>
     <mat-icon>search</mat-icon>
@@ -15,11 +15,15 @@
         <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- Progress Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <ng-container matColumnDef="shortDescription">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.shortDescription}} </td>
             </ng-container>
-
+            <!-- Progress Column -->
+            <ng-container matColumnDef="LongDescription">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Long Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.LongDescription}} </td>
+            </ng-container>
 
 
             <ng-container matColumnDef="Actions" stickyEnd>
@@ -27,10 +31,7 @@
                 <td mat-cell class="px-12" *matCellDef="let row">
 
 
-                    <button mat-icon-button routerLink="{{row.id}}/details">
-                        <mat-icon>visibility</mat-icon>
 
-                    </button>
                     <button mat-icon-button color="primary" (click)="edit(row)">
                         <mat-icon>edit</mat-icon>
                     </button>
@@ -51,6 +52,6 @@
             </tr-->
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Roles"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Contrats"></mat-paginator>
     </div>
 </div>

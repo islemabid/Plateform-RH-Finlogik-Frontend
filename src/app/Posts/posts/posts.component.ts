@@ -1,21 +1,25 @@
-import { RoleService } from 'src/services/role.service';
-import { LoginService } from 'src/services/login.service';
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-import { DialogModalRoleComponent } from '../dialog-modal-role/dialog-modal-role.component';
-import { Roles } from 'src/models/Role';
+import { DialogModalPostComponent } from '../dialog-modal-post/dialog-modal-post.component';
+import { Posts } from 'src/models/Post';
+import { ViewChild } from '@angular/core';
+import { PostService } from 'src/services/post.service';
+import { LoginService } from 'src/services/login.service';
+
+
 
 
 @Component({
-  selector: 'app-list-role',
-  templateUrl: './list-role.component.html',
-  styleUrls: ['./list-role.component.scss']
+  selector: 'app-posts',
+  templateUrl: './posts.component.html',
+  styleUrls: ['./posts.component.scss']
 })
-export class ListRoleComponent implements OnInit {
+export class PostsComponent implements OnInit {
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -24,12 +28,12 @@ export class ListRoleComponent implements OnInit {
   decode: any;
 
   rh = false;
-  dataSource: MatTableDataSource<Roles> = new MatTableDataSource(this.roleService.tab);
-  displayedColumns: string[] = ["name", "Actions"];
+  dataSource: MatTableDataSource<Posts> = new MatTableDataSource(this.postService.tab);
+  displayedColumns: string[] = ["shortDescription", "LongDescription", "Actions"];
 
-  constructor(private roleService: RoleService, private login: LoginService, private dialog: MatDialog) {
-    const Roles = Array.from({ length: 100 });
-    this.dataSource = new MatTableDataSource(this.roleService.tab);
+  constructor(private postService: PostService, private login: LoginService, private dialog: MatDialog) {
+    const Posts = Array.from({ length: 100 });
+    this.dataSource = new MatTableDataSource(this.postService.tab);
   }
 
   delete(id: string) {
@@ -41,7 +45,7 @@ export class ListRoleComponent implements OnInit {
         if (isDeleted) {
           //exécute de code de la suppression 
           console.log(id);
-          this.roleService.RemoveRoleById(id).then(() => this.GetAllRoles());
+          this.postService.RemovePostById(id).then(() => this.GetAllPosts());
 
         }
       }
@@ -49,24 +53,24 @@ export class ListRoleComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalRoleComponent, { width: "600px" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalPostComponent, { width: "600px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
-        this.GetAllRoles();
+        this.GetAllPosts();
       }
     });
   }
   edit(row: any) {
-    this.dialog.open(DialogModalRoleComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalPostComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
-        this.GetAllRoles();
+        this.GetAllPosts();
       }
     });
   }
 
-  GetAllRoles(): void {
+  GetAllPosts(): void {
     console.log(localStorage.getItem("jwt"));
 
-    this.roleService.GetALL()
+    this.postService.GetALL()
       .then((data) => {
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator;
@@ -79,10 +83,6 @@ export class ListRoleComponent implements OnInit {
   }
 
 
-  public createImgPath = (serverPath: string) => {
-    return `https://localhost:7152/${serverPath}`;
-
-  }
 
 
   applyFilter(event: Event) {
@@ -98,7 +98,7 @@ export class ListRoleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.GetAllRoles();
+    this.GetAllPosts();
 
     if (localStorage.getItem("jwt")) {
       this.isLoggedIn = true;

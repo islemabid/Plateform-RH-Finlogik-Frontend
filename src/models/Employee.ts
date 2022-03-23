@@ -21,5 +21,7 @@ export interface Employees {
     imageUrl: string;
     birthDate: string;
     idRole: string;
+    idPost: string;
+    idContrat: string;
 
 }

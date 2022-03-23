@@ -3,12 +3,14 @@ table {
 }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 100%;
+  font-size: 20px;
+  width:50%;
 }
 
 
 
 img {
-  border-radius: 50%;
+  border-radius:50%;
+  width :20px ;
+  height : 10px;
 }

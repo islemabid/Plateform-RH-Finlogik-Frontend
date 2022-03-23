@@ -1,32 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ListDepartementComponent } from './list-departement/list-departement.component';
-import { FormDepartementComponent } from './form-departement/form-departement.component';
+import { DialogModalDepartementComponent } from './dialog-modal-departement/dialog-modal-departement.component';
 import { MaterialModule } from '../material.module';
-import { DepartementService } from 'src/services/departement.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DepartementService } from 'src/services/departement.service';
+
 
 
 const routes: Routes = [
-  { path: 'departements', pathMatch: 'full', component: ListDepartementComponent },
-  { path: 'departements/:id/edit', pathMatch: 'full', component: FormDepartementComponent },
-  { path: 'FormDep', pathMatch: 'full', component: FormDepartementComponent }
+  { path: '', pathMatch: 'full', component: ListDepartementComponent },
+
+
 ]
 
+
 @NgModule({
-  declarations: [ListDepartementComponent, FormDepartementComponent],
+  declarations: [ListDepartementComponent, DialogModalDepartementComponent],
+  entryComponents: [
+    DialogModalDepartementComponent,
+
+  ],
   imports: [
+
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-
-
     RouterModule.forChild(routes)
   ],
   providers: [DepartementService]
-
 })
 export class DepartementModule { }

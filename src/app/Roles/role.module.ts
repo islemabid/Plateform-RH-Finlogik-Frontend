@@ -1,23 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DialogModalRoleComponent } from './dialog-modal-role/dialog-modal-role.component';
 import { ListRoleComponent } from './list-role/list-role.component';
-import { FormRoleComponent } from './form-role/form-role.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MaterialModule } from '../material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoleService } from 'src/services/role.service';
 
 
 const routes: Routes = [
-  { path: 'roles ', pathMatch: 'full', component: ListRoleComponent },
-  { path: 'FormRole', pathMatch: 'full', component: FormRoleComponent },
-  { path: 'roles/:id/edit', pathMatch: 'full', component: FormRoleComponent },
+  { path: '', pathMatch: 'full', component: ListRoleComponent },
+
+
 ]
 
 
 @NgModule({
-  declarations: [ListRoleComponent, FormRoleComponent],
+  declarations: [ListRoleComponent, DialogModalRoleComponent],
+  entryComponents: [
+    DialogModalRoleComponent,
+
+  ],
   imports: [
+
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes)
-
-  ]
+  ],
+  providers: [RoleService]
 })
 export class RoleModule { }

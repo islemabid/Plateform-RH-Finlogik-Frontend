@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormDepartementComponent } from './form-departement.component';
+import { DialogModalContratComponent } from './dialog-modal-contrat.component';
 
-describe('FormDepartementComponent', () => {
-  let component: FormDepartementComponent;
-  let fixture: ComponentFixture<FormDepartementComponent>;
+describe('DialogModalContratComponent', () => {
+  let component: DialogModalContratComponent;
+  let fixture: ComponentFixture<DialogModalContratComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormDepartementComponent ]
+      declarations: [ DialogModalContratComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormDepartementComponent);
+    fixture = TestBed.createComponent(DialogModalContratComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

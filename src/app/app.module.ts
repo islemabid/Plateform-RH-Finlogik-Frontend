@@ -20,9 +20,15 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { PostModule } from './Posts/post.module';
 import { RoleModule } from './Roles/role.module';
-import { AffectEmployeePostComponent } from './AffectEmployeePosts/affect-employee-post/affect-employee-post.component';
+import { ContratModule } from './Contrats/contrat.module';
+import { DepartementModule } from './Departements/departement.module';
+
+
+
+
+
 
 
 
@@ -46,7 +52,10 @@ export function tokenGetter() {
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    AffectEmployeePostComponent,
+
+
+
+
 
 
 
@@ -65,10 +74,14 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    PostModule,
+    DepartementModule,
     ConfirmDialogModule,
     HttpClientModule,
     ConfirmDialogModule,
     EmployeeModule,
+    RoleModule,
+    ContratModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -76,7 +89,7 @@ export function tokenGetter() {
         blacklistedRoutes: []
       }
     }),
-    RoleModule
+
 
 
 

@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const token: string = localStorage.getItem("jwt");
+    console.log("token app component : ", token);
     if (token) {
       this.isLoggedIn = true;
       this.decode = this.login.decodejwt(token)
@@ -36,6 +37,14 @@ export class AppComponent implements OnInit {
       }
 
     }
+    this.login.userLogOut.subscribe(isUserLogOut => {
+      console.log(isUserLogOut);
+      this.templateEmployee = false;
+      this.templateRH = false;
+      this.router.navigate(['/login']).then(() => { window.location.reload() }
 
+      );
+
+    })
   }
 }

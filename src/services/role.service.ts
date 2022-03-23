@@ -38,7 +38,7 @@ export class RoleService {
 
 
   }
-  EditEmp(r: Roles): Promise<any> {
+  EditRole(r: Roles): Promise<any> {
     return this.httpClient.put<any>('https://localhost:7023/api/Role/' + r, this.header).toPromise();
 
 

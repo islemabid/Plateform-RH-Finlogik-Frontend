@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,6 +10,7 @@ import { Employees } from 'src/models/Employee';
 import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
 import { DialogModalEmployeeComponent } from '../dialog-modal-employee/dialog-modal-employee.component';
+
 
 
 
@@ -25,6 +26,7 @@ export class ListEmployeeComponent implements OnInit {
   isLoggedIn = false;
   role: any;
   decode: any;
+
   rh = false;
   dataSource: MatTableDataSource<Employees> = new MatTableDataSource(this.ms.tab);
   displayedColumns: string[] = ["Image", "FullName", "Email", "Adress", "PhoneNumber", "Actions"];
@@ -51,14 +53,14 @@ export class ListEmployeeComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalEmployeeComponent, { width: "30%" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalEmployeeComponent, { width: "600px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
         this.GetEmployees();
       }
     });
   }
   edit(row: any) {
-    this.dialog.open(DialogModalEmployeeComponent, { width: "30%", data: row }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalEmployeeComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
         this.GetEmployees();
       }
@@ -101,6 +103,7 @@ export class ListEmployeeComponent implements OnInit {
   ngOnInit(): void {
 
     this.GetEmployees();
+
     if (localStorage.getItem("jwt")) {
       this.isLoggedIn = true;
       this.decode = this.login.decodejwt(localStorage.getItem("jwt"));

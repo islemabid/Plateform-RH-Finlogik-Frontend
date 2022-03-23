@@ -2,7 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
+import { ContratService } from 'src/services/contrat.service';
 import { EmployeeService } from 'src/services/employee.service';
+import { PostService } from 'src/services/post.service';
+import { RoleService } from 'src/services/role.service';
 
 
 @Component({
@@ -15,11 +18,16 @@ export class DialogModalEmployeeComponent implements OnInit {
   form: FormGroup;
   response: any;
   matcher: any;
+  roles: any;
+  posts: any;
+  contrats: any;
   action: string = "save";
   hide = true;
-  Contrats: string[] = ["FullTime", "PartTime", "Freelance"];
   gender: string[] = ["Femelle", "Male"];
   constructor(
+    private roleservice: RoleService,
+    private postservice: PostService,
+    private contratsservice: ContratService,
     private ms: EmployeeService,
     private formBuilder: FormBuilder,
     private dialog: MatDialogRef<DialogModalEmployeeComponent>,
@@ -52,7 +60,33 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
       this.form.controls["contratType"].setValue(this.editData.contratType);
       this.form.controls["idRole"].setValue(this.editData.idRole);
+      this.form.controls["idPost"].setValue(this.editData.idPost);
+      this.form.controls["idContrat"].setValue(this.editData.idContrat);
     }
+    this.GetAllRoles();
+    this.GetAllPosts();
+    this.GetAllContrats();
+  }
+  GetAllRoles() {
+    this.roleservice.GetALL().then((data) => {
+      this.roles = data;
+      console.log(this.roles);
+    }
+    )
+  }
+  GetAllPosts() {
+    this.postservice.GetALL().then((data) => {
+      this.posts = data;
+      console.log(this.posts);
+    }
+    )
+  }
+  GetAllContrats() {
+    this.contratsservice.GetALL().then((data) => {
+      this.contrats = data;
+      console.log(this.contrats);
+    }
+    )
   }
   initform(): void {
     this.form = this.formBuilder.group({
@@ -77,6 +111,8 @@ export class DialogModalEmployeeComponent implements OnInit {
       contratType: ["", Validators.required],
       imageUrl: ["", Validators.required],
       idRole: ["", Validators.required],
+      idPost: ["", Validators.required],
+      idContrat: ["", Validators.required]
 
     });
     this.matcher = new MyErrorStateMatcher();

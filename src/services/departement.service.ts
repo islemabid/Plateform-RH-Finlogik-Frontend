@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Departements } from 'src/models/Departement';
 
@@ -8,33 +8,45 @@ import { Departements } from 'src/models/Departement';
 export class DepartementService {
 
   public tab: Departements[] = [];
+  public header = {
+    headers: new HttpHeaders({ 'Authorization': `Bearer ${JSON.parse(JSON.stringify(localStorage.getItem("jwt")))}` })
+
+  };
+
   constructor(private httpClient: HttpClient) { }
-  saveDep(e: Departements): Promise<Departements> {
-    return this.httpClient.post<Departements>('https://localhost:7023/api/departement/add', e).toPromise();
 
+  saveDep(d: Departements): Promise<any> {
+
+    return this.httpClient.post<any>('https://localhost:7152/api/Departement', d, this.header).toPromise();
   }
 
 
-
-  getDepById(id: string): Promise<Departements> {
-    return this.httpClient.get<Departements>('https://localhost:7023/api/departement/' + id).toPromise();
-
-  }
 
   RemoveDepById(id: string): Promise<void> {
-    return this.httpClient.delete<void>('https://localhost:7023/api/departement/' + id).toPromise();
+    return this.httpClient.delete<void>('https://localhost:7152/api/Departement/' + id).toPromise();
 
 
   }
 
 
   GetALL(): Promise<Departements[]> {
-    return this.httpClient.get<any[]>('https://localhost:7023/api/departement/departements').toPromise();
 
-  }
-  EditDep(id: any, e: Departements): Promise<Departements> {
-    return this.httpClient.put<Departements>('https://localhost:7023/api/departement/update/' + id, e).toPromise();
+    return this.httpClient.get<any[]>('https://localhost:7152/api/Departement/all', this.header).toPromise();
 
 
   }
+  EditDep(d: Departements): Promise<any> {
+    return this.httpClient.put<any>('https://localhost:7023/api/Departement/' + d, this.header).toPromise();
+
+
+  }
+
+
+
+
+
+
+
+
+
 }

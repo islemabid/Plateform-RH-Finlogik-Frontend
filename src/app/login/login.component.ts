@@ -42,10 +42,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("jwt", token);
         this.decodedToken = this.loginService.decodejwt(token);
         this.role = this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+        this.loginService.userRole.emit(this.role);
         console.log(this.role);
         this.router.navigate(['Employees']);
-      }, err => {
+      }).catch(err => {
         this.invalidLogin = true;
+        console.log(err);
       });
   }
 

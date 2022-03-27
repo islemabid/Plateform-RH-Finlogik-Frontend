@@ -24,23 +24,11 @@ import { PostModule } from './Posts/post.module';
 import { RoleModule } from './Roles/role.module';
 import { ContratModule } from './Contrats/contrat.module';
 import { DepartementModule } from './Departements/departement.module';
-
-
-
-
-
-
-
-
-
-
-
+import { LayoutComponent } from './layout/layout.component';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
 }
-
-
 
 @NgModule({
   declarations: [
@@ -52,19 +40,7 @@ export function tokenGetter() {
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-
-
-
-
-
-
-
-
-
-
-
-
-
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,17 +65,6 @@ export function tokenGetter() {
         blacklistedRoutes: []
       }
     }),
-
-
-
-
-
-
-
-
-
-
-
   ],
 
   providers: [ThemeService],

@@ -1,0 +1,11 @@
+<ng-template [ngIf]="templateRH">
+    <app-home></app-home>
+</ng-template>
+
+<ng-template [ngIf]="templateEmployee">
+    <h1>bonjour employee</h1>
+</ng-template>
+
+<ng-template [ngIf]="!templateRH && !templateEmployee">
+    <router-outlet></router-outlet>
+</ng-template>

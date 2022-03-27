@@ -8,6 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LoginService {
 
   userLogOut: EventEmitter<boolean> = new EventEmitter<boolean>();
+  userRole: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperService) { }
 

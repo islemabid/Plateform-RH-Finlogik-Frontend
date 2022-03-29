@@ -25,6 +25,7 @@ import { RoleModule } from './Roles/role.module';
 import { ContratModule } from './Contrats/contrat.module';
 import { DepartementModule } from './Departements/departement.module';
 import { LayoutComponent } from './layout/layout.component';
+import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
@@ -41,6 +42,7 @@ export function tokenGetter() {
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
+    TimeOffBalancesComponent,
   ],
   imports: [
     BrowserModule,

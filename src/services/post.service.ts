@@ -28,7 +28,7 @@ export class PostService {
 
   }
   EditPost(post: Posts): Promise<any> {
-    return this.httpClient.put<any>('https://localhost:7023/api/Post/' + post, this.header).toPromise();
+    return this.httpClient.put<any>('https://localhost:7152/api/Post', post, this.header).toPromise();
 
 
   }

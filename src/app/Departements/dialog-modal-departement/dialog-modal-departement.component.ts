@@ -33,9 +33,6 @@ export class DialogModalDepartementComponent implements OnInit {
       this.action = "edit";
       this.form.controls["name"].setValue(this.editData.name);
       this.form.controls["description"].setValue(this.editData.description);
-
-
-
     }
 
   }
@@ -45,31 +42,20 @@ export class DialogModalDepartementComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
-
-
-
-
     });
     this.matcher = new MyErrorStateMatcher();
-
   }
 
   onsubmit() {
     if (!this.editData) {
       console.log(this.form.value);
       const saveDep = { ...this.form.value }
-
       this.departementservice.saveDep(saveDep)
         .then((data) => {
           console.log(data);
           this.form.reset();
           this.dialog.close('Save');
-
-
-
         });
-
-
     }
     else {
       this.edit();

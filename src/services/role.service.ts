@@ -39,7 +39,7 @@ export class RoleService {
 
   }
   EditRole(r: Roles): Promise<any> {
-    return this.httpClient.put<any>('https://localhost:7023/api/Role/' + r, this.header).toPromise();
+    return this.httpClient.put<any>('https://localhost:7152/api/Role', r, this.header).toPromise();
 
 
   }

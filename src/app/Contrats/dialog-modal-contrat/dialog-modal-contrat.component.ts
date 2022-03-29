@@ -31,7 +31,7 @@ export class DialogModalContratComponent implements OnInit {
       this.titre = "Update Contrat"
       this.action = "edit";
       this.form.controls["shortDescription"].setValue(this.editData.shortDescription);
-      this.form.controls["LongDescription"].setValue(this.editData.LongDescription);
+      this.form.controls["longDescription"].setValue(this.editData.longDescription);
 
 
     }
@@ -46,7 +46,8 @@ export class DialogModalContratComponent implements OnInit {
   }
   initform(): void {
     this.form = this.formBuilder.group({
-      name: ["", Validators.required],
+      shortDescription: ["", Validators.required],
+      longDescription: ["", Validators.required],
 
     });
     this.matcher = new MyErrorStateMatcher();

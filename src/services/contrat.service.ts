@@ -35,8 +35,12 @@ export class ContratService {
 
   }
   EditContrat(c: Contrats): Promise<any> {
-    return this.httpClient.put<any>('https://localhost:7023/api/Contrat/' + c, this.header).toPromise();
+    return this.httpClient.put<any>('https://localhost:7152/api/Contrat', c, this.header).toPromise();
 
+
+  }
+  getContratById(id: string): Promise<Contrats> {
+    return this.httpClient.get<Contrats>('https://localhost:7152/api/Contrat/' + id, this.header).toPromise();
 
   }
 

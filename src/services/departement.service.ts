@@ -36,7 +36,7 @@ export class DepartementService {
 
   }
   EditDep(d: Departements): Promise<any> {
-    return this.httpClient.put<any>('https://localhost:7023/api/Departement/' + d, this.header).toPromise();
+    return this.httpClient.put<any>('https://localhost:7152/api/Departement', d, this.header).toPromise();
 
 
   }

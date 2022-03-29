@@ -5,19 +5,18 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>First Name </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="firstName" formControlName="firstName">
+                <input matInput placeholder="firstName" formControlName="firstName">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last Name </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="lastName" formControlName="lastName">
+                <input matInput placeholder="lastName" formControlName="lastName">
 
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Birth Date </mat-label>
-                <input matInput [matDatepicker]="picker" [errorStateMatcher]="matcher" placeholder="birthDate"
-                    formControlName="birthDate">
+                <input matInput [matDatepicker]="picker" placeholder="birthDate" formControlName="birthDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
 
@@ -25,7 +24,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Cin </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="Cin" formControlName="Cin">
+                <input matInput placeholder="Cin" formControlName="Cin">
 
             </mat-form-field>
             <label id="example-radio-group-label">
@@ -43,22 +42,19 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Personnel Email </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com"
-                    formControlName="personnelEmail" type="email">
+                <input matInput placeholder="Ex. pat@example.com" formControlName="personnelEmail" type="email">
 
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Work Email </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com"
-                    formControlName="workEmail" type="email">
+                <input matInput placeholder="Ex. pat@example.com" formControlName="workEmail" type="email">
 
             </mat-form-field>
 
 
             <mat-form-field appearance="outline">
                 <mat-label>Password </mat-label>
-                <input matInput [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'"
-                    formControlName="password">
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -68,14 +64,13 @@
 
             <mat-form-field appearance="outline">
                 <mat-label> PersonnelPhone </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="personnelPhone"
-                    formControlName="personnelPhone">
+                <input matInput placeholder="personnelPhone" formControlName="personnelPhone">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Work Phone </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="workPhone" formControlName="workPhone">
+                <input matInput placeholder="workPhone" formControlName="workPhone">
 
             </mat-form-field>
 
@@ -84,8 +79,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Contrat Type </mat-label>
 
-                <mat-select formControlName="contratType" placeholder="Contrat Type">
-                    <mat-option *ngFor="let i of contrats" [value]="i">
+                <mat-select formControlName="idContrat" placeholder="Contrat Type">
+                    <mat-option *ngFor="let i of contrats" [value]="i.id">
                         {{i.shortDescription}}
 
                     </mat-option>
@@ -98,59 +93,41 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Diplome </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="diplome" formControlName="diplome">
+                <input matInput placeholder="diplome" formControlName="diplome">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Adress </mat-label>
 
-                <input matInput placeholder="adress" [errorStateMatcher]="matcher" formControlName="adress">
+                <input matInput placeholder="adress" formControlName="adress">
 
             </mat-form-field>
 
 
-
-
-
-
-
-
-
-
             <mat-form-field appearance="outline">
                 <mat-label>City </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="city" formControlName="city">
+                <input matInput placeholder="city" formControlName="city">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>region </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="region" formControlName="region">
+                <input matInput placeholder="region" formControlName="region">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Contry</mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="contry" formControlName="contry">
+                <input matInput placeholder="contry" formControlName="contry">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Postal Code </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="postalCode" formControlName="postalCode">
+                <input matInput placeholder="postalCode" formControlName="postalCode">
 
             </mat-form-field>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -158,21 +135,34 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>CNSS Number </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="cnssNumber" formControlName="cnssNumber">
+                <input matInput placeholder="cnssNumber" formControlName="cnssNumber">
 
             </mat-form-field>
 
 
             <mat-form-field appearance="outline">
+                <mat-label>Departement </mat-label>
+
+                <mat-select formControlName="idDepartment" placeholder="Departement">
+                    <mat-option *ngFor="let i of deps" [value]="i.id">
+                        {{i.shortDescription}}
+
+                    </mat-option>
+
+
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
                 <mat-label>Hours per Week</mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="hoursPerWeek" formControlName="hoursPerWeek">
+                <input matInput placeholder="hoursPerWeek" formControlName="hoursPerWeek">
 
             </mat-form-field>
 
 
             <mat-form-field appearance="outline">
                 <mat-select formControlName="idRole" placeholder="Role">
-                    <mat-option [errorStateMatcher]="matcher" *ngFor="let i of roles" [value]="i.id">
+                    <mat-option *ngFor="let i of roles" [value]="i.id">
                         {{i.name}}
                     </mat-option>
                 </mat-select>
@@ -196,14 +186,13 @@
                 </mat-form-field>
             </mat-form-field>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Contrat End Date </mat-label>
+                <input matInput placeholder="Contrat End Date" formControlName="endDate" type="dateTime-local">
 
 
 
-
-
-
-
-
+            </mat-form-field>
         </form>
 
     </mat-dialog-content>

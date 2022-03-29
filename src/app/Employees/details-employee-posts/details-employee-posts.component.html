@@ -1,18 +1,19 @@
 <div class="widget-wrap">
     <div id="grid"></div>
-    <h1 style="margin-top:auto;">Employee Post History </h1>
+    <h1 style="margin-top:auto;">Employee History </h1>
 
-    <div class="vtl" *ngFor="let e of detailsPosts">
+    <div class="vtl">
         <div class="event">
-            <p class="date">{{e.startDate |date}}</p>
-            <p class="txt">{{e.post.shortDescription}}</p>
-        </div>
-
-    </div>
-    <div class="vtl" *ngFor="let e of detailsContrats">
-        <div class="event">
-            <p class="date">{{e.startDate |date}}</p>
-            <p class="txt">{{e.contrat.shortDescription}}</p>
+            <h1>Posts</h1>
+            <div *ngFor="let e of detailsPosts">
+                <p class="date">{{e.startDate |date}}</p>
+                <p class="txt">{{e.post.shortDescription}}</p>
+            </div>
+            <h1>Contrats</h1>
+            <div *ngFor="let e of detailsContrats">
+                <p class="date">{{e.startDate |date}}</p>
+                <p class="txt">{{e.contrat.shortDescription}}</p>
+            </div>
         </div>
 
     </div>

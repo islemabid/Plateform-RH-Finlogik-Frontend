@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { ContratService } from 'src/services/contrat.service';
+import { DepartementService } from 'src/services/departement.service';
 import { EmployeeService } from 'src/services/employee.service';
 import { PostService } from 'src/services/post.service';
 import { RoleService } from 'src/services/role.service';
@@ -18,15 +19,19 @@ export class DialogModalEmployeeComponent implements OnInit {
   form: FormGroup;
   response: any;
   matcher: any;
+  type: string;
+  verif: boolean = false;
   roles: any;
   posts: any;
   contrats: any;
   action: string = "save";
   hide = true;
+  deps: any;
   gender: string[] = ["Femelle", "Male"];
   constructor(
     private roleservice: RoleService,
     private postservice: PostService,
+    private depservice: DepartementService,
     private contratsservice: ContratService,
     private ms: EmployeeService,
     private formBuilder: FormBuilder,
@@ -35,6 +40,10 @@ export class DialogModalEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.initform();
+    /*this.contratsservice.getContratById(this.form.value.idContrat).then((data) => this.type = data.shortDescription);
+    if (this.type != "Cdi") {
+      this.verif = true;
+    }*/
     console.log(this.editData);
     if (this.editData) {
       this.titre = "Update Employee"
@@ -58,14 +67,17 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
       this.form.controls["hoursPerWeek"].setValue(this.editData.hoursPerWeek);
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
-      this.form.controls["contratType"].setValue(this.editData.contratType);
       this.form.controls["idRole"].setValue(this.editData.idRole);
       this.form.controls["idPost"].setValue(this.editData.idPost);
       this.form.controls["idContrat"].setValue(this.editData.idContrat);
+      this.form.controls["idDepartment"].setValue(this.editData.idDepartment);
+      this.form.controls["endDate"].setValue(this.editData.endDate);
+      this.form.controls["contratType"].setValue(this.editData.contratTyp);
     }
     this.GetAllRoles();
     this.GetAllPosts();
     this.GetAllContrats();
+    this.GetAllDepartement();
   }
   GetAllRoles() {
     this.roleservice.GetALL().then((data) => {
@@ -74,12 +86,22 @@ export class DialogModalEmployeeComponent implements OnInit {
     }
     )
   }
+  GetAllDepartement() {
+    this.depservice.GetALL().then((data) => {
+      this.deps = data;
+      console.log(this.deps);
+    }
+    )
+  }
   GetAllPosts() {
     this.postservice.GetALL().then((data) => {
       this.posts = data;
       console.log(this.posts);
+
     }
+
     )
+
   }
   GetAllContrats() {
     this.contratsservice.GetALL().then((data) => {
@@ -108,14 +130,18 @@ export class DialogModalEmployeeComponent implements OnInit {
       workPhone: ["", Validators.required],
       cnssNumber: ["", Validators.required],
       hoursPerWeek: ["", Validators.required],
-      contratType: ["", Validators.required],
       imageUrl: ["", Validators.required],
       idRole: ["", Validators.required],
       idPost: ["", Validators.required],
-      idContrat: ["", Validators.required]
+      idContrat: ["", Validators.required],
+      idDepartment: ["", Validators.required],
+      endDate: [""],
+      contratType: ["contrat", Validators.required],
 
     });
-    this.matcher = new MyErrorStateMatcher();
+    //this.matcher = new MyErrorStateMatcher();
+
+
 
   }
   public uploadFinished = (event: any) => {
@@ -124,9 +150,12 @@ export class DialogModalEmployeeComponent implements OnInit {
   }
   onsubmit() {
     if (!this.editData) {
+
       console.log(this.form.value);
       const saveEmp = { ...this.form.value }
+
       saveEmp.imageUrl = this.response
+
       //.then na3mlouha wa9t c'et bon il resultat fil resolve w nhebou ya3mel 7aja o5ra , 
       this.ms.saveEmp(saveEmp)
         .then((data) => {

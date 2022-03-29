@@ -20,8 +20,10 @@ export interface Employees {
     hoursPerWeek: string;
     imageUrl: string;
     birthDate: string;
+    endDate: string;
     idRole: string;
     idPost: string;
     idContrat: string;
+
 
 }

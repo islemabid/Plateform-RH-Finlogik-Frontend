@@ -15,7 +15,6 @@ export interface Employees {
     Cin: string;
     workEmail: string;
     workPhone: string;
-    contratType: string;
     cnssNumber: string;
     hoursPerWeek: string;
     imageUrl: string;
@@ -24,6 +23,7 @@ export interface Employees {
     idRole: string;
     idPost: string;
     idContrat: string;
+    idDepartement: string;
 
 
 }

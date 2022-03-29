@@ -70,9 +70,9 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["idRole"].setValue(this.editData.idRole);
       this.form.controls["idPost"].setValue(this.editData.idPost);
       this.form.controls["idContrat"].setValue(this.editData.idContrat);
-      this.form.controls["idDepartment"].setValue(this.editData.idDepartment);
+      this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
       this.form.controls["endDate"].setValue(this.editData.endDate);
-      this.form.controls["contratType"].setValue(this.editData.contratTyp);
+
     }
     this.GetAllRoles();
     this.GetAllPosts();
@@ -134,9 +134,9 @@ export class DialogModalEmployeeComponent implements OnInit {
       idRole: ["", Validators.required],
       idPost: ["", Validators.required],
       idContrat: ["", Validators.required],
-      idDepartment: ["", Validators.required],
+      idDepartement: ["", Validators.required],
       endDate: [""],
-      contratType: ["contrat", Validators.required],
+
 
     });
     //this.matcher = new MyErrorStateMatcher();

@@ -1,0 +1,48 @@
+<app-profil></app-profil>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="example-card">
+            <div class="card">
+                <img [src]="createImgPath(employeeInfo.imageUrl)">
+                <div class="card-body">
+                    <h5 class="card-title">{{employeeInfo.firstName}} {{employeeInfo.lastName}}</h5>
+                    <p class="card-text">{{employeeInfo.post.shortDescription}}</p>
+                    <p class="card-text">{{employeeInfo.contrat.shortDescription}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{employeeInfo.workEmail}}</li>
+                    <li class="list-group-item">{{employeeInfo.personnelPhone}}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="example-card1">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Basic Information </h5>
+                    <p class="card-text">First Name: {{employeeInfo.firstName}} </p>
+                    <p class="card-text">Last Name: {{employeeInfo.lastName}} </p>
+                    <p class="card-text">Current Gender Identity : {{employeeInfo.cin}}</p>
+                    <p class="card-text">Birthdate: {{employeeInfo.birthDate |date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card text-end" style="margin-left: 51%;">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Adress</h5>
+            <p class="card-text">Adress: {{employeeInfo.adress}} </p>
+            <p class="card-text">Contry: {{employeeInfo.contry}} </p>
+            <p class="card-text">City: {{employeeInfo.city}}</p>
+
+        </div>
+    </div>
+</div>

@@ -3,17 +3,19 @@ import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.scss']
+  selector: 'app-personnal',
+  templateUrl: './personnal.component.html',
+  styleUrls: ['./personnal.component.scss']
 })
-export class ProfilComponent implements OnInit {
+
+export class PersonnalComponent implements OnInit {
   isLinear = false;
   isLoggedIn = false;
   decode: any;
   iduser: any;
   employeeInfo: any;
   constructor(private loginService: LoginService, private employeeService: EmployeeService) { }
+
 
   ngOnInit(): void {
     if (localStorage.getItem("jwt")) {

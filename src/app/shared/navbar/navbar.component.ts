@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
 
 @Component({
@@ -12,12 +13,20 @@ import { LoginService } from 'src/services/login.service';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
-
-  constructor(config: NgbDropdownConfig, private login: LoginService, private router: Router) {
+  decode: any;
+  iduser: any;
+  employeeInfo: any;
+  constructor(config: NgbDropdownConfig, private login: LoginService, private employeeService: EmployeeService, private router: Router) {
     config.placement = 'bottom-right';
   }
 
   ngOnInit() {
+    if (localStorage.getItem("jwt")) {
+      this.decode = this.login.decodejwt(localStorage.getItem("jwt"));
+      this.iduser = this.decode["UserId"];
+    }
+    console.log(this.iduser);
+    this.getUserByID();
   }
 
   // toggle sidebar in small devices
@@ -44,11 +53,22 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:7152/${serverPath}`;
+
+  }
   logout() {
     this.login.logOut();
   }
   showProfil() {
-    this.router.navigate(['profil']);
+    this.router.navigate(['profil/personal']);
+  }
+  getUserByID() {
+    this.employeeService.getEmpById(this.iduser).then((data) => {
+      this.employeeInfo = data;
+      console.log(this.employeeInfo);
+    }
+    )
   }
 
 

@@ -17,10 +17,11 @@ import { RoleService } from 'src/services/role.service';
 export class DialogModalEmployeeComponent implements OnInit {
   public titre = "ADD New Employee";
   form: FormGroup;
+  idPost: any;
+  idContrat: any;
   response: any;
   matcher: any;
   type: string;
-  verif: boolean = false;
   roles: any;
   posts: any;
   contrats: any;
@@ -39,12 +40,9 @@ export class DialogModalEmployeeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any) { }
 
   ngOnInit(): void {
+    this.GetEmployeeById();
     this.initform();
-    /*this.contratsservice.getContratById(this.form.value.idContrat).then((data) => this.type = data.shortDescription);
-    if (this.type != "Cdi") {
-      this.verif = true;
-    }*/
-    console.log(this.editData);
+
     if (this.editData) {
       this.titre = "Update Employee"
       this.action = "edit";
@@ -61,19 +59,18 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["region"].setValue(this.editData.region);
       this.form.controls["contry"].setValue(this.editData.contry);
       this.form.controls["postalCode"].setValue(this.editData.postalCode);
-      this.form.controls["Cin"].setValue(this.editData.Cin);
+      this.form.controls["Cin"].setValue(this.editData.cin);
       this.form.controls["workEmail"].setValue(this.editData.workEmail);
       this.form.controls["workPhone"].setValue(this.editData.workPhone);
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
       this.form.controls["hoursPerWeek"].setValue(this.editData.hoursPerWeek);
-      this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
       this.form.controls["idRole"].setValue(this.editData.idRole);
-      this.form.controls["idPost"].setValue(this.editData.idPost);
-      this.form.controls["idContrat"].setValue(this.editData.idContrat);
       this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
-      this.form.controls["endDate"].setValue(this.editData.endDate);
-
+      this.form.controls["idContrat"].setValue(this.idContrat);
+      this.form.controls["idPost"].setValue(this.idPost);
     }
+    console.log(this.form.value);
+
     this.GetAllRoles();
     this.GetAllPosts();
     this.GetAllContrats();
@@ -98,11 +95,17 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.posts = data;
       console.log(this.posts);
 
-    }
-
-    )
-
+    })
   }
+  GetEmployeeById() {
+    this.ms.getEmpById(this.editData.id).then((data) => {
+      this.idPost = data.post.id;
+      this.idContrat = data.contrat.id;
+      console.log(this.idPost);
+      console.log(this.idContrat);
+    });
+  }
+
   GetAllContrats() {
     this.contratsservice.GetALL().then((data) => {
       this.contrats = data;
@@ -114,7 +117,7 @@ export class DialogModalEmployeeComponent implements OnInit {
     this.form = this.formBuilder.group({
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
-      personnelEmail: ["", Validators.required, Validators.email],
+      personnelEmail: ["", Validators.required],
       personnelPhone: ["", Validators.required],
       adress: ["", Validators.required],
       password: ["", Validators.required],
@@ -126,7 +129,7 @@ export class DialogModalEmployeeComponent implements OnInit {
       contry: ["", Validators.required],
       postalCode: ["", Validators.required],
       Cin: ["", Validators.required],
-      workEmail: ["", Validators.required, Validators.email],
+      workEmail: ["", Validators.required],
       workPhone: ["", Validators.required],
       cnssNumber: ["", Validators.required],
       hoursPerWeek: ["", Validators.required],
@@ -176,8 +179,8 @@ export class DialogModalEmployeeComponent implements OnInit {
   }
   edit() {
     let id = this.editData.id;
-    console.log(id);
     const EditEmp = { ...this.form.value, id }
+    console.log(EditEmp);
     EditEmp.imageUrl = this.response
     this.ms.EditEmp(EditEmp)
       .then((data) => {
@@ -188,6 +191,7 @@ export class DialogModalEmployeeComponent implements OnInit {
 
       });
   }
+
 }
 
 

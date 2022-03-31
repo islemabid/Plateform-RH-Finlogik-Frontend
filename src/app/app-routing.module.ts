@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { ProfilComponent } from './shared/profil/profil.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 
 
@@ -10,9 +9,9 @@ import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.
 const routes: Routes = [
   { path: '', redirectTo: '/Employees', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'profil', component: ProfilComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'TimeOffBalances', component: TimeOffBalancesComponent },
+  { path: 'profil', loadChildren: () => import('./employee-Profil/profil.module').then(m => m.ProfilModule) },
   { path: 'roles', loadChildren: () => import('./Roles/role.module').then(m => m.RoleModule) },
   { path: 'contrats', loadChildren: () => import('./Contrats/contrat.module').then(m => m.ContratModule) },
   { path: 'departements', loadChildren: () => import('./Departements/departement.module').then(m => m.DepartementModule) },

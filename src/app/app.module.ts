@@ -26,7 +26,8 @@ import { ContratModule } from './Contrats/contrat.module';
 import { DepartementModule } from './Departements/departement.module';
 import { LayoutComponent } from './layout/layout.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
-import { ProfilComponent } from './shared/profil/profil.component';
+import { ProfilModule } from './employee-Profil/profil.module';
+
 
 
 
@@ -46,13 +47,14 @@ export function tokenGetter() {
     FooterComponent,
     LayoutComponent,
     TimeOffBalancesComponent,
-    ProfilComponent
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ProfilModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

@@ -41,10 +41,12 @@
             <td mat-cell class="px-12" *matCellDef="let row">
 
 
+                <button color="warn" (click)="refuse(row)">
+                    Refuse
+                </button>
 
-
-                <button mat-icon-button color="warn">
-                    <mat-icon>Valider</mat-icon>
+                <button color="primary" (click)="validate(row)">
+                    Validate
                 </button>
 
             </td>

@@ -37,5 +37,23 @@ export class TimeOffBalancesComponent implements OnInit {
 
       });
   }
+  validate(data) {
+    data.isActive = true;
+    this.timeOffBalancesService.UpdateStatus(data).then(() => {
+      this.GetAllTimeOffBalances();
+
+
+    });
+
+  }
+  refuse(data) {
+    data.isActive = false;
+    this.timeOffBalancesService.UpdateStatus(data).then(() => {
+      this.GetAllTimeOffBalances();
+
+
+    });
+
+  }
 
 }

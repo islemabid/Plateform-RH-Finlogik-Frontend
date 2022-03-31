@@ -12,9 +12,11 @@ import { DetailsEmployeePostsComponent } from './details-employee-posts/details-
 
 
 
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: ListEmployeeComponent },
   { path: ':id/details', pathMatch: 'full', component: DetailsEmployeePostsComponent },
+
 
 ]
 

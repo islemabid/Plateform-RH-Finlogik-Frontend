@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListContratsComponent } from './Contrats/list-contrats/list-contrats.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListDepartementComponent } from './Departements/list-departement/list-departement.component';
 import { LoginComponent } from './login/login.component';
+import { ProfilComponent } from './shared/profil/profil.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 
 
@@ -11,6 +10,7 @@ import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.
 const routes: Routes = [
   { path: '', redirectTo: '/Employees', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'profil', component: ProfilComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'TimeOffBalances', component: TimeOffBalancesComponent },
   { path: 'roles', loadChildren: () => import('./Roles/role.module').then(m => m.RoleModule) },

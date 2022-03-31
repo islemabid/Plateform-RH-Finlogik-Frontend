@@ -19,8 +19,8 @@ export class EmployeeService {
     return this.httpClient.post<Employees>('https://localhost:7152/api/Employee', e, this.header).toPromise();
   }
 
-  getEmpById(id: string): Promise<Employees> {
-    return this.httpClient.get<Employees>('https://localhost:7152/api/Employee/' + id, this.header).toPromise();
+  getEmpById(id: string): Promise<any> {
+    return this.httpClient.get<any>('https://localhost:7152/api/Employee/' + id, this.header).toPromise();
 
   }
 

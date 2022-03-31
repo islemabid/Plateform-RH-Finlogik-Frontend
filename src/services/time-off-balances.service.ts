@@ -15,4 +15,9 @@ export class TimeOffBalancesService {
 
 
   }
+  UpdateStatus(e: TimeOffBalances): Promise<TimeOffBalances> {
+    return this.httpClient.put<TimeOffBalances>('https://localhost:7152/api/TimeOffBalances', e).toPromise();
+
+
+  }
 }

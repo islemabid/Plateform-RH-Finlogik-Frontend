@@ -1,8 +1,8 @@
 <div *ngIf="rh">
     <div class="d-flex flex-row-reverse">
-        <button (click)="create()" class="  mdi mdi-account-plus  " style="background-color:#696969;">
+        <button (click)="create()"  style="background-color:#696969;">
 
-            Add New Departement
+            Add New Offer
         </button>
     </div>
     <mat-icon>search</mat-icon>
@@ -19,15 +19,17 @@
             <!-- Progress Column -->
             <ng-container matColumnDef="Name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.shortDescription}}</td>
-               
-            
+                <td mat-cell *matCellDef="let row"> {{row.offerName}}</td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="Description">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                <td mat-cell *matCellDef="let row"> {{row.longDescription}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.offerDescription}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Type">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+                <td mat-cell *matCellDef="let row"> {{row.type}} </td>
             </ng-container>
 
 
@@ -58,6 +60,6 @@
             </tr-->
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Departements"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Offers"></mat-paginator>
     </div>
 </div>

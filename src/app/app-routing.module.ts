@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'contrats', loadChildren: () => import('./Contrats/contrat.module').then(m => m.ContratModule) },
   { path: 'departements', loadChildren: () => import('./Departements/departement.module').then(m => m.DepartementModule) },
   { path: 'Employees', loadChildren: () => import('./Employees/employee.module').then(m => m.EmployeeModule) },
-  { path: 'Posts', loadChildren: () => import('./Posts/post.module').then(m => m.PostModule) }
+  { path: 'Posts', loadChildren: () => import('./Posts/post.module').then(m => m.PostModule) },
+  { path: 'Offers', loadChildren: () => import('./Offers/offer.module').then(m => m.OfferModule) }
 
 ];
 

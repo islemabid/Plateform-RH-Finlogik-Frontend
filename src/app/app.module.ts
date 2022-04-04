@@ -27,6 +27,8 @@ import { DepartementModule } from './Departements/departement.module';
 import { LayoutComponent } from './layout/layout.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 import { ProfilModule } from './employee-Profil/profil.module';
+import { OfferModule } from './Offers/offer.module';
+
 
 
 
@@ -47,10 +49,12 @@ export function tokenGetter() {
     FooterComponent,
     LayoutComponent,
     TimeOffBalancesComponent,
+  
 
 
   ],
   imports: [
+    OfferModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

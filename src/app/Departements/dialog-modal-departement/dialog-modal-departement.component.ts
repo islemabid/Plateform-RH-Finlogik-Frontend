@@ -31,8 +31,8 @@ export class DialogModalDepartementComponent implements OnInit {
     if (this.editData) {
       this.titre = "Update Departement"
       this.action = "edit";
-      this.form.controls["name"].setValue(this.editData.name);
-      this.form.controls["description"].setValue(this.editData.description);
+      this.form.controls["name"].setValue(this.editData.shortDescription);
+      this.form.controls["description"].setValue(this.editData.longDescription);
     }
 
   }

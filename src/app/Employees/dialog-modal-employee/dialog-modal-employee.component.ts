@@ -40,7 +40,7 @@ export class DialogModalEmployeeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public editData: any) { }
 
   ngOnInit(): void {
-    this.GetEmployeeById();
+
     this.initform();
 
     if (this.editData) {
@@ -66,8 +66,8 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["hoursPerWeek"].setValue(this.editData.hoursPerWeek);
       this.form.controls["idRole"].setValue(this.editData.idRole);
       this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
-      this.form.controls["idContrat"].setValue(this.idContrat);
-      this.form.controls["idPost"].setValue(this.idPost);
+      this.form.controls["idContrat"].setValue(this.editData.idContrat);
+      this.form.controls["idPost"].setValue(this.editData.idPost);
     }
     console.log(this.form.value);
 
@@ -97,14 +97,7 @@ export class DialogModalEmployeeComponent implements OnInit {
 
     })
   }
-  GetEmployeeById() {
-    this.ms.getEmpById(this.editData.id).then((data) => {
-      this.idPost = data.post.id;
-      this.idContrat = data.contrat.id;
-      console.log(this.idPost);
-      console.log(this.idContrat);
-    });
-  }
+
 
   GetAllContrats() {
     this.contratsservice.GetALL().then((data) => {
@@ -191,6 +184,10 @@ export class DialogModalEmployeeComponent implements OnInit {
 
       });
   }
+
+
+
+  
 
 }
 

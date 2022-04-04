@@ -7,14 +7,30 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginService {
 
+  isLoggedIn: boolean = !!localStorage.getItem("jwt");
+  token: string = localStorage.getItem("jwt");
+  role: string = null;
+  template: object = { rh: false, employee: false, login: true };
+
+  // notifyOnUserLogout : EventEmitter<boolean> = new EventEmitter<boolean>();
+  // notifyOnUserRoleChanges //
+
   userLogOut: EventEmitter<boolean> = new EventEmitter<boolean>();
   userRole: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private httpClient: HttpClient, private jwtHelper: JwtHelperService) { }
 
 
-  authentication(e: any): Promise<any> {
-    return this.httpClient.post<any>('https://localhost:7152/api/Account/authenticatejwt', e).toPromise();
+  async authentication(e: any): Promise<any> {
+    /*try {
+      const { token } = await this.httpClient.post<any>('https://localhost:7152/api/Account/authenticatejwt', e).toPromise();
+      this.token = token;
+      localStorage.setItem('jwt', this.token);
+
+    } catch (err) {
+
+    }*/
+    return await this.httpClient.post<any>('https://localhost:7152/api/Account/authenticatejwt', e).toPromise();
   }
 
   isUserAuthenticated() {

@@ -30,6 +30,7 @@ export class LayoutComponent implements OnInit {
       else if (this.role == "employee") {
         this.templateEmployee = true;
       }
+     
 
     }
     this.login.userLogOut.subscribe(async (isUserLogOut) => {
@@ -44,6 +45,7 @@ export class LayoutComponent implements OnInit {
       else if (role == "employee") {
         this.templateEmployee = true;
       }
+      
     })
   }
 

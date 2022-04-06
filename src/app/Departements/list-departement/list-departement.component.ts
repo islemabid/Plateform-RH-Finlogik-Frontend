@@ -65,9 +65,7 @@ export class ListDepartementComponent implements OnInit {
     });
   }
   GetDepartements(): void {
-    console.log(localStorage.getItem("jwt"));
-
-    this.ms.GetALL()
+      this.ms.GetALL()
       .then((data) => {
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator;

@@ -29,7 +29,7 @@ export class ListOffersComponent implements OnInit {
 
 
   constructor(private offerService: OfferService, private login: LoginService, private dialog: MatDialog) {
-    const Departements = Array.from({ length: 100 });
+    const Offers = Array.from({ length: 100 });
     this.dataSource = new MatTableDataSource(this.offerService.tab);
   }
 
@@ -64,8 +64,6 @@ export class ListOffersComponent implements OnInit {
     });
   }
   GetOffers(): void {
-    console.log(localStorage.getItem("jwt"));
-
     this.offerService.GetALL()
       .then((data) => {
         this.dataSource.data = data;

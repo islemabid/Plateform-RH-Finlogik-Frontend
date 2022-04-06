@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+
+    <mat-form-field appearance="outline">
+        <mat-label>First Name </mat-label>
+        <input matInput  placeholder="First Name" formControlName="firstName">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> Last Name</mat-label>
+        <input matInput  placeholder="Last Name" formControlName="lastName">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> Email</mat-label>
+        <input matInput  placeholder="Email" formControlName="email">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> PhoneNumber</mat-label>
+        <input matInput  placeholder="PhoneNumber" formControlName="phoneNumber">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> Gender</mat-label>
+        <input matInput  placeholder="Gender" formControlName="gender">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> Adress</mat-label>
+        <input matInput  placeholder="Adress" formControlName="adress">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> SchoolLevel</mat-label>
+        <input matInput  placeholder="SchoolLevel" formControlName="schoolLevel">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> Establishment</mat-label>
+        <input matInput  placeholder="Establishment" formControlName="establishment">
+
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> CvUrl</mat-label>
+        <input matInput  placeholder="CvUrl" formControlName="cvUrl">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label> CoverLetter</mat-label>
+        <input matInput  placeholder="CoverLetter" formControlName="coverLetter">
+    </mat-form-field>
+    <button type="submit">Save</button>
+</form>

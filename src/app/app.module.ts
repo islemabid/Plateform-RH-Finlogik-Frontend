@@ -28,6 +28,10 @@ import { LayoutComponent } from './layout/layout.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 import { ProfilModule } from './employee-Profil/profil.module';
 import { OfferModule } from './Offers/offer.module';
+import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
+import { ApplyOfferComponent } from './Candidats/apply-offer/apply-offer.component';
+
+
 
 
 
@@ -43,12 +47,15 @@ export function tokenGetter() {
     ContentAnimateDirective,
     LoginComponent,
     HomeComponent,
+    ApplyOfferComponent,
+    TemplateCandidatComponent,
     DashboardComponent,
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
     TimeOffBalancesComponent,
+   
   
 
 

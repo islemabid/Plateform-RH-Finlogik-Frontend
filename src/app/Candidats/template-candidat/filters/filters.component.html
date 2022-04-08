@@ -1,0 +1,19 @@
+<div class="filters">
+    <div class="filters__input">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Keywords</mat-label>
+            <input matInput [(ngModel)]="keywords" placeholder="Ex. Angular, C#, ASP.NET">
+        </mat-form-field>
+    </div>
+   <div class="filters__select">
+    <mat-form-field class="example-full-width" appearance="fill">
+       <mat-label> Contract Type</mat-label>
+       <mat-select [(ngModel)]="selectedType">
+             <mat-option *ngFor="let type of contractTypes"  [value]="type" >{{type}}</mat-option>
+       </mat-select>
+    </mat-form-field>
+   </div>
+   <div class="filters__submit">
+    <button  mat-raised-button color="primary" (click)="searchOffersHandler()">Search</button>
+   </div>
+</div>

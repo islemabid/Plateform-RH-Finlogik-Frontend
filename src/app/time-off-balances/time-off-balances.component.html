@@ -33,8 +33,9 @@
         <ng-container matColumnDef="Status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
             <td mat-cell *matCellDef="let row">
-                <tr *ngIf="row.isActive==false" style="color:red;">Waiting</tr>
-                <tr *ngIf="row.isActive==true" style="color:green;">Validated</tr>
+                <tr *ngIf="row.status=='waiting'" style="color:red;">Waiting</tr>
+                <tr *ngIf="row.status=='Refused'" style="color:red;">Refused</tr>
+                <tr *ngIf="row.status=='validated'" style="color:green;">Validated</tr>
             </td>
         </ng-container>
 

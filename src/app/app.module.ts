@@ -30,6 +30,7 @@ import { ProfilModule } from './employee-Profil/profil.module';
 import { OfferModule } from './Offers/offer.module';
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { ApplyOfferComponent } from './Candidats/apply-offer/apply-offer.component';
+import { FiltersComponent } from './Candidats/template-candidat/filters/filters.component';
 
 
 
@@ -55,6 +56,7 @@ export function tokenGetter() {
     FooterComponent,
     LayoutComponent,
     TimeOffBalancesComponent,
+    FiltersComponent,
    
   
 

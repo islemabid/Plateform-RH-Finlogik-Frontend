@@ -51,7 +51,7 @@ export class TimeOffBalancesComponent implements OnInit {
       });
   }
   validate(data) {
-    data.isActive = true;
+    data.status = "validated";
     this.timeOffBalancesService.UpdateStatus(data).then(() => {
       this.GetAllTimeOffBalances();
 
@@ -60,7 +60,7 @@ export class TimeOffBalancesComponent implements OnInit {
 
   }
   refuse(data) {
-    data.isActive = false;
+    data.status = "Refused";
     this.timeOffBalancesService.UpdateStatus(data).then(() => {
       this.GetAllTimeOffBalances();
 

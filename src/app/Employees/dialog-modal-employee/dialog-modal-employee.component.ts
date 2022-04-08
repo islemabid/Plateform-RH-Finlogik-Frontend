@@ -131,7 +131,7 @@ export class DialogModalEmployeeComponent implements OnInit {
       idPost: ["", Validators.required],
       idContrat: ["", Validators.required],
       idDepartement: ["", Validators.required],
-      endDate: [""],
+      endDate: [null],
 
 
     });
@@ -184,12 +184,22 @@ export class DialogModalEmployeeComponent implements OnInit {
 
       });
   }
+/*{
+  let contrat={...this.form.value};
+  let ContratId=contrat.idContrat;
+  this.contratsservice.getContratById(ContratId).then((data)=>{
+    if(data.shortDescription!="CDI"){
+      return true;
+    }
 
+  })*/
+
+}
 
 
   
 
-}
+
 
 
 

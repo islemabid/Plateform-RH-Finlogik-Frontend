@@ -20,7 +20,20 @@ export class TemplateCandidatComponent implements OnInit {
     this.offerService.GetALL()
       .then((data) => {
         this.offers = data;
-       console.log(this.offers);
+      }); 
+    }
 
-      }); }
+    async filtersChangedHandler(filters) {
+      this.offers = await this.offerService.GetALL();
+      const { type, keywords } = filters;
+      this.offers = this.offers.filter(offer => {
+        const typeCondition = type ? offer.type.includes(type) : true;
+        let keywordsCondition = true;
+        if (keywords) {
+          const words = keywords.split(' ');
+          keywordsCondition = words.some(word => offer.offerName.includes(word) || offer.offerDescription.includes(word));
+        }
+        return typeCondition && keywordsCondition;
+      })
+    }
 }

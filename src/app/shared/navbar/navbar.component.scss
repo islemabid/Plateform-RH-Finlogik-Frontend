@@ -22,7 +22,12 @@
     -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
     background: $navbar-bg;
     width: $sidebar-width-lg;
-    height: $navbar-height;
+    height: 40px;
+
+    img {
+      position: relative;
+      top: -35px;    
+    }
 
     @media (max-width: 991px) {
       width: 55px;

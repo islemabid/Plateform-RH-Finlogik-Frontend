@@ -30,10 +30,10 @@ export class DialogModalOfferComponent implements OnInit {
     if (this.editData) {
       this.titre = "Update Offer"
       this.action = "edit";
-      this.form.controls["OfferName"].setValue(this.editData.OfferName);
-      this.form.controls["OfferDescription"].setValue(this.editData.OfferDescription);
+      this.form.controls["OfferName"].setValue(this.editData.offerName);
+      this.form.controls["OfferDescription"].setValue(this.editData.offerDescription);
       this.form.controls["type"].setValue(this.editData.type);
-      this.form.controls["OfferMinExperience"].setValue(this.editData.OfferMinExperience);
+      this.form.controls["OfferMinExperience"].setValue(this.editData.offerMinExperience);
     }
 
   }

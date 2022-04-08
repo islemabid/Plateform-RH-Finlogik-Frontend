@@ -50,14 +50,14 @@ export class ListOffersComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalOfferComponent, { width: "600px" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalOfferComponent, { width: "500px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
         this.GetOffers();
       }
     });
   }
   edit(row: any) {
-    this.dialog.open(DialogModalOfferComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalOfferComponent, { width: "500px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
         this.GetOffers();
       }

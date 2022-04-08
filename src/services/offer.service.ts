@@ -25,7 +25,7 @@ export class OfferService {
   }
 
   RemoveOfferById(id: string): Promise<void> {
-    return this.httpClient.delete<void>('https://localhost:7152/api/Offfer/' + id).toPromise();
+    return this.httpClient.delete<void>('https://localhost:7152/api/Offfer/' + id, this.header).toPromise();
   }
 
   GetALL(): Promise<Offers[]> {

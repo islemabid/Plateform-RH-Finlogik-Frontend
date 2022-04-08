@@ -1,4 +1,54 @@
+.application {
 
-.example-card {
-  max-width: 400px;
+   margin: 50px auto;
+   max-width: 1024px;
+   
+   &__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    line-height: 30px;
+   }
+
+   &__filters {
+     margin-bottom: 30px;
+   }
+
+   &__offers {
+    display: flex;
+    justify-content:  space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+    .offer {
+      flex: 32% 0 0;
+      min-width: 315px;
+      margin-bottom: 30px;
+      cursor: pointer;
+
+      &:hover {
+       background-color: #eee; 
+       box-shadow: 5px 5px 5px 0px #b7b4b4;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &__title {
+        height: 50px;
+        line-height: 25px;
+      }
+     
+      &__description {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+  
+     }
+   }
+}
+
+
 }

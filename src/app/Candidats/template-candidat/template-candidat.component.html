@@ -5,20 +5,6 @@
     <app-filters (filtersChanged)="filtersChangedHandler($event)"></app-filters> 
   </div>
   <div class="application__offers">
-    <mat-card  *ngFor="let e of offers" class="offer">
-      <mat-card-subtitle> {{e.type}}</mat-card-subtitle>
-      <mat-card-title class="offer__title"> {{e.offerName}}</mat-card-title>
-      <mat-card-content>
-  
-          <p class="offer__description">{{e.offerDescription}}</p>
-          <P> Min Experience : {{e.offerMinExperience}}</P>
-        </mat-card-content>
-      <mat-card-actions>
-       
-        <!--button mat-button routerLink="{{e.id}}/Apply">Apply</button-->
-        <button  mat-button  >Apply</button>
-        
-      </mat-card-actions>
-    </mat-card>
-    </div>
+    <app-card-offer class="offer" *ngFor="let offer of offers" [offer]="offer"></app-card-offer>  
+  </div>
 </div>

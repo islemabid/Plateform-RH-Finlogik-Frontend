@@ -37,7 +37,7 @@ export class DialogModalOfferComponent implements OnInit {
     }
 
   }
-
+ 
 
   initform(): void {
     this.form = this.formBuilder.group({

@@ -1,0 +1,15 @@
+<mat-card  class="offer">
+    <mat-card-subtitle> {{offer.type}}</mat-card-subtitle>
+    <mat-card-title class="offer__title"> {{offer.offerName}}</mat-card-title>
+    <mat-card-content>
+        <p class="offer__description">{{offer.offerDescription}}</p>
+        <P> Min Experience : {{offer.offerMinExperience}}</P>
+      </mat-card-content>
+    <mat-card-actions>
+     
+      <!--button mat-button routerLink="{{e.id}}/Apply">Apply</button-->
+      <button *ngIf="displayApply" mat-button routerLink="{{offer.id}}/Apply" >Apply</button>
+      
+    </mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card>

@@ -31,6 +31,8 @@ import { OfferModule } from './Offers/offer.module';
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { ApplyOfferComponent } from './Candidats/apply-offer/apply-offer.component';
 import { FiltersComponent } from './Candidats/template-candidat/filters/filters.component';
+import { UploadCvComponent } from './upload-cv/upload-cv.component';
+import { CardOfferComponent } from './Candidats/template-candidat/card-offer/card-offer.component';
 
 
 
@@ -57,6 +59,8 @@ export function tokenGetter() {
     LayoutComponent,
     TimeOffBalancesComponent,
     FiltersComponent,
+    UploadCvComponent,
+    CardOfferComponent,
    
   
 

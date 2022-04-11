@@ -32,6 +32,10 @@ export class OfferService {
 
     return this.httpClient.get<any[]>('https://localhost:7152/api/Offer/all').toPromise();
   }
+  GetOfferById(id:string): Promise<Offers> {
+
+    return this.httpClient.get<any>('https://localhost:7152/api/Offer/'+id).toPromise();
+  }
 
   EditOffer(o:Offers): Promise<any> {
     return this.httpClient.put<any>('https://localhost:7152/api/Offer', o, this.header).toPromise();

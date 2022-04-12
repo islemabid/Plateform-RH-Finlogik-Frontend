@@ -24,6 +24,7 @@
     "@angular/router": "~10.1.6",
     "@auth0/angular-jwt": "^4.2.0",
     "@mdi/font": "^5.7.55",
+    "@microsoft/signalr": "^6.0.3",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.3",

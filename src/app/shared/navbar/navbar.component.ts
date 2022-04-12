@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationCountResult, NotificationResult } from 'src/models/Notification';
 import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
+import { NotificationService } from 'src/services/notification.service';
+import * as signalR from '@microsoft/signalr'; 
 
 @Component({
   selector: 'app-navbar',
@@ -13,10 +16,13 @@ import { LoginService } from 'src/services/login.service';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
+  notification: NotificationCountResult;  
+  messages: NotificationResult[];  
+  errorMessage = ''; 
   decode: any;
   iduser: any;
   employeeInfo: any;
-  constructor(config: NgbDropdownConfig, private login: LoginService, private employeeService: EmployeeService, private router: Router) {
+  constructor(config: NgbDropdownConfig, private login: LoginService,private notificationService: NotificationService, private employeeService: EmployeeService, private router: Router) {
     config.placement = 'bottom-right';
   }
 
@@ -27,6 +33,25 @@ export class NavbarComponent implements OnInit {
     }
     console.log(this.iduser);
     this.getUserByID();
+    this.getNotificationCount();
+    this.getNotificationMessage();
+
+    const connection = new signalR.HubConnectionBuilder()  
+      .configureLogging(signalR.LogLevel.Information)  
+      .withUrl('https://localhost:7152/notify')  
+      .build();  
+    
+  
+    connection.start().then(function () {  
+      console.log('SignalR Connected!');  
+    }).catch(function (err) {  
+      return console.error(err.toString());  
+    });  
+  
+    connection.on("BroadcastMessage", () => {  
+      this.getNotificationCount();  
+      this.getNotificationMessage();
+    });  
   }
 
   // toggle sidebar in small devices
@@ -53,16 +78,23 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+
+
   public createImgPath = (serverPath: string) => {
     return `https://localhost:7152/${serverPath}`;
-
   }
+
+
   logout() {
     this.login.logOut();
   }
+
+
   showProfil() {
     this.router.navigate(['profil/personal']);
   }
+
+
   getUserByID() {
     this.employeeService.getEmpById(this.iduser).then((data) => {
       this.employeeInfo = data;
@@ -70,6 +102,27 @@ export class NavbarComponent implements OnInit {
     }
     )
   }
+
+  getNotificationCount() {  
+    this.notificationService.getNotificationCount().then(  
+      notification => {  
+        this.notification = notification;  
+      }
+    );  
+  }
+
+
+  getNotificationMessage() {  
+    this.notificationService.getNotificationMessage().then(  
+      messages => {  
+        this.messages = messages; 
+        console.log(this.messages);
+      } 
+      
+    );  
+  }  
+  
+  
 
 
 }

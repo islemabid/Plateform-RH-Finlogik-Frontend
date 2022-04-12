@@ -1,6 +1,7 @@
 
-import { HttpEventType, HttpClient } from '@angular/common/http';
+import { HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FileService } from 'src/services/file.service';
 
 
 
@@ -16,7 +17,7 @@ export class UploadComponent implements OnInit {
   message: any;
   @Output() public onUploadFinished = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor(private fileService:FileService) { }
 
   ngOnInit() {
   }
@@ -30,7 +31,7 @@ export class UploadComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.http.post('https://localhost:7152/api/upload', formData, { reportProgress: true, observe: 'events' })
+    this.fileService.upload(formData)
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = "invalid";

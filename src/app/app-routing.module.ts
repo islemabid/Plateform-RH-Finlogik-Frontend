@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ApplyOfferComponent } from './Candidats/apply-offer/apply-offer.component';
+import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidats.component';
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'Offers', loadChildren: () => import('./Offers/offer.module').then(m => m.OfferModule) },
   { path: 'candidat', pathMatch: 'full', component: TemplateCandidatComponent },
   { path: 'candidat/:id/Apply', pathMatch: 'full', component: ApplyOfferComponent },
+  { path: 'list-candidat', pathMatch: 'full', component: ListCandidatsComponent },
+  
 
 
 

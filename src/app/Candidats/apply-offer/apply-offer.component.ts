@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApplicationOffer } from 'src/models/ApplicationOffer';
 import { Candidat } from 'src/models/Candidat';
+import { CandidatsService } from 'src/services/candidats.service';
 import { OfferService } from 'src/services/offer.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class ApplyOfferComponent implements OnInit {
   candidatId:any;
   response:any;
   offer:any;
-  constructor(private offerservice:OfferService,private acivateRoute: ActivatedRoute) { }
+  constructor(private offerservice:OfferService,private candidatservice:CandidatsService,private acivateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentid = this.acivateRoute.snapshot.params.id;
@@ -50,7 +51,7 @@ export class ApplyOfferComponent implements OnInit {
   }
    save(){
    this.candidat = this.form.value as Candidat;
-   this.offerservice.AddCandidat(this.candidat).then((data)=>{
+   this.candidatservice.AddCandidat(this.candidat).then((data)=>{
     this.candidatId = data.toString();
     const applicationOffers = {
       ...this.candidat,
@@ -58,7 +59,7 @@ export class ApplyOfferComponent implements OnInit {
       IdOffer: this.currentid,
       CvUrl: this.response
     } as ApplicationOffer;
-    this.offerservice.ApplyToOffer(applicationOffers).then((data)=>{
+    this.candidatservice.ApplyToOffer(applicationOffers).then((data)=>{
       console.log(data);
     });
   });

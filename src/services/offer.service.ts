@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApplicationOffer } from 'src/models/ApplicationOffer';
-import { Candidat } from 'src/models/Candidat';
 import { Offers } from 'src/models/Offer';
 
 @Injectable({
@@ -41,15 +39,7 @@ export class OfferService {
     return this.httpClient.put<any>('https://localhost:7152/api/Offer', o, this.header).toPromise();
   }
  
-  ApplyToOffer(a:ApplicationOffer): Promise<any> {
 
-    return this.httpClient.post<any>('https://localhost:7152/api/ApplicationOffer', a).toPromise();
-  }
-   
-  AddCandidat(c:Candidat): Promise<any> {
-
-    return this.httpClient.post<any>('https://localhost:7152/api/Candidat', c).toPromise();
-  }
 
 
 }

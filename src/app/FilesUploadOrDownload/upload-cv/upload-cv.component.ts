@@ -1,5 +1,6 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FileService } from 'src/services/file.service';
 
 @Component({
   selector: 'app-upload-cv',
@@ -11,7 +12,7 @@ export class UploadCvComponent implements OnInit {
   message: any;
   @Output() public onUploadFinished = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor(private fileService:FileService) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,7 @@ export class UploadCvComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.http.post('https://localhost:7152/api/upload/uploadCV', formData, { reportProgress: true, observe: 'events' })
+    this.fileService.uploadCV(formData)
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = "invalid";

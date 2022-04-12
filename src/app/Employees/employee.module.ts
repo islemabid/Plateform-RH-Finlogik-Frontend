@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { MaterialModule } from '../material.module';
 import { EmployeeService } from 'src/services/employee.service';
-import { UploadComponent } from '../upload/upload.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModalEmployeeComponent } from './dialog-modal-employee/dialog-modal-employee.component';
 import { DetailsEmployeePostsComponent } from './details-employee-posts/details-employee-posts.component';
+import { UploadComponent } from '../FilesUploadOrDownload/upload/upload.component';
+
 
 
 

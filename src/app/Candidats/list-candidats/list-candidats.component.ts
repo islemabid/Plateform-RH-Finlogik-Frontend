@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { copyFileSync } from 'fs';
 import { CandidatsService } from 'src/services/candidats.service';
 import { FileService } from 'src/services/file.service';
 import { LoginService } from 'src/services/login.service';
@@ -49,18 +51,17 @@ export class ListCandidatsComponent implements OnInit {
     })
   }
   async filtersChangedHandler(filters) {
-    console.log(filters);
     this.dataSource.data = await this.candidatService.GetAllApplicationOffers();
-    console.log(this.dataSource.data);
-    const { type, keywords } = filters;
+    const { type, Date } = filters;
     this.dataSource.data = this.dataSource.data.filter(data => {
-      const typeCondition = type ? data.offer.type.includes(type) : true;
-      let keywordsCondition = true;
-      if (keywords) {
-        const words = keywords.split(' ');
-        keywordsCondition = words.some(word => data.offer.offerName.includes(word) );
-      }
-      return typeCondition && keywordsCondition;
+     const typeCondition = type ? data.offer.type.includes(type) : true;
+      let dateCondition = true;
+      if (Date) {
+       data.assignmentDate= formatDate( data.assignmentDate.toString(), 'dd-MM-yyyy','en-US');
+       let date=formatDate(Date.toString(), 'dd-MM-yyyy','en-US');
+       dateCondition =date.includes(data.assignmentDate);
+       }
+      return typeCondition && dateCondition;
     })
   }
 

@@ -1,8 +1,14 @@
 <div class="filters">
     <div class="filters__input">
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field *ngIf="displayKeywords" class="example-full-width" appearance="fill">
             <mat-label>Keywords</mat-label>
             <input matInput [(ngModel)]="keywords" placeholder="Ex. Angular, C#, ASP.NET">
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="displayAssignementDate">
+            <mat-label>Choose Asignement Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="AssignementDate" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div>
    <div class="filters__select">

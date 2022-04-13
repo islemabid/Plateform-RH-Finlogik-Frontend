@@ -1,6 +1,7 @@
 <div *ngIf="rh">
-    <app-filters (filtersChanged)="filtersChangedHandler($event)"></app-filters> 
-   
+    <div class="filters">
+    <app-filters (filtersChanged)="filtersChangedHandler($event)"  [displayKeywords]="false" [displayAssignementDate]="true"></app-filters> 
+    </div>
         
     <table mat-table [dataSource]="dataSource" matSort>
 

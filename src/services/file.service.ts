@@ -20,16 +20,14 @@ export class FileService {
     return this.http.post(`${this.url}`, formData,{ reportProgress: true, observe: 'events' });
    }
  
-   public download(fileUrl){
+   public download(fileUrl) {
     return this.http.get(`${this.url}/download?fileUrl=${fileUrl}`, {
       reportProgress: true,
-      responseType: 'blob'
+      responseType: 'arraybuffer' as 'json'
     
     });
-}
-  /* public getCVFiles() {
-    return this.http.get(`${this.url}/getCVFiles`);
-  }*/
+  }
+  
 
 }
 

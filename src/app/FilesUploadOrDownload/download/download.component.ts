@@ -9,8 +9,7 @@ import { FileService } from 'src/services/file.service';
 })
 export class DownloadComponent implements OnInit {
   @Input() public fileUrl: string;
-  progress:any;
-  message:string;
+  
   constructor(private fileService:FileService) { }
 
   ngOnInit(): void {
@@ -23,7 +22,7 @@ export class DownloadComponent implements OnInit {
 });
 }
 private downloadFile(data) {
-         const downloadedFile = new Blob([data.body], { type: data.type });
+         const downloadedFile = new Blob([data], { type: 'application/pdf' });
          console.log(downloadedFile);
          const a = document.createElement('a');
           a.setAttribute('style', 'display:none;');

@@ -66,6 +66,7 @@ export function tokenGetter() {
     CardOfferComponent,
     ListCandidatsComponent,
     DownloadComponent,
+ 
    
   
 

@@ -22,7 +22,7 @@ export class ListCandidatsComponent implements OnInit {
 
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource(this.candidatService.tab);
-  displayedColumns: string[] = ["FirstName", "LastName","Email","PhoneNumber", "CV","CoverLetter","AssignmentDate","Offer Name","Actions"];
+  displayedColumns: string[] = ["FirstName", "LastName","Email","PhoneNumber", "CV","CoverLetter","AssignmentDate","Offer Name","Contrat Type","Actions"];
 
   constructor(private candidatService:CandidatsService,private login: LoginService,private fileService:FileService) { }
 
@@ -48,6 +48,22 @@ export class ListCandidatsComponent implements OnInit {
 
     })
   }
+  async filtersChangedHandler(filters) {
+    console.log(filters);
+    this.dataSource.data = await this.candidatService.GetAllApplicationOffers();
+    console.log(this.dataSource.data);
+    const { type, keywords } = filters;
+    this.dataSource.data = this.dataSource.data.filter(data => {
+      const typeCondition = type ? data.offer.type.includes(type) : true;
+      let keywordsCondition = true;
+      if (keywords) {
+        const words = keywords.split(' ');
+        keywordsCondition = words.some(word => data.offer.offerName.includes(word) );
+      }
+      return typeCondition && keywordsCondition;
+    })
+  }
+
 
  
 }

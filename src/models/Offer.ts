@@ -1,10 +1,9 @@
 export interface Offers {
   
     OfferDescription : string ;
-
     OfferName :string;
-    
-   OfferMinExperience:number;
-
+    OfferMinExperience:number;
     type :string;
+    ExpirationDate:Date;
+    IsDeleted:boolean;
 }

@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -28,9 +28,10 @@ export class ApplyOfferComponent implements OnInit {
     this.initform();
   }
 
+  
+
   public uploadFinished = (event: any) => {
     this.response = event.toString();
-    console.log(this.response.toString());
   }
   public GetOfferById(){
     this.offerservice.GetOfferById(this.currentid).then((data)=>{
@@ -50,6 +51,7 @@ export class ApplyOfferComponent implements OnInit {
     });
   }
    save(){
+  if(this.form.valid) {
    this.candidat = this.form.value as Candidat;
    this.candidatservice.AddCandidat(this.candidat).then((data)=>{
     this.candidatId = data.toString();
@@ -63,6 +65,7 @@ export class ApplyOfferComponent implements OnInit {
       console.log(data);
     });
   });
+}
 }
 
 }

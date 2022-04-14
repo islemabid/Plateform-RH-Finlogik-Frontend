@@ -1,4 +1,4 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FileService } from 'src/services/file.service';
 
@@ -8,7 +8,7 @@ import { FileService } from 'src/services/file.service';
   styleUrls: ['./upload-cv.component.scss']
 })
 export class UploadCvComponent implements OnInit {
-  progress: any;
+  CVToUpload:any;
   message: any;
   @Output() public onUploadFinished = new EventEmitter();
 
@@ -28,14 +28,13 @@ export class UploadCvComponent implements OnInit {
 
     this.fileService.uploadCV(formData)
       .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = "invalid";
-        }
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
+        if (event.type === HttpEventType.Response) {
+          this.message =event.body;
+          this.CVToUpload=this.message.substring(15);
           this.onUploadFinished.emit(event.body);
         }
       });
   }
 
 }
+

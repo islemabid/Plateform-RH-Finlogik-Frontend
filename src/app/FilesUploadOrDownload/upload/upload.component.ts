@@ -13,7 +13,7 @@ import { FileService } from 'src/services/file.service';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  progress: any;
+  photoToUpload:any;
   message: any;
   @Output() public onUploadFinished = new EventEmitter();
 
@@ -33,11 +33,10 @@ export class UploadComponent implements OnInit {
 
     this.fileService.upload(formData)
       .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = "invalid";
-        }
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
+        if (event.type === HttpEventType.Response) {
+          this.message =event.body;
+          this.photoToUpload=this.message.substring(18);
+
           this.onUploadFinished.emit(event.body);
         }
       });

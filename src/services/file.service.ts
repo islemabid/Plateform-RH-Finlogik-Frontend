@@ -27,6 +27,10 @@ export class FileService {
     
     });
   }
+
+  public getFile(response) {
+    return  `https://localhost:7152/${response}`;
+  }
   
 
 }

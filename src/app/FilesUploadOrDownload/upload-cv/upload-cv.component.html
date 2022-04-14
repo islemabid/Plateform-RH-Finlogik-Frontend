@@ -1,13 +1,11 @@
-<div class="row" style="margin-bottom:15px;">
-    <div class="col-md-3">
-      <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-      <button type="button" class=" btn btn-light" (click)="file.click()">Upload
-        File</button>
-    </div>
-    <div class="col-md-4">
-      <span class="upload" *ngIf="progress ">
-      </span>
-      <span class="upload" *ngIf="message">
-      </span>
-    </div>
-  </div>
+<input  hidden  placeholder="Choose file" #file  (change)="uploadFile(file.files)" style="display:none;" type="file">
+<button  mat-raised-button (click)="file.click()" style="color:gray"> Upload Cv </button>
+
+
+<div *ngIf="message">
+    
+    <span  class="file-input-text"> {{CVToUpload}} </span>
+    <button mat-icon-button  type="button"  aria-label="Remove Selected File(s)">
+      <mat-icon>close</mat-icon>
+    </button>
+</div>

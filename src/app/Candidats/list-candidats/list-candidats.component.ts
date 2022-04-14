@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { copyFileSync } from 'fs';
 import { CandidatsService } from 'src/services/candidats.service';
 import { FileService } from 'src/services/file.service';
 import { LoginService } from 'src/services/login.service';

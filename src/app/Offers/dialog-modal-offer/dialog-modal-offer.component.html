@@ -15,16 +15,31 @@
 
             </mat-form-field>
             
-            <mat-form-field appearance="outline">
-                <mat-label>Type </mat-label>
-                <input matInput  placeholder="description" formControlName="type">
-
-            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label> Contract Type</mat-label>
+                <mat-select formControlName="type" >
+                      <mat-option *ngFor="let type of contractTypes"  [value]="type" >{{type}}</mat-option>
+                </mat-select>
+             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>OfferMinExperience </mat-label>
                 <input matInput  placeholder="MinExperience" formControlName="OfferMinExperience" type="number">
 
             </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a Expiration Date</mat-label>
+                <input matInput [matDatepicker]="picker"  formControlName="ExpirationDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div>
+                <label> Offer IsActive: </label>
+                <mat-radio-group [formControl]="IsDeleted">
+                  <mat-radio-button value="False">Activate</mat-radio-button>
+                  <mat-radio-button value="True">UnActivate</mat-radio-button>
+                </mat-radio-group>
+              </div>
 
         </form>
 

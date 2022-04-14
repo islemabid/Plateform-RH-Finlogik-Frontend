@@ -1,38 +1,43 @@
 <div class="apply">
     <div class="apply__offer"> 
         <app-card-offer [offer]="offer" [displayApply]="false">
+            <div class="mat-card-title apply__offer__title"> Please fill this form for applying !</div>     
             <form class="apply__offer__form" [formGroup]="form" (ngSubmit)="save()">
                 <div class="line">
-                    <mat-form-field appearance="outline">
+                    <mat-form-field class="line__half" appearance="outline">
                         <mat-label>First Name </mat-label>
                         <input matInput  placeholder="First Name" formControlName="firstName">
                     </mat-form-field>
-                    <mat-form-field appearance="outline">
+                    <mat-form-field  class="line__half" appearance="outline">
                         <mat-label> Last Name</mat-label>
                         <input matInput  placeholder="Last Name" formControlName="lastName">
                     </mat-form-field>
                 </div>
                 <div class="line">
-                    <mat-form-field appearance="outline">
+                    <mat-form-field class="line__half" appearance="outline">
                         <mat-label> Email</mat-label>
                         <input matInput  placeholder="Email" formControlName="email">
                 
                     </mat-form-field>
-                    <mat-form-field appearance="outline">
+                    <mat-form-field class="line__half" appearance="outline">
                         <mat-label> PhoneNumber</mat-label>
                         <input matInput  placeholder="PhoneNumber" formControlName="phoneNumber">
                     </mat-form-field>
                 </div>
                 <div class="line">
-                    <mat-form-field appearance="outline">
+                    <mat-form-field class="line__full" appearance="outline">
                         <mat-label> Cover Letter </mat-label>
-                        <input matInput  placeholder="CoverLetter" formControlName="coverLetter">
+                        <textarea matInput class="textarea" placeholder="Please type your cover letter here." formControlName="coverLetter"></textarea>
                     </mat-form-field>    
                 </div>
-                <div class="line cv">
-                    <app-upload-cv (onUploadFinished)="uploadFinished($event)"></app-upload-cv>
+                <div class="line">
+                    <div class="line__half">
+                        <app-upload-cv  (onUploadFinished)="uploadFinished($event)"></app-upload-cv>
+                    </div>
                 </div>
-                <button class="submit" type="submit">Save</button>
+                <div class="line line--center">
+                    <button mat-raised-button color="primary" class="submit" type="submit">Save</button>
+                </div>
             </form>
         </app-card-offer>
     </div>

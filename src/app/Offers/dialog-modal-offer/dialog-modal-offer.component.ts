@@ -13,16 +13,15 @@ export class DialogModalOfferComponent implements OnInit {
   public titre = "ADD New Offer";
   form: FormGroup;
   response: any;
-  matcher: any;
-
   action: string = "save";
+  contractTypes: string[] = ['Internship','CDI', 'CDD', 'CIVP', 'Freelance'];
 
-  constructor(
-
-    private offerservice: OfferService,
+  constructor (
+   private offerservice: OfferService,
     private formBuilder: FormBuilder,
     private dialog: MatDialogRef<DialogModalOfferComponent>,
-    @Inject(MAT_DIALOG_DATA) public editData: any) { }
+    @Inject(MAT_DIALOG_DATA) public editData: any
+    ) { }
 
   ngOnInit(): void {
     this.initform();
@@ -34,6 +33,8 @@ export class DialogModalOfferComponent implements OnInit {
       this.form.controls["OfferDescription"].setValue(this.editData.offerDescription);
       this.form.controls["type"].setValue(this.editData.type);
       this.form.controls["OfferMinExperience"].setValue(this.editData.offerMinExperience);
+      this.form.controls["ExpirationDate"].setValue(this.editData.expirationDate);
+      this.form.controls["IsDeleted"].setValue(this.editData.isDeleted);
     }
 
   }
@@ -45,8 +46,10 @@ export class DialogModalOfferComponent implements OnInit {
       OfferDescription: ["", Validators.required],
       type: ["", Validators.required],
       OfferMinExperience: [""],
+      ExpirationDate: ["", Validators.required],
+      IsDeleted:[Validators.required]
     });
-    //this.matcher = new MyErrorStateMatcher();
+    
   }
 
   onsubmit() {

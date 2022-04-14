@@ -62,10 +62,10 @@ export function tokenGetter() {
     LayoutComponent,
     TimeOffBalancesComponent,
     FiltersComponent,
-    UploadCvComponent,
     CardOfferComponent,
     ListCandidatsComponent,
     DownloadComponent,
+    UploadCvComponent,
  
    
   

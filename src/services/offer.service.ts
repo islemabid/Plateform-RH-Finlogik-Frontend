@@ -38,6 +38,12 @@ export class OfferService {
   EditOffer(o:Offers): Promise<any> {
     return this.httpClient.put<any>('https://localhost:7152/api/Offer', o, this.header).toPromise();
   }
+
+  GetLinkedinApi(){
+    return this.httpClient.get('https://localhost:7152/api/LinkedinApi');
+  }
+  
+
  
 
 

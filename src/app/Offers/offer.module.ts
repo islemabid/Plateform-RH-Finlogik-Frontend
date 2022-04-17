@@ -11,7 +11,7 @@ import { OfferService } from 'src/services/offer.service';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: ListOffersComponent },
-
+  { path: 'code=:code', pathMatch: 'full', component: ListOffersComponent },
 
 
 ]

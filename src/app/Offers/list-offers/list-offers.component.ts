@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Offers } from 'src/models/Offer';
 import { LoginService } from 'src/services/login.service';
@@ -22,13 +23,14 @@ export class ListOffersComponent implements OnInit {
   role: any;
   decode: any;
   rh = false;
+  code :any;
 
   dataSource: MatTableDataSource<Offers> = new MatTableDataSource(this.offerService.tab);
   displayedColumns: string[] = ["Name", "Description", "Type","Actions"];
 
 
 
-  constructor(private offerService: OfferService, private login: LoginService, private dialog: MatDialog) {
+  constructor(private offerService: OfferService,private acivateRoute: ActivatedRoute, private login: LoginService, private dialog: MatDialog) {
     const Offers = Array.from({ length: 100 });
     this.dataSource = new MatTableDataSource(this.offerService.tab);
   }
@@ -84,6 +86,13 @@ export class ListOffersComponent implements OnInit {
     }
 
   }
+  GetLinkedinApi(){
+    // this.offerService.GetLinkedinApi().subscribe((data)=>{
+    //   console.log(data);
+    // })
+    window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78garf686nkvua&redirect_uri=http://localhost:4200/Offers&scope=r_liteprofile%20r_emailaddress%20w_member_social";
+
+  }
 
 
   ngOnInit(): void {
@@ -97,6 +106,8 @@ export class ListOffersComponent implements OnInit {
       }
 
     }
+    this.code=this.acivateRoute.snapshot.queryParams.code;
+    console.log(this.code);
   }
 
 }

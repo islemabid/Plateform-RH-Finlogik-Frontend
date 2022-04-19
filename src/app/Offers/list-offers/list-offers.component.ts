@@ -24,6 +24,7 @@ export class ListOffersComponent implements OnInit {
   decode: any;
   rh = false;
   code :any;
+  idOffer:any;
 
   dataSource: MatTableDataSource<Offers> = new MatTableDataSource(this.offerService.tab);
   displayedColumns: string[] = ["Name", "Description", "Type","Actions"];
@@ -31,7 +32,6 @@ export class ListOffersComponent implements OnInit {
 
 
   constructor(private offerService: OfferService,private acivateRoute: ActivatedRoute, private login: LoginService, private dialog: MatDialog) {
-    const Offers = Array.from({ length: 100 });
     this.dataSource = new MatTableDataSource(this.offerService.tab);
   }
 
@@ -86,13 +86,11 @@ export class ListOffersComponent implements OnInit {
     }
 
   }
-  GetLinkedinApi(){
-    // this.offerService.GetLinkedinApi().subscribe((data)=>{
-    //   console.log(data);
-    // })
-    window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78garf686nkvua&redirect_uri=http://localhost:4200/Offers&scope=r_liteprofile%20r_emailaddress%20w_member_social";
+  GetLinkedinApi(idoffer:any) {
+   
+    window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78garf686nkvua&redirect_uri=http://localhost:4200/Offers&scope=r_liteprofile%20r_emailaddress%20w_member_social&state="+idoffer;
 
-  }
+    }
 
 
   ngOnInit(): void {
@@ -106,8 +104,16 @@ export class ListOffersComponent implements OnInit {
       }
 
     }
-    this.code=this.acivateRoute.snapshot.queryParams.code;
-    console.log(this.code);
+   this.code=this.acivateRoute.snapshot.queryParams.code;
+    this.idOffer=this.acivateRoute.snapshot.queryParams.state;
+    let OfferById={"id":this.idOffer};
+    console.log(this.idOffer);
+     if(!!this.code) {
+    
+       this.offerService.PostOfferInLinkedin(this.code,OfferById).then(()=>{7
+       console.log("post added in linkedin");
+       })
+    }
   }
 
 }

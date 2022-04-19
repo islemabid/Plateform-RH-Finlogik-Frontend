@@ -32,7 +32,7 @@ export class ListEmployeeComponent implements OnInit {
   displayedColumns: string[] = ["Image", "FullName", "Email", "Adress", "PhoneNumber", "Actions"];
 
   constructor(private ms: EmployeeService, private login: LoginService, private dialog: MatDialog) {
-    const Employees = Array.from({ length: 100 });
+
     this.dataSource = new MatTableDataSource(this.ms.tab);
   }
 

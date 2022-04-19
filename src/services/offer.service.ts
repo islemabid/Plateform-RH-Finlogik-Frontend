@@ -39,9 +39,11 @@ export class OfferService {
     return this.httpClient.put<any>('https://localhost:7152/api/Offer', o, this.header).toPromise();
   }
 
-  GetLinkedinApi(){
-    return this.httpClient.get('https://localhost:7152/api/LinkedinApi');
+  PostOfferInLinkedin( code :string, idOffer:any): Promise<any>{
+    //return this.httpClient.post<any>('https://localhost:7152/api/LinkedinApi?code='+code,idOffer).toPromise();
+    return this.httpClient.post<any>('https://localhost:7152/api/LinkedinApi?code='+code,idOffer).toPromise();
   }
+
   
 
  

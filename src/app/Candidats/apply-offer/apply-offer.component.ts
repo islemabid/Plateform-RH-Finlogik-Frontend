@@ -58,17 +58,15 @@ export class ApplyOfferComponent implements OnInit {
    this.candidatservice.AddCandidat(this.candidat).then((data)=>{
     this.candidatId = data.toString();
     const applicationOffers = {
-      ...this.candidat,
+      CoverLetter:this.candidat.coverLetter,
       IdCandidat: this.candidatId,
       IdOffer: this.currentid,
       CvUrl: this.response
     } as ApplicationOffer;
-    this.candidatservice.ApplyToOffer(applicationOffers).then((data)=>{
-      console.log(data);
+    this.candidatservice.ApplyToOffer(applicationOffers).then(()=>{
+      });
       
-      
-      
-    });
+
   });
 
 }

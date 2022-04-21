@@ -14,16 +14,16 @@ export class PostService {
   constructor(private httpClient: HttpClient) { }
   savePost(e: Posts): Promise<Posts> {
 
-    return this.httpClient.post<Posts>('https://localhost:7152/api/Post', e).toPromise();
+    return this.httpClient.post<Posts>('https://localhost:7152/api/Post', e,this.header).toPromise();
   }
   GetALL(): Promise<any[]> {
 
-    return this.httpClient.get<any[]>('https://localhost:7152/api/Post/all').toPromise();
+    return this.httpClient.get<any[]>('https://localhost:7152/api/Post/all',this.header).toPromise();
 
 
   }
   RemovePostById(id: string): Promise<void> {
-    return this.httpClient.delete<void>('https://localhost:7152/api/Post/' + id).toPromise();
+    return this.httpClient.delete<void>('https://localhost:7152/api/Post/' + id,this.header).toPromise();
 
 
   }

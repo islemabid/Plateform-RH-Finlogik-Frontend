@@ -27,7 +27,7 @@ export class ListOffersComponent implements OnInit {
   idOffer:any;
 
   dataSource: MatTableDataSource<Offers> = new MatTableDataSource(this.offerService.tab);
-  displayedColumns: string[] = ["Name", "Description", "Type","Actions"];
+  displayedColumns: string[] = ["Name", "Type","Actions"];
 
 
 

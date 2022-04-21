@@ -1,6 +1,6 @@
 <div *ngIf="rh">
     <div class="d-flex flex-row-reverse">
-        <button (click)="create()" class="  mdi mdi-account-plus  " style="background-color:#696969;">
+        <button (click)="create()"  style="background-color:#696969;">
 
             Add New Contrat
         </button>
@@ -11,6 +11,7 @@
 
         <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
+    
     <div class="mat-elevation-z8" style="margin-bottom:60px;">
         <table mat-table [dataSource]="dataSource" matSort>
 

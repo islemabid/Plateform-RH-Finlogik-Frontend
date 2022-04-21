@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { ContratService } from 'src/services/contrat.service';
 @Component({
   selector: 'app-dialog-modal-contrat',
@@ -50,7 +49,7 @@ export class DialogModalContratComponent implements OnInit {
       longDescription: ["", Validators.required],
 
     });
-    this.matcher = new MyErrorStateMatcher();
+ 
 
   }
 

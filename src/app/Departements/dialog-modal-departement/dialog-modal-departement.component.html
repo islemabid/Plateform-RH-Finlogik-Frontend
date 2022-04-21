@@ -5,13 +5,14 @@
 
             <mat-form-field appearance="outline">
                 <mat-label> Name </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="Name" formControlName="name">
+                <input matInput  placeholder="Name" formControlName="shortDescription">
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Description </mat-label>
-                <input matInput [errorStateMatcher]="matcher" placeholder="description" formControlName="description">
+                <input matInput
+                 placeholder="description" formControlName="longDescription">
 
             </mat-form-field>
 

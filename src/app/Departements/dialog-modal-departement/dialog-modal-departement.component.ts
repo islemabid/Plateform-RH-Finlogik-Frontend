@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { DepartementService } from 'src/services/departement.service';
 
 @Component({
@@ -31,8 +30,8 @@ export class DialogModalDepartementComponent implements OnInit {
     if (this.editData) {
       this.titre = "Update Departement"
       this.action = "edit";
-      this.form.controls["name"].setValue(this.editData.shortDescription);
-      this.form.controls["description"].setValue(this.editData.longDescription);
+      this.form.controls["shortDescription"].setValue(this.editData.shortDescription);
+      this.form.controls["longDescription"].setValue(this.editData.longDescription);
     }
 
   }
@@ -40,10 +39,10 @@ export class DialogModalDepartementComponent implements OnInit {
 
   initform(): void {
     this.form = this.formBuilder.group({
-      name: ["", Validators.required],
-      description: ["", Validators.required],
+      shortDescription: ["", Validators.required],
+      longDescription: ["", Validators.required],
     });
-    this.matcher = new MyErrorStateMatcher();
+   
   }
 
   onsubmit() {

@@ -29,10 +29,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> CV </th>
                 <!--zid fazet exporter fichier bil angular material-->
                 <td mat-cell *matCellDef="let row"> 
-                    <app-download  [fileUrl]="row.cvUrl">
-                     
-                    </app-download>
-              
+                    <app-download  [fileUrl]="row.cvUrl"></app-download>
                 </td>
             </ng-container>
 
@@ -61,11 +58,11 @@
                 <th mat-header-cell class="px-12" *matHeaderCellDef>Actions </th>
                 <td mat-cell class="px-12" *matCellDef="let row">
                     
-                    <button mat-icon-button color="primary">
+                    <button mat-icon-button color="primary"(click)="SendMailToAcceptCandidat(row.id)">
                         <mat-icon>thumb_up</mat-icon>
                     </button>
 
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn" (click)="SendMailToRefuseCandidat(row.id)">
                        <mat-icon>thumb_down</mat-icon>
                     </button>
                 </td>

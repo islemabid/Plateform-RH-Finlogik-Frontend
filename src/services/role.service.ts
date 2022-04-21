@@ -26,7 +26,7 @@ export class RoleService {
   }
 
   RemoveRoleById(id: string): Promise<void> {
-    return this.httpClient.delete<void>('https://localhost:7152/api/Role/' + id).toPromise();
+    return this.httpClient.delete<void>('https://localhost:7152/api/Role/' + id,this.header).toPromise();
 
 
   }

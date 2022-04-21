@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { PostService } from 'src/services/post.service';
 
 @Component({
@@ -50,7 +49,7 @@ export class DialogModalPostComponent implements OnInit {
       shortDescription: ["", Validators.required]
 
     });
-    this.matcher = new MyErrorStateMatcher();
+   
 
   }
 

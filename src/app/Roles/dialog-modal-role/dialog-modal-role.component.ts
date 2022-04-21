@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
 import { RoleService } from 'src/services/role.service';
 @Component({
   selector: 'app-dialog-modal-role',
@@ -46,7 +45,7 @@ export class DialogModalRoleComponent implements OnInit {
       name: ["", Validators.required],
 
     });
-    this.matcher = new MyErrorStateMatcher();
+   
 
   }
 

@@ -23,7 +23,7 @@ export class DepartementService {
 
 
   RemoveDepById(id: string): Promise<void> {
-    return this.httpClient.delete<void>('https://localhost:7152/api/Departement/' + id).toPromise();
+    return this.httpClient.delete<void>('https://localhost:7152/api/Departement/' + id,this.header).toPromise();
 
 
   }

@@ -13,6 +13,8 @@
   -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
   -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
   height: 100%;
+  position: relative;
+  top: -15px;
 
   .nav {
     overflow: hidden;

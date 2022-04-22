@@ -17,7 +17,7 @@ import { DialogModalEmployeeComponent } from '../dialog-modal-employee/dialog-mo
 @Component({
   selector: 'app-list-employee',
   templateUrl: './list-employee.component.html',
-  styleUrls: ['./list-employee.component.css']
+  styleUrls: ['./list-employee.component.scss']
 })
 export class ListEmployeeComponent implements OnInit {
 

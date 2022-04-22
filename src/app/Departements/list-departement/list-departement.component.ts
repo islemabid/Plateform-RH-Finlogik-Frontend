@@ -13,7 +13,7 @@ import { DialogModalDepartementComponent } from '../dialog-modal-departement/dia
 @Component({
   selector: 'app-list-departement',
   templateUrl: './list-departement.component.html',
-  styleUrls: ['./list-departement.component.css']
+  styleUrls: ['./list-departement.component.scss']
 })
 export class ListDepartementComponent implements OnInit {
 

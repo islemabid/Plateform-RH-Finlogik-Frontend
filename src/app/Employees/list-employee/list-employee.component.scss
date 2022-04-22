@@ -1,7 +1,3 @@
-table {
-  width: 100%;
-}
-
 
 .filters {
   margin-bottom:30px;
@@ -32,6 +28,16 @@ table {
       width: 100%;
   }
 }
-  th {
+
+table {
+  width: 100%;
+}
+th {
   color:black;
  }
+
+img {
+  border-radius:50%;
+  width :20px ;
+  height : 10px;
+}

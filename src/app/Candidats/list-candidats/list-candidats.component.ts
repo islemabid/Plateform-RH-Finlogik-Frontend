@@ -93,7 +93,10 @@ export class ListCandidatsComponent implements OnInit {
     ToEmail: this.applicationOfferDetail.candidat.email,
      Subject: "Candidature"+""+this.applicationOfferDetail.offer.offerName+"-"+this.applicationOfferDetail.offer.type,
      Body: "Bonjour "+this.applicationOfferDetail.candidat.firstName+",Nous avons étudié votre candidature et nous sommes au regret de vous annoncer ne pas pouvoir y donner une suite favorable. Nous vous remercions pour l'intérêt que vous portez à Finlogik et vous souhaitons d'aboutir rapidement dans vos recherches.Cordialement."
-   } as EmailToCandidat;
+    /*Body: `Bonjour ${this.applicationOfferDetail.candidat.firstName},
+    Nous avons étudié votre 
+    `*/
+    } as EmailToCandidat;
   this.candidatService.ReplyToCandidat(Mail).then(()=>{
   console.log("mail reçue");
   });

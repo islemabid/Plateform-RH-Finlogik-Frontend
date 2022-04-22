@@ -87,6 +87,8 @@
       @include border-radius(0px);
       padding-left: 5px;
       padding-right: 20px;
+      top: -10px;
+      position: relative;
       &:not(.navbar-toggler-right) {
         font-size: 1.5rem;
         @media (max-width: 991px) {
@@ -179,6 +181,9 @@
         }
         &.dropdown {
           .dropdown-toggle {
+            position: relative;
+            top: -7px;
+
             &:after {
               color: theme-color(primary);
               font-size: 1rem;
@@ -378,6 +383,11 @@
 :host-context(.sidebar-icon-only) {
   @media(min-width: 992px) {
     .navbar {
+
+      img {
+        left: 5px !important;
+      }
+
       .navbar-brand-wrapper {
         width: $sidebar-width-icon;
         .brand-logo {

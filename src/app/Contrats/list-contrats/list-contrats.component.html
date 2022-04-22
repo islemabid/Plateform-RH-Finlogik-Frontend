@@ -1,13 +1,13 @@
 <div *ngIf="rh">
-    <div class="filters">
-        <div class="filters__input" >
+    <div class="contrats">
+        <div class="contrats__input" >
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Keywords</mat-label>
                 <input matInput (keyup)="applyFilter($event)"  placeholder="Ex. Name , Email">
             </mat-form-field>
         </div>
         
-    <div class="filters__submit">
+    <div class="contrats__submit">
         <button   mat-icon-button color="primary" (click)="create()">
             <mat-icon>add_circle</mat-icon>
         </button>

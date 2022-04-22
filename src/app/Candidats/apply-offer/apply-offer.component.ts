@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationOffer } from 'src/models/ApplicationOffer';
 import { Candidat } from 'src/models/Candidat';
+import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { CandidatsService } from 'src/services/candidats.service';
 import { OfferService } from 'src/services/offer.service';
 
@@ -21,7 +22,8 @@ export class ApplyOfferComponent implements OnInit {
   response:any;
   offer:any;
   apply:boolean=false;
-  constructor(private offerservice:OfferService,private candidatservice:CandidatsService, private router: Router,private acivateRoute: ActivatedRoute) { }
+  
+  constructor(private offerservice:OfferService,private candidatservice:CandidatsService,private alertNotification:AlertNotificationService,private acivateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentid = this.acivateRoute.snapshot.params.id;
@@ -64,8 +66,9 @@ export class ApplyOfferComponent implements OnInit {
       CvUrl: this.response
     } as ApplicationOffer;
     this.candidatservice.ApplyToOffer(applicationOffers).then(()=>{
+      this.alertNotification.showNotification("your application offer sent successfully !","OK");
       });
-      
+     
 
   });
 

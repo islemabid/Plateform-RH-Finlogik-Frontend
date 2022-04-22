@@ -7,9 +7,9 @@ import { LoginService } from 'src/services/login.service';
   templateUrl: './personnal.component.html',
   styleUrls: ['./personnal.component.scss']
 })
-
 export class PersonnalComponent implements OnInit {
-  isLinear = false;
+
+  
   isLoggedIn = false;
   decode: any;
   iduser: any;

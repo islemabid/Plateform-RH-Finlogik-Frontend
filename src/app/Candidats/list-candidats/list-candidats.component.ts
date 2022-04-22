@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmailToCandidat } from 'src/models/EmailToCandidat';
+import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { CandidatsService } from 'src/services/candidats.service';
 import { FileService } from 'src/services/file.service';
 import { LoginService } from 'src/services/login.service';
@@ -29,7 +30,7 @@ export class ListCandidatsComponent implements OnInit {
   dataSource: MatTableDataSource<any> = new MatTableDataSource(this.candidatService.tab);
   displayedColumns: string[] = ["FirstName", "LastName","Email","PhoneNumber", "CV","CoverLetter","AssignmentDate","Offer Name","Contrat Type","Actions"];
 
-  constructor(private candidatService:CandidatsService,private login: LoginService,private fileService:FileService) { }
+  constructor(private candidatService:CandidatsService,private login: LoginService,private alertNotification:AlertNotificationService) { }
 
   ngOnInit(): void {
     this.GetAllApplicationOffers();
@@ -81,7 +82,7 @@ export class ListCandidatsComponent implements OnInit {
       + "A très bientôt,"
     } as EmailToCandidat;
    this.candidatService.ReplyToCandidat(Mail).then(()=>{
-   console.log("mail reçue");
+    this.alertNotification.showNotification("Email sent successfully","OK");
    });
   }); 
  }

@@ -35,6 +35,7 @@ import { CardOfferComponent } from './Candidats/template-candidat/card-offer/car
 import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidats.component';
 import { DownloadComponent } from './FilesUploadOrDownload/download/download.component';
 import { UploadCvComponent } from './FilesUploadOrDownload/upload-cv/upload-cv.component';
+import { AlertNotificationComponent } from './alert-notification/alert-notification.component';
 
 
 
@@ -66,6 +67,7 @@ export function tokenGetter() {
     ListCandidatsComponent,
     DownloadComponent,
     UploadCvComponent,
+    AlertNotificationComponent,
  
    
   

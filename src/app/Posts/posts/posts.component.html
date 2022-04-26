@@ -14,7 +14,7 @@
     </div>
     
     </div>
-    <div class="mat-elevation-z8" style="margin-bottom:60px;">
+   
         <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- Progress Column -->
@@ -50,11 +50,10 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
             <!-- Row shown when there is no matching data. -->
-            <!--tr class="mat-row" *matNoDataRow>
+            <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr-->
+            </tr>
         </table>
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Posts"></mat-paginator>
     </div>
-</div>

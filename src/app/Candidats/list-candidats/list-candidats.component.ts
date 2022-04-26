@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { EmailToCandidat } from 'src/models/EmailToCandidat';
 import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { CandidatsService } from 'src/services/candidats.service';
@@ -30,7 +31,7 @@ export class ListCandidatsComponent implements OnInit {
   dataSource: MatTableDataSource<any> = new MatTableDataSource(this.candidatService.tab);
   displayedColumns: string[] = ["FirstName", "LastName","Email","PhoneNumber", "CV","CoverLetter","AssignmentDate","Offer Name","Contrat Type","Actions"];
 
-  constructor(private candidatService:CandidatsService,private login: LoginService,private alertNotification:AlertNotificationService) { }
+  constructor(private candidatService:CandidatsService,private login: LoginService,private alertNotification:AlertNotificationService, private router: Router) { }
 
   ngOnInit(): void {
     this.GetAllApplicationOffers();
@@ -74,14 +75,14 @@ export class ListCandidatsComponent implements OnInit {
     console.log(this.applicationOfferDetail,this.applicationOfferDetail.candidat.email);
     let Mail = {
      ToEmail: this.applicationOfferDetail.candidat.email,
-      Subject: "Candidature"+""+this.applicationOfferDetail.offer.offerName+"-"+this.applicationOfferDetail.offer.type,
-      Body: "Bonjour"+"  "+this.applicationOfferDetail.candidat.firstName+","+
-      "  "+"merci d'avoir postulé pour le poste de"+"     "+this.applicationOfferDetail.offer.offerName
-      +" "+"notre profil nous interésse,"
-      +"Seriez vous disponible la semaine prochaine pour un entretien téléphonique ?"
-      + "A très bientôt,"
+      Subject: `Candidature ${this.applicationOfferDetail.offer.offerName} ${this.applicationOfferDetail.offer.type}`,
+      Body: `Bonjour ${this.applicationOfferDetail.candidat.firstName},
+      merci d'avoir postulé pour le poste de ${this.applicationOfferDetail.offer.offerName},
+      notre profil nous interésse,
+      Seriez vous disponible la semaine prochaine pour un entretien téléphonique ?
+      A très bientôt,`
     } as EmailToCandidat;
-   this.candidatService.ReplyToCandidat(Mail).then(()=>{
+    this.candidatService.ReplyToCandidat(Mail).then(()=>{
     this.alertNotification.showNotification("Email sent successfully","OK");
    });
   }); 
@@ -92,14 +93,18 @@ export class ListCandidatsComponent implements OnInit {
    console.log(this.applicationOfferDetail,this.applicationOfferDetail.candidat.email);
    let Mail = {
     ToEmail: this.applicationOfferDetail.candidat.email,
-     Subject: "Candidature"+""+this.applicationOfferDetail.offer.offerName+"-"+this.applicationOfferDetail.offer.type,
-     Body: "Bonjour "+this.applicationOfferDetail.candidat.firstName+",Nous avons étudié votre candidature et nous sommes au regret de vous annoncer ne pas pouvoir y donner une suite favorable. Nous vous remercions pour l'intérêt que vous portez à Finlogik et vous souhaitons d'aboutir rapidement dans vos recherches.Cordialement."
-    /*Body: `Bonjour ${this.applicationOfferDetail.candidat.firstName},
-    Nous avons étudié votre 
-    `*/
+     Subject: `Candidature ${this.applicationOfferDetail.offer.offerName} ${this.applicationOfferDetail.offer.type}`,
+    Body: `Bonjour ${this.applicationOfferDetail.candidat.firstName},
+    Nous avons étudié votre  candidature
+    et nous sommes au regret de vous annoncer ne pas pouvoir y donner une suite favorable.
+     Nous vous remercions pour l'intérêt que vous portez à Finlogik et vous souhaitons d'aboutir rapidement dans vos recherches.
+    Cordialement.
+    `
     } as EmailToCandidat;
   this.candidatService.ReplyToCandidat(Mail).then(()=>{
-  console.log("mail reçue");
+    this.alertNotification.showNotification("Email sent successfully","OK");
+    //this.router.navigate(['/candidat']);
+ 
   });
  }); 
 }

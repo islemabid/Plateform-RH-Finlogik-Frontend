@@ -67,6 +67,7 @@ export class ApplyOfferComponent implements OnInit {
     } as ApplicationOffer;
     this.candidatservice.ApplyToOffer(applicationOffers).then(()=>{
       this.alertNotification.showNotification("your application offer sent successfully !","OK");
+      
       });
      
 

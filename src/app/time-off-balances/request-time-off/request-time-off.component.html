@@ -1,0 +1,146 @@
+<div class="requestLeave">
+    <div class="card text-center requestLeave__card">
+        <div class="card-header requestLeave__card__header">
+            <p style="color: white; font-size:large;"> New Request </p> 
+        </div>
+        <div class="card-body requestLeave__card__body">
+            <div class="row">
+                <div class="col-sm-8">
+                 <div class="card border-info requestLeave__card__body__form ">
+                <div class="card-header border-info requestLeave__card__body__form__header">
+                   <P style="color:black; font-size: medium;"> General</P> 
+                </div>
+                <div class="card-body text-primary requestLeave__card__body__form__table">
+                 
+                    <table class="table table-hover requestLeave__card__body__form__tableRows">
+                            <tr>
+                             
+                                <td scope="row">collaborater :</td>
+                                <td>ghazi gassara</td>
+                              
+                            </tr>
+                            <tr>
+                             
+                                <td scope="row">type of absence :</td>
+                                <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                       <mat-label>Leave Type</mat-label>
+                                        <mat-select [(ngModel)]="selectedType">
+                                              <!--mat-option *ngFor="let type of contractTypes"  [value]="type" >{{type}}</mat-option-->
+                                              <mat-option>select</mat-option>
+                                        </mat-select>
+                                     </mat-form-field>
+                                </td>
+                              
+                            </tr>
+                            <tr>
+                                <td scope="row">comment : </td>
+                                <td>
+                                    <mat-form-field class="line__full" appearance="outline">
+                                       
+                                        <textarea matInput class="textarea"></textarea>
+                                    </mat-form-field>    
+                                </td>
+                            </tr>
+                           
+                        </table>
+                      
+                 
+                </div>
+                 </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-info"  style="width:200px; margin-left:10%; margin-top: 10%; border:1px solid;">
+                        <div class="card-header border-info requestLeave__card__body__form__header">
+                            <P style="color:black; font-size: medium;"> summary</P> 
+                         </div>
+                         <div class="card-body text-primary" style="padding: 0%;">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td scope="row">Sick Leave :</td>
+                                    
+                                    <td>0/5</td>
+                                   
+                                  </tr>
+                                  <tr>
+                                    <td scope="row">paid Leave :</td>
+                                   
+                                    <td>0/16.5</td>
+                                  </tr>
+                              </table>
+                          </div>        
+                    </div>
+                </div>
+            </div>
+           
+                <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <tr>
+                                <td scope="row">Start date :</td>
+                        
+                                <td>     
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose Start Date</mat-label>
+                                        <input matInput [matDatepicker]="picker1" [(ngModel)]="StartDate" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+                               </td>
+                            </tr>
+                        </td>
+                        <td>
+                            <tr>
+                                <td scope="row">End Date  :</td>
+                        
+                                <td>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose End Date</mat-label>
+                                        <input matInput [matDatepicker]="picker2" [(ngModel)]="EndDate" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </td>
+                      
+                       
+                      </tr>
+                     
+                  </table>
+         
+         
+                <div class="card border-info requestLeave__card__body__EndCard " *ngIf="StartDate !=null && EndDate !=null">
+                    <div class="card-header border-info requestLeave__card__body__EndCard__header">
+                       <P style="color:black; font-size: medium;"> General</P> 
+                    </div>
+                    <div class="card-body text-primary requestLeave__card__body__EndCard__table">
+                     
+                        <table class="table table-hover requestLeave__card__body__EndCard__tableRows">
+                            <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Pattern</th>
+                              </tr>
+                                <tr>
+                                 
+                                    <td scope="row">jeudi</td>
+                                     <td>24/12/2022</td>
+                                     <td>Quantity</td>
+                                     <td>Pattern</td>
+                                  
+                                </tr>
+                             
+                            </table>
+                          
+                     
+                    </div>
+                     
+            </div>
+            <div class="card-footer">
+              <button  mat-raised-button color="primary">Save</button>
+           </div>
+        </div>
+    </div>
+</div>

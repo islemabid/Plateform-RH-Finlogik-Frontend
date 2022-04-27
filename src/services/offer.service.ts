@@ -40,7 +40,6 @@ export class OfferService {
   }
 
   PostOfferInLinkedin( code :string, idOffer:any): Promise<any>{
-    //return this.httpClient.post<any>('https://localhost:7152/api/LinkedinApi?code='+code,idOffer).toPromise();
     return this.httpClient.post<any>('https://localhost:7152/api/LinkedinApi?code='+code,idOffer).toPromise();
   }
 

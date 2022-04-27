@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationCountResult, NotificationResult } from 'src/models/Notification';
@@ -16,6 +16,7 @@ import * as signalR from '@microsoft/signalr';
 export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
+  @Input() displayNotificationIcon: boolean = true;
   notification: NotificationCountResult;  
   messages: NotificationResult[];  
   errorMessage = ''; 

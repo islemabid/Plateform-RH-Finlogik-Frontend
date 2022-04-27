@@ -17,6 +17,7 @@ import { RoleService } from 'src/services/role.service';
 export class DialogModalEmployeeComponent implements OnInit {
   public titre = "ADD New Employee";
   form: FormGroup;
+  ContratCondition:string;
   idPost: any;
   idContrat: any;
   response: any;
@@ -131,7 +132,7 @@ export class DialogModalEmployeeComponent implements OnInit {
       idPost: ["", Validators.required],
       idContrat: ["", Validators.required],
       idDepartement: ["", Validators.required],
-      endDate: [null],
+      endDate: [""],
 
 
     });

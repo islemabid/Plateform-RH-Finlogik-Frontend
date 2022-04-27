@@ -36,6 +36,8 @@ import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidat
 import { DownloadComponent } from './FilesUploadOrDownload/download/download.component';
 import { UploadCvComponent } from './FilesUploadOrDownload/upload-cv/upload-cv.component';
 import { AlertNotificationComponent } from './alert-notification/alert-notification.component';
+import { TemplateEmployeeComponent } from './Employees/template-employee/template-employee.component';
+import { RequestTimeOffComponent } from './time-off-balances/request-time-off/request-time-off.component';
 
 
 
@@ -68,6 +70,8 @@ export function tokenGetter() {
     DownloadComponent,
     UploadCvComponent,
     AlertNotificationComponent,
+    TemplateEmployeeComponent,
+    RequestTimeOffComponent,
  
    
   

@@ -5,6 +5,7 @@ import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidat
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { RequestTimeOffComponent } from './time-off-balances/request-time-off/request-time-off.component';
 import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 
 
@@ -14,8 +15,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'TimeOffBalances', component: TimeOffBalancesComponent },
+  { path: 'LeaveRequest', component: RequestTimeOffComponent },
   { path: 'profil', loadChildren: () => import('./employee-Profil/profil.module').then(m => m.ProfilModule) },
-  { path: 'roles', loadChildren: () => import('./Roles/role.module').then(m => m.RoleModule) },
   { path: 'contrats', loadChildren: () => import('./Contrats/contrat.module').then(m => m.ContratModule) },
   { path: 'departements', loadChildren: () => import('./Departements/departement.module').then(m => m.DepartementModule) },
   { path: 'Employees', loadChildren: () => import('./Employees/employee.module').then(m => m.EmployeeModule) },

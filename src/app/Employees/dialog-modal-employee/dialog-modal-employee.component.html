@@ -16,9 +16,9 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Birth Date </mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="birthDate" formControlName="birthDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <input matInput [matDatepicker]="picker1" placeholder="birthDate" formControlName="birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
 
 
             </mat-form-field>
@@ -79,8 +79,8 @@
             <mat-form-field appearance="outline">
                 <mat-label>Contrat Type </mat-label>
 
-                <mat-select formControlName="idContrat" placeholder="Contrat Type">
-                    <mat-option *ngFor="let i of contrats" [value]="i.id">
+                <mat-select formControlName="idContrat"  placeholder="Contrat Type">
+                    <mat-option *ngFor="let i of contrats" [value]="i.id" >
                         {{i.shortDescription}}
 
                     </mat-option>
@@ -188,7 +188,12 @@
                 <app-upload  (onUploadFinished)="uploadFinished($event)"></app-upload>
             <!--lezem  condition d'affichage -->
             <mat-form-field appearance="outline">
-                <input matInput formControlName="endDate" type="dateTime-local">
+                <mat-label>End Date </mat-label>
+                <input matInput [matDatepicker]="picker2" placeholder="End Date Contrat" formControlName="endDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+
+
             </mat-form-field>
         </form>
 

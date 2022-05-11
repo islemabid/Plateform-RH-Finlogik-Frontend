@@ -42,7 +42,7 @@
   
    
     <li class="nav-item">
-      <a class="nav-link" routerLink="TimeOffBalances" routerLinkActive #tables="routerLinkActive">
+      <a class="nav-link" routerLink="leaves/TimeOffBalances" routerLinkActive #tables="routerLinkActive">
         <span class="menu-title">Time Off</span>
         <i class="mdi mdi-clock menu-icon"></i>
       </a>
@@ -57,11 +57,13 @@
     
   </ul>
   <ul class="nav" *ngIf="displayEmployee">
+   
     <li class="nav-item">
-      <a class="nav-link" routerLink="LeaveRequest" routerLinkActive #tables="routerLinkActive">
-        <span class="menu-title"> leave request</span>
+      <a class="nav-link" routerLink="leaves" routerLinkActive #tables="routerLinkActive">
+        <span class="menu-title"> My Leave Request</span>
         <i class="mdi mdi-clock menu-icon"></i>
       </a>
     </li>
+  
   </ul>
 </nav>

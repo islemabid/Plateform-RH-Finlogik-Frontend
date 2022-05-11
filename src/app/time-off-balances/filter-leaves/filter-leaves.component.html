@@ -1,0 +1,31 @@
+<div class="filters">
+    <div class="filters__startDate">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose Start Date Leave</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="filters__endDate">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose End Date Leave</mat-label>
+            <input matInput  [min]="startDate" [matDatepicker]="picker2" [(ngModel)]="endDate" >
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+    <div class="filters__select">
+        <mat-form-field class="example-full-width" appearance="fill">
+           <mat-label> Leave  State</mat-label>
+           <mat-select [(ngModel)]="selectedType">
+                 <mat-option *ngFor="let type of LeaveTypes"  [value]="type" >{{type}}</mat-option>
+           </mat-select>
+        </mat-form-field>
+       </div>
+  
+    <div class="filters__search">
+           <button  mat-raised-button color="primary" (click)="searchLeavesHandler()">Search</button>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+
+.requestLeave {
+    max-width: 1024px;
+   //margin: 50px auto;
+
+   &__card {
+       &__header {
+           height: 50px;
+           line-height: 30px;
+           display: flex;
+           justify-content: center;
+           background-color: gray;
+          
+       };
+       
+       &__lists {
+           margin-top: 20px;
+       }
+     
+     
+       
+       &__body {
+           max-width:1000px;
+           padding:25px;
+          
+           &__form {
+               border:1px solid;
+               width: 500px;
+               margin-bottom:5%;
+
+               &__header  {
+                  height: 50px;
+                  line-height: 25px;
+                  display: flex;
+                  justify-content: center;
+          
+               }
+               &__table {
+                   width: 500px;
+                   padding: 0%;
+                   &__tableRows  {
+                       width:500px;
+                     
+                   }
+               }
+           };
+          
+           &__EndCard {
+               max-width:1000px;
+               border:1px solid;
+                &__header {
+                   height: 50px;
+                   line-height: 30px;
+                   display: flex;
+                   justify-content: center;
+                  
+                }
+                &__table {
+                  padding:0%;
+                 
+                }
+
+           };
+       }
+
+          
+           
+   }             
+             
+   
+       
+   
+
+}

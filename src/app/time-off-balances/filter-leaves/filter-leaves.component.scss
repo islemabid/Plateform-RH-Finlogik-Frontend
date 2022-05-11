@@ -1,21 +1,21 @@
-table {
-    width: 100%;
-  }
-  
-
-  .filters {
+.filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    height: 60px;
+
       &__startDate {
-        flex: 20% 0 0;
+        flex: 35% 0 0;
       }
       &__endDate {
-        flex: 30% 0 0;
+        flex:30% 0 0;
+      }
+      &__select {
+
+        flex: 25% 0 0 ;
       }
       &__search {
-        flex: 30% 0 0;
+        flex: 40% 0 0;
         height: 100%;
 
 

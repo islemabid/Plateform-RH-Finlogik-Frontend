@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmployeeService } from 'src/services/employee.service';
+import { LeaveTypeService } from 'src/services/leave-type.service';
+import { LoginService } from 'src/services/login.service';
+import { TimeOffBalancesService } from 'src/services/time-off-balances.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-request-time-off',
@@ -6,14 +13,125 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request-time-off.component.scss']
 })
 export class RequestTimeOffComponent implements OnInit {
+  form: FormGroup;
+  LeaveTotal:any;
+  iduser:string;
+  currentEmployee:any;
+  leavesType:any;
+  isLoggedIn = false;
+  role: any;
+  decode: any;
+  employee = false;
+  
+  leaves: any = {
+    start: {
+      date: null,
+      quantity: null // 'half' => afternoon, 'full'
+    },
+    end: {
+      date: null,
+      quantity: null // 'half' morning, 'full'
+    }
+  }
 
-  StartDate:Date;
-  EndDate:Date;
+  quantities = {
+    sameDate: ['morning', 'afternoon', 'full day'],
+    start: ['afternoon', 'full day'],
+    end: ['morning', 'full day']
+  }
 
-  constructor() { }
+  constructor(private login: LoginService
+,    private timeoffService :TimeOffBalancesService,private  datePipe: DatePipe, private router: Router, private employeeService:EmployeeService,private leaveTypeService:LeaveTypeService) { }
 
   ngOnInit(): void {
+
+    if (localStorage.getItem("jwt")) {
+      this.isLoggedIn = true;
+      this.decode = this.login.decodejwt(localStorage.getItem("jwt"));
+      this.role = this.decode["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+      this.iduser = this.decode["UserId"];
+   
+      if (this.role == 'employee') {
+        this.employee = true;
+      }
+
+    }
+    this.GetLeaveTotalByIdEmployee();
+    this.initform();
+    this.GetConnectUser();
+    this.GetleaveTypes();
+    
+  }
+  initform(): void {
+    this.form = new FormGroup({
+      startDate :new FormControl(new Date(), [Validators.required]),
+      endDate :new FormControl(new Date(), [Validators.required]),
+      startDateQuantity:new FormControl("", [Validators.required]),
+      endDateQuantity:new FormControl("", [Validators.required]),
+      state:new FormControl("Waiting", [Validators.required]),
+      idEmployee :new FormControl("",[Validators.required]),
+      idLeaveType :new FormControl("",[Validators.required]),
+      isActive:new FormControl(true,[Validators.required]),
+      comment:new FormControl(''),
+     
+    });
+  }
+  onSubmit() {
+    const saveLeave = { ...this.form.value }
+    console.log(saveLeave.startDate,saveLeave.endDate);
+    if(this.isSameDate()) {
+   
+      saveLeave.endDate=saveLeave.startDate;
+      saveLeave.endDateQuantity=saveLeave.startDateQuantity;
+      saveLeave.idEmployee=this.currentEmployee.id;
+       this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+        this.router.navigate(['leaves']);
+      });
+    }
+    else {
+
+      saveLeave.idEmployee=this.currentEmployee.id;
+     
+      this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=> this.router.navigate(['leaves']));
+    }
+
+  }
+  cancel(){
+    this.router.navigate(['leaves']);
+  }
+   
+
+
+  isSameDate() {
+    const { start, end } = this.leaves;
+    return start.date.getTime() === end.date.getTime();
   }
 
 
+  GetConnectUser(): void {
+    this.employeeService.getEmpById(this.iduser)
+      .then((data) => {
+      this.currentEmployee=data;
+
+      });
+  }
+  
+
+  GetleaveTypes(): void {
+    this.leaveTypeService.GetAllLeaveType()
+      .then((data) => {
+      this.leavesType=data;
+
+      });
+  }
+  GetLeaveTotalByIdEmployee(){
+    this.timeoffService.GetLeaveTotalByIdEmployee(this.iduser).then((data)=>{
+      this.LeaveTotal=data;
+      console.log(this.LeaveTotal);
+    });
+  }
+
 }
+
+
+

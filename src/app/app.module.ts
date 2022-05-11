@@ -25,7 +25,6 @@ import { RoleModule } from './Roles/role.module';
 import { ContratModule } from './Contrats/contrat.module';
 import { DepartementModule } from './Departements/departement.module';
 import { LayoutComponent } from './layout/layout.component';
-import { TimeOffBalancesComponent } from './time-off-balances/time-off-balances.component';
 import { ProfilModule } from './employee-Profil/profil.module';
 import { OfferModule } from './Offers/offer.module';
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
@@ -37,7 +36,9 @@ import { DownloadComponent } from './FilesUploadOrDownload/download/download.com
 import { UploadCvComponent } from './FilesUploadOrDownload/upload-cv/upload-cv.component';
 import { AlertNotificationComponent } from './alert-notification/alert-notification.component';
 import { TemplateEmployeeComponent } from './Employees/template-employee/template-employee.component';
-import { RequestTimeOffComponent } from './time-off-balances/request-time-off/request-time-off.component';
+import { TimeoffbalancesModule } from './time-off-balances/timeoffbalances.module';
+
+
 
 
 
@@ -63,7 +64,6 @@ export function tokenGetter() {
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
-    TimeOffBalancesComponent,
     FiltersComponent,
     CardOfferComponent,
     ListCandidatsComponent,
@@ -71,7 +71,7 @@ export function tokenGetter() {
     UploadCvComponent,
     AlertNotificationComponent,
     TemplateEmployeeComponent,
-    RequestTimeOffComponent,
+   
  
    
   
@@ -90,6 +90,7 @@ export function tokenGetter() {
     MaterialModule,
     PostModule,
     DepartementModule,
+    TimeoffbalancesModule,
     ConfirmDialogModule,
     HttpClientModule,
     ConfirmDialogModule,

@@ -19,7 +19,6 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     const token: string = localStorage.getItem("jwt");
-    console.log("token app component : ", token);
     if (token) {
       this.isLoggedIn = true;
       this.decode = this.login.decodejwt(token)

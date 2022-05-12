@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -5,7 +6,7 @@ import { EmployeeService } from 'src/services/employee.service';
 import { LeaveTypeService } from 'src/services/leave-type.service';
 import { LoginService } from 'src/services/login.service';
 import { TimeOffBalancesService } from 'src/services/time-off-balances.service';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-request-time-off',
@@ -22,7 +23,7 @@ export class RequestTimeOffComponent implements OnInit {
   role: any;
   decode: any;
   employee = false;
-  
+  days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   leaves: any = {
     start: {
       date: null,
@@ -41,7 +42,7 @@ export class RequestTimeOffComponent implements OnInit {
   }
 
   constructor(private login: LoginService
-,    private timeoffService :TimeOffBalancesService,private  datePipe: DatePipe, private router: Router, private employeeService:EmployeeService,private leaveTypeService:LeaveTypeService) { }
+,    private timeoffService :TimeOffBalancesService, private router: Router, private employeeService:EmployeeService,private leaveTypeService:LeaveTypeService) { }
 
   ngOnInit(): void {
 
@@ -55,11 +56,12 @@ export class RequestTimeOffComponent implements OnInit {
         this.employee = true;
       }
 
-    }
+    };
     this.GetLeaveTotalByIdEmployee();
     this.initform();
     this.GetConnectUser();
     this.GetleaveTypes();
+    
     
   }
   initform(): void {
@@ -76,26 +78,50 @@ export class RequestTimeOffComponent implements OnInit {
      
     });
   }
+  
+ 
+
+  
   onSubmit() {
+
     const saveLeave = { ...this.form.value }
-    console.log(saveLeave.startDate,saveLeave.endDate);
+    saveLeave.startDate = new Date(saveLeave.startDate.toLocaleString("en-US", {timeZone: 'Europe/Brussels'}));
+    saveLeave.endDate = new Date(saveLeave.endDate.toLocaleString("en-US", {timeZone: 'Europe/Brussels'}));
+   
+    
     if(this.isSameDate()) {
    
       saveLeave.endDate=saveLeave.startDate;
       saveLeave.endDateQuantity=saveLeave.startDateQuantity;
       saveLeave.idEmployee=this.currentEmployee.id;
-       this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
-        this.router.navigate(['leaves']);
-      });
-    }
+      console.log(saveLeave);
+    
+        this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+       
+         this.router.navigate(['leaves']);
+       });
+      }
+  
+     
+ 
     else {
 
       saveLeave.idEmployee=this.currentEmployee.id;
-     
-      this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=> this.router.navigate(['leaves']));
-    }
+    
+      this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+       
+        this.router.navigate(['leaves']);
+ 
+    });
+  
+   
+ 
 
   }
+
+}
+  
+  
   cancel(){
     this.router.navigate(['leaves']);
   }

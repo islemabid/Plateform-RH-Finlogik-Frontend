@@ -1,0 +1,80 @@
+<div *ngIf="rh">
+
+   
+    <div class="payroll">
+        <!--div class="employees__input" >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Keywords</mat-label>
+                <input matInput (keyup)="applyFilter($event)"  placeholder="Ex. Name , Email">
+            </mat-form-field>
+        </div-->
+        
+    <div class="payroll__submit">
+        <button   mat-icon-button color="primary" (click)="create()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    </div>
+    
+    </div>
+   
+   
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+      
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Employee">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee </th>
+            <td mat-cell *matCellDef="let row"> {{row.idEmployee}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Mounth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Mounth </th>
+            <td mat-cell *matCellDef="let row"> {{row.mounth}} </td>
+        </ng-container>
+
+        <!-- Fruit Column -->
+        <ng-container matColumnDef="Year">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
+            <td mat-cell *matCellDef="let row"> {{row.year}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Salary">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Salary </th>
+            <td mat-cell *matCellDef="let row"> {{row.fixedSalary}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MealTicket">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> MealTicket </th>
+            <td mat-cell *matCellDef="let row"> {{row.mealTicket}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TicketPassGift">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> TicketPassGift </th>
+            <td mat-cell *matCellDef="let row"> {{row.ticketPassGift}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Prime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Prime </th>
+            <td mat-cell *matCellDef="let row"> {{row.prime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Check">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Check </th>
+            <td mat-cell *matCellDef="let row"> 
+                <mat-slide-toggle></mat-slide-toggle>
+            </td>
+        </ng-container>
+
+
+        
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Employees"></mat-paginator>
+</div>

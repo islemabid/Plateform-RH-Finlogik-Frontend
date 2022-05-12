@@ -64,7 +64,7 @@ export class ListContratsComponent implements OnInit {
   }
 
   GetAllContrats(): void {
-    console.log(localStorage.getItem("jwt"));
+
 
     this.contratService.GetALL()
       .then((data) => {

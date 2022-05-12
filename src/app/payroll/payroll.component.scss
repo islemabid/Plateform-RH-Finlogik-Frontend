@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+  }
+  
+  th {
+    color:black;
+   }
+   
+.payroll{
+  margin-bottom:30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+
+ 
+
+  &__submit {
+      flex: 20% 0 0;
+      height: 100%;
+
+      button {
+          width: 100%;
+          height: calc(100% - 1.34375em);
+         
+      }
+     
+  }
+}
+.mat-form-field {
+  width: 100%;
+}

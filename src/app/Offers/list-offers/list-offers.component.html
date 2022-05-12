@@ -1,13 +1,24 @@
 <div *ngIf="rh">
-    <div class="d-flex flex-row-reverse">
-        <button (click)="create()"  style="background-color:#696969;">
-             Add New Offer
+
+
+    <div class="filters">
+        <div class="filters__input" >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Keywords</mat-label>
+                <input matInput (keyup)="applyFilter($event)"  placeholder="Ex. C# , .Net">
+            </mat-form-field>
+        </div>
+        
+    <div class="filters__submit">
+        <button   mat-icon-button color="primary" (click)="create()">
+            <mat-icon>add_circle</mat-icon>
         </button>
     </div>
-    <mat-icon>search</mat-icon>
-    <mat-form-field appearance="standard">
-       <input matInput (keyup)="applyFilter($event)" #input>
-    </mat-form-field>
+    
+    </div>
+
+
+    
    
         <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="Name">

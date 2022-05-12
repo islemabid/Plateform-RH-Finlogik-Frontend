@@ -5,22 +5,22 @@
     height: 60px;
 
       &__startDate {
-        flex: 35% 0 0;
+        flex: 25% 0 0;
       }
       &__endDate {
-        flex:30% 0 0;
+        flex:25% 0 0;
       }
       &__select {
 
         flex: 25% 0 0 ;
       }
       &__search {
-        flex: 40% 0 0;
+        flex: 25% 0 0;
         height: 100%;
 
 
         button {
-            margin-top:-15px;
+          
             width: 50%;
             height: calc(100%-1,34375em);
            

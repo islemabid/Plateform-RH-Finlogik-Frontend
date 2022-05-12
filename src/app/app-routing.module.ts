@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profil', loadChildren: () => import('./employee-Profil/profil.module').then(m => m.ProfilModule) },
   { path: 'contrats', loadChildren: () => import('./Contrats/contrat.module').then(m => m.ContratModule) },
+  { path: 'PayRoll', loadChildren: () => import('./payroll/pay-roll.module').then(m => m.PayRollModule) },
   { path: 'departements', loadChildren: () => import('./Departements/departement.module').then(m => m.DepartementModule) },
   { path: 'Employees', loadChildren: () => import('./Employees/employee.module').then(m => m.EmployeeModule) },
   { path: 'leaves', loadChildren: () => import('./time-off-balances/timeoffbalances.module').then(m => m.TimeoffbalancesModule) },

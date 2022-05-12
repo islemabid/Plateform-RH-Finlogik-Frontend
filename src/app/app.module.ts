@@ -37,6 +37,9 @@ import { UploadCvComponent } from './FilesUploadOrDownload/upload-cv/upload-cv.c
 import { AlertNotificationComponent } from './alert-notification/alert-notification.component';
 import { TemplateEmployeeComponent } from './Employees/template-employee/template-employee.component';
 import { TimeoffbalancesModule } from './time-off-balances/timeoffbalances.module';
+import { PayrollComponent } from './payroll/payroll.component';
+import { AddEmployeePayComponent } from './payroll/add-employee-pay/add-employee-pay.component';
+import { PayRollModule } from './payroll/pay-roll.module';
 
 
 
@@ -71,6 +74,7 @@ export function tokenGetter() {
     UploadCvComponent,
     AlertNotificationComponent,
     TemplateEmployeeComponent,
+
    
  
    
@@ -94,6 +98,7 @@ export function tokenGetter() {
     ConfirmDialogModule,
     HttpClientModule,
     ConfirmDialogModule,
+    PayRollModule,
     EmployeeModule,
     RoleModule,
     ContratModule,

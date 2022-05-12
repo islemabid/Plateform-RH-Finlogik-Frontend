@@ -1,0 +1,85 @@
+<div class="example-container">
+  
+    <mat-dialog-content>
+
+        <form [formGroup]="form">
+              
+              <mat-form-field appearance="outline">
+                <mat-label>Year* </mat-label>
+
+                <mat-select formControlName="year"  placeholder="choose Year">
+                    <mat-option *ngFor="let i of years" [value]="i" >
+                        {{i}}
+
+                    </mat-option>
+
+
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Mounth * </mat-label>
+
+                <mat-select formControlName="mounth"  placeholder="choose Mounth">
+                    <mat-option *ngFor="let i of mounths" [value]="i" >
+                        {{i}}
+
+                    </mat-option>
+
+
+                </mat-select>
+            </mat-form-field>
+
+
+         
+
+            <mat-form-field appearance="outline">
+                <mat-label>mealTicket </mat-label>
+
+                <input matInput  formControlName="mealTicket" >
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Employee* </mat-label>
+
+                <mat-select formControlName="idEmployee" >
+                    <mat-option *ngFor="let i of employees" [value]="i.id" >
+                        {{i.fistName}} {{i.lastName}}
+
+                    </mat-option>
+
+
+                </mat-select>
+            </mat-form-field>
+             
+            <mat-form-field appearance="outline">
+                <mat-label>ticketPassGift </mat-label>
+
+                <input matInput placeholder="ticketPassGift" formControlName="ticketPassGift"  >
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>prime </mat-label>
+
+                <input matInput placeholder="prime" formControlName="prime" >
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Salary* </mat-label>
+
+                <input matInput placeholder="Slary" formControlName="fixedSalary"   >
+
+            </mat-form-field>
+       
+       
+           
+        </form>
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+
+        <button mat-raised-button (click)="onsubmit()">Save</button>
+
+    </mat-dialog-actions>
+</div>

@@ -64,7 +64,7 @@ export class ListRoleComponent implements OnInit {
   }
 
   GetAllRoles(): void {
-    console.log(localStorage.getItem("jwt"));
+  
 
     this.roleService.GetALL()
       .then((data) => {

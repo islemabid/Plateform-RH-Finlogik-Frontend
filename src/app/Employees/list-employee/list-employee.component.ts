@@ -68,7 +68,7 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   GetEmployees(): void {
-    console.log(localStorage.getItem("jwt"));
+
 
     this.ms.GetALL()
       .then((data) => {

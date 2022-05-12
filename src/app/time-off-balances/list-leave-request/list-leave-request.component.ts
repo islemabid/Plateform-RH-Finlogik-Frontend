@@ -14,7 +14,9 @@ export class ListLeaveRequestComponent implements OnInit {
   LeaveRequestList:any;
   isLoggedIn = false;
   idEmployee:string;
+  LeaveTotal:any;
   currentEmployee:any;
+  days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   role: any;
   decode: any;
   employee = false;
@@ -30,7 +32,10 @@ export class ListLeaveRequestComponent implements OnInit {
         this.employee = true;
       }
     }
+    this.GetConnectUser();
     this.GetLeavesRequestsByEmployee();
+    this.GetLeaveTotalByIdEmployee();
+
     
   }
 
@@ -69,7 +74,12 @@ export class ListLeaveRequestComponent implements OnInit {
 
       });
   }
-  
+  GetLeaveTotalByIdEmployee(){
+    this.timeoffService.GetLeaveTotalByIdEmployee(this.idEmployee).then((data)=>{
+      this.LeaveTotal=data;
+      console.log(this.LeaveTotal);
+    });
+  }
 
  
   

@@ -52,8 +52,9 @@
                                         </tr>
                                         <tr>
 
+
                                             <td scope="row">collaborater :</td>
-                                            <td>{{request.firstName}} {{request.lastName}}</td>
+                                            <td>{{currentEmployee.firstName}} {{currentEmployee.lastName}}</td>
 
                                         </tr>
                                         <tr>
@@ -64,18 +65,7 @@
                                             </td>
 
                                         </tr>
-                                        <tr>
-                                            <td scope="row"> first day: </td>
-                                            <td>
-                                                {{request.startDate |date:'EEEE d'}} 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row"> end day: </td>
-                                            <td>
-                                                {{request.endDate |date:'EEEE d'}} 
-                                            </td>
-                                        </tr>
+                                      
 
                                     </table>
 
@@ -94,13 +84,13 @@
                                         <tr>
                                             <td scope="row">Sick Leave :</td>
 
-                                            <td>0/5</td>
+                                            <td>{{LeaveTotal.numbertotalSickLeave}}</td>
 
                                         </tr>
                                         <tr>
                                             <td scope="row">paid Leave :</td>
-
-                                            <td>0/16.5</td>
+                                            <td> {{LeaveTotal.numbertotalPaidLeave}}</td>
+                                           
                                         </tr>
                                     </table>
                                 </div>
@@ -119,24 +109,24 @@
 
                             <table class="table table-hover requestLeave__card__body__EndCard__tableRows">
                                 <tr>
-                                    <th scope="col">Day</th>
+                                  
                                     <th scope="col">Date</th>
                                     <th scope="col">Quantity</th>
 
                                 </tr>
                                 <tr>
 
-                                    <td scope="row">{{request.startDate}}</td>
-                                    <td>{{request.startDate |date:'medium'}}</td>
+                                   
+                                    <td>{{request.startDate |date:'mediumDate'}}</td>
                                     <td>{{request.startDateQuantity}}</td>
 
 
 
                                 </tr>
-                                <tr *ngIf="!(request.startDate=== this.request.endDate)">
+                                <tr *ngIf="!(request.startDate === request.endDate)">
 
-                                    <td scope="row">{{request.endDate}}</td>
-                                    <td>{{request.endDate |date:'medium'}}</td>
+                                   
+                                    <td>{{request.endDate |date:'mediumDate'}}</td>
                                     <td>{{request.endDateQuantity}}</td>
 
 

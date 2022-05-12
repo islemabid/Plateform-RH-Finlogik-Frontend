@@ -23,7 +23,7 @@ export class ApplyOfferComponent implements OnInit {
   offer:any;
   apply:boolean=false;
   
-  constructor(private offerservice:OfferService,private candidatservice:CandidatsService,private alertNotification:AlertNotificationService,private acivateRoute: ActivatedRoute) { }
+  constructor(private offerservice:OfferService,private route : Router,private candidatservice:CandidatsService,private alertNotification:AlertNotificationService,private acivateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentid = this.acivateRoute.snapshot.params.id;
@@ -54,10 +54,10 @@ export class ApplyOfferComponent implements OnInit {
     });
   }
    
-  save(){
+ async  save(){
 
    this.candidat = this.form.value as Candidat;
-   this.candidatservice.AddCandidat(this.candidat).then((data)=>{
+   this.candidatservice.AddCandidat(this.candidat).then(async (data)=>{
     this.candidatId = data.toString();
     const applicationOffers = {
       CoverLetter:this.candidat.coverLetter,
@@ -65,8 +65,9 @@ export class ApplyOfferComponent implements OnInit {
       IdOffer: this.currentid,
       CvUrl: this.response
     } as ApplicationOffer;
-    this.candidatservice.ApplyToOffer(applicationOffers).then(()=>{
+    await this.candidatservice.ApplyToOffer(applicationOffers).then(()=>{
       this.alertNotification.showNotification("your application offer sent successfully !","OK");
+      this.route.navigate(['candidat']);
       
       });
      

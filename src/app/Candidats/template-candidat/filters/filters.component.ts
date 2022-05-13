@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ContratService } from 'src/services/contrat.service';
 
 
 
@@ -12,18 +13,26 @@ export class FiltersComponent implements OnInit {
   @Output() filtersChanged: EventEmitter<object> = new EventEmitter<object>();
   @Input() displayKeywords: boolean = true;
   @Input() displayAssignementDate: boolean = false;
-  contractTypes: string[] = ['Internship','CDI', 'CDD', 'CIVP', 'Freelance'];
+  contractTypes:any;
   selectedType: string;
   keywords: string;
   AssignementDate:Date;
 
-  constructor() { }
+  constructor(private contratsservice: ContratService,) { }
 
   ngOnInit(): void {
-    
+    this.GetAllContrats();
   }
   searchOffersHandler() {
     console.log(this.selectedType, this.keywords,this.AssignementDate);
     this.filtersChanged.emit({ type: this.selectedType, keywords: this.keywords, Date:this.AssignementDate});
+  }
+    
+  GetAllContrats() {
+    this.contratsservice.GetALL().then((data) => {
+      this.contractTypes = data;
+     
+    }
+    )
   }
 }

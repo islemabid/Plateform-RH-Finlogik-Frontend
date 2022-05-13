@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContratService } from 'src/services/contrat.service';
 import { OfferService } from 'src/services/offer.service';
 
 @Component({
@@ -14,18 +15,19 @@ export class DialogModalOfferComponent implements OnInit {
   form: FormGroup;
   response: any;
   action: string = "save";
-  contractTypes: string[] = ['Internship','CDI', 'CDD', 'CIVP', 'Freelance'];
+  contractTypes:any;
 
   constructor (
    private offerservice: OfferService,
     private formBuilder: FormBuilder,
+    private contratsservice: ContratService,
     private dialog: MatDialogRef<DialogModalOfferComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any
     ) { }
 
   ngOnInit(): void {
     this.initform();
-    console.log(this.editData);
+    this.GetAllContrats();
     if (this.editData) {
       this.titre = "Update Offer"
       this.action = "edit";
@@ -50,6 +52,14 @@ export class DialogModalOfferComponent implements OnInit {
       IsDeleted:[Validators.required]
     });
     
+  }
+  
+  GetAllContrats() {
+    this.contratsservice.GetALL().then((data) => {
+      this.contractTypes = data;
+     
+    }
+    )
   }
 
   onsubmit() {

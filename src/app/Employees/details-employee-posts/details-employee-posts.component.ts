@@ -21,7 +21,7 @@ export class DetailsEmployeePostsComponent implements OnInit {
       this.historyService.GetHistoryPostsByIdEmployee(this.currentid).then(
         (item) => {
           this.detailsPosts = item;
-          console.log(this.detailsContrats);
+       
         }
 
 
@@ -29,7 +29,7 @@ export class DetailsEmployeePostsComponent implements OnInit {
       this.historyService.GetHistoryContratsByIdEmployee(this.currentid).then(
         (item) => {
           this.detailsContrats = item;
-          console.log(this.detailsContrats);
+        
         });
 
 

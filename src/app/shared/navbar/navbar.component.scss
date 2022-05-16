@@ -219,8 +219,8 @@
                 }
 
                 .ellipsis {
-                  max-width: 200px;
-                  overflow: hidden;
+                  max-width: 300px;
+                  //overflow: hidden;
                   text-overflow: ellipsis;
                 }
                 .rtl & {
@@ -403,3 +403,20 @@
     }
   }
 }
+
+
+.numberCircle {  
+  border-radius: 50%;  
+  width: 21px;  
+  height: 21px;  
+  //padding: 4px;  
+
+  background:red;  
+  border: 1px solid darkgrey;  
+  color:#fff;  
+  text-align: center;  
+  margin-left: -7px; 
+  margin-bottom:10px; 
+
+  font: 10px Arial, sans-serif;  
+}  

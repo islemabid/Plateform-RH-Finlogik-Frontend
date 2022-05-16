@@ -54,7 +54,8 @@ export class AddEmployeePayComponent implements OnInit {
        this.employee.GetALL()
       .then((data) => {
        this.employees=data;
-
+       console.log(this.employee);
+       
       });
 
 

@@ -27,7 +27,7 @@
                                     <td>
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Leave Type</mat-label>
-                                            <mat-select  formControlName="idLeaveType" >
+                                            <mat-select [(ngModel)]="idLeaveType"  formControlName="idLeaveType" >
                                                 <mat-option *ngFor="let i of leavesType" [value]="i.id">
                                                     {{i.description}}
                                                 </mat-option>
@@ -189,8 +189,9 @@
                   
                     <button mat-raised-button color="warn" (click)="cancel()">cancel</button>
                     <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-                    <!--div class="alert alert-danger" *ngIf="!permissionSickLeave"> Insuffisant number of sick leave </div>
-                    <div class="alert alert-danger" *ngIf="!permissionPaidLeave"> Insuffisant number of paid leave </div-->
+                    <mat-error *ngIf="numberDaysTotal && verifnumberPaidLeave"> Insuffisant number of Paid leave days  </mat-error>
+                    <mat-error *ngIf="numberDaysTotal && verifnumberSickLeave"> Insuffisant number of Sick leave days  </mat-error>
+                  
                 </div>
              
             </div>

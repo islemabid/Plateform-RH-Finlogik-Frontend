@@ -24,7 +24,9 @@ export class NotificationService {
   getNotificationMessage():Promise<NotificationResult[]> {  
   
     return this.httpClient.get<NotificationResult[]>('https://localhost:7152/api/Notification/message', this.header).toPromise(); 
-     
-     
+      
   } 
-}
+  UpdateNotificationStatus(notif:any) :Promise<any> {
+    return this.httpClient.put<any>('https://localhost:7152/api/Notification',notif, this.header).toPromise(); 
+  }
+} 

@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModalEmployeeComponent } from './dialog-modal-employee/dialog-modal-employee.component';
 import { DetailsEmployeePostsComponent } from './details-employee-posts/details-employee-posts.component';
 import { UploadComponent } from '../FilesUploadOrDownload/upload/upload.component';
+import { EmployeePayRoolDetailsComponent } from './employee-pay-rool-details/employee-pay-rool-details.component';
 
 
 
@@ -17,12 +18,13 @@ import { UploadComponent } from '../FilesUploadOrDownload/upload/upload.componen
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: ListEmployeeComponent },
   { path: ':id/details', pathMatch: 'full', component: DetailsEmployeePostsComponent },
+  { path: ':id/PayRool', pathMatch: 'full', component: EmployeePayRoolDetailsComponent },
 
 
 ]
 
 @NgModule({
-  declarations: [ListEmployeeComponent, UploadComponent, DialogModalEmployeeComponent, DetailsEmployeePostsComponent],
+  declarations: [ListEmployeeComponent, UploadComponent, DialogModalEmployeeComponent, DetailsEmployeePostsComponent,EmployeePayRoolDetailsComponent],
   entryComponents: [
     DialogModalEmployeeComponent,
 

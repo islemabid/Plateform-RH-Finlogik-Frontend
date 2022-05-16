@@ -10,21 +10,28 @@
       <span class="mdi mdi-menu"></span>
     </button>
 
-    <ul class="navbar-nav navbar-nav-right">
+    <ul class="navbar-nav navbar-nav-right" >
       <li   class="nav-item dropdown" ngbDropdown  *ngIf="displayNotificationIcon">
-        <a   class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" ngbDropdownToggle>
+        <a   class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" ngbDropdownToggle >
           <i class="mdi mdi-bell-outline"></i>
-          <span  *ngIf="notification && notification?.count>0" class="count-symbol bg-danger"> {{notification?.count}}</span>
+          <div class="numberCircle" *ngIf="notification && notification?.count>0" style="cursor: pointer;">  
+            {{notification?.count}}
+          </div>  
+
+  
+         
         </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="notificationDropdown" >
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="notificationDropdown" style="width:300px;" >
           <h6 class="p-3 mb-0">Notifications</h6>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item"  *ngFor="let msg of messages">
            
-            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-              <p class="text-gray ellipsis mb-0">
-               New Candidat Added :  {{msg.candidatName}} 
+            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center" style="width:300px;">
+              <p class="text-gray ellipsis">
+               New Candidat Added :  {{msg.nameCandidat}}   <button mat-icon-button  type="button"  aria-label="Remove Selected File(s)" (click)="deleteNotification(msg)">  <mat-icon>close</mat-icon>
+               </button>
               </p>
+             
             </div>
           </a>
           <div class="dropdown-divider"></div>

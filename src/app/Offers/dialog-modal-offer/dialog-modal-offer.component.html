@@ -18,7 +18,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label> Contract Type</mat-label>
                 <mat-select formControlName="type" >
-                      <mat-option *ngFor="let type of contractTypes"  [value]="type" >{{type}}</mat-option>
+                      <mat-option *ngFor="let type of contractTypes"  [value]="type.shortDescription" >{{type.shortDescription}}</mat-option>
                 </mat-select>
              </mat-form-field>
             <mat-form-field appearance="outline">

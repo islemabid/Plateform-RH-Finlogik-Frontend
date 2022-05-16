@@ -4,6 +4,13 @@
             <mat-label>Keywords</mat-label>
             <input matInput [(ngModel)]="keywords" placeholder="Ex. Angular, C#, ASP.NET">
         </mat-form-field>
+     
+    </div>
+    <div class="filters__input2"  *ngIf="displayKeywords2">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Keywords</mat-label>
+            <input matInput [(ngModel)]="keywords" placeholder="Ex. Angular, C#, ASP.NET">
+        </mat-form-field>
     </div>
     <div class="filters__datepicker"  *ngIf="displayAssignementDate">
         <mat-form-field appearance="fill">
@@ -18,7 +25,7 @@
     <mat-form-field class="example-full-width" appearance="fill">
        <mat-label> Contract Type</mat-label>
        <mat-select [(ngModel)]="selectedType">
-             <mat-option *ngFor="let type of contractTypes"  [value]="type" >{{type}}</mat-option>
+             <mat-option *ngFor="let type of contractTypes"  [value]="type.shortDescription" >{{type.shortDescription}}</mat-option>
        </mat-select>
     </mat-form-field>
    </div>

@@ -12,6 +12,7 @@ export class FiltersComponent implements OnInit {
 
   @Output() filtersChanged: EventEmitter<object> = new EventEmitter<object>();
   @Input() displayKeywords: boolean = true;
+  @Input() displayKeywords2: boolean = false;
   @Input() displayAssignementDate: boolean = false;
   contractTypes:any;
   selectedType: string;

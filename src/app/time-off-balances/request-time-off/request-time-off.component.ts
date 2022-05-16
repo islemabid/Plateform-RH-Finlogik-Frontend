@@ -20,8 +20,13 @@ export class RequestTimeOffComponent implements OnInit {
   currentEmployee:any;
   leavesType:any;
   isLoggedIn = false;
+  endMaxDate:Date;
   role: any;
+  verifnumberSickLeave=false;
+  verifnumberPaidLeave=false;
   decode: any;
+  numberDaysTotal:number;
+  idLeaveType:number;
   employee = false;
   days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   leaves: any = {
@@ -80,8 +85,39 @@ export class RequestTimeOffComponent implements OnInit {
   }
   
  
+  getMaxEndDate(startDateQuantity,endDateQuantity) {
 
+    let start=new Date(this.leaves.start.date);
+    let end=new Date(this.leaves.end.date);
+    console.log(this.leaves.end.date);
+    let diffDays = end.getTime() - start.getTime();
+    let numberOfDays =  diffDays / (1000 * 3600 * 24); 
+   
+   
+      if(startDateQuantity=="afternoon") {
+        numberOfDays+=0.5;
+      }
+      if(startDateQuantity=="full day") {
+        numberOfDays+=1;
+      }
+      if(endDateQuantity=="morning")
+      {
+        numberOfDays+=0.5;
+      }
+      if(endDateQuantity=="full day") {
+        numberOfDays+=1;
+      }
   
+    numberOfDays-=this.getDaysOff(numberOfDays);
+    return numberOfDays;
+      
+   
+  }
+  getDaysOff(numberOfDays)
+  {
+    return (numberOfDays)/3;  
+  }
+   
   onSubmit() {
 
     const saveLeave = { ...this.form.value }
@@ -94,12 +130,34 @@ export class RequestTimeOffComponent implements OnInit {
       saveLeave.endDate=saveLeave.startDate;
       saveLeave.endDateQuantity=saveLeave.startDateQuantity;
       saveLeave.idEmployee=this.currentEmployee.id;
-      console.log(saveLeave);
-    
-        this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+      this.numberDaysTotal=this.getMaxEndDate(saveLeave.startDateQuantity,saveLeave.endDateQuantity);
+      if(saveLeave.idLeaveType==1){
+        if(this.numberDaysTotal>this.LeaveTotal.numbertotalSickLeave) {
+         this.verifnumberSickLeave=true;
+        }
+        else {
+          this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
        
-         this.router.navigate(['leaves']);
-       });
+            this.router.navigate(['leaves']);
+          });
+        }
+     
+      }
+      if(saveLeave.idLeaveType==2){
+        if(this.numberDaysTotal>this.LeaveTotal.numbertotalPaidLeave) {
+         this.verifnumberPaidLeave=true;
+        }
+        else {
+          this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+       
+            this.router.navigate(['leaves']);
+          });
+        }
+     
+      }
+       
+
+       
       }
   
      
@@ -107,16 +165,32 @@ export class RequestTimeOffComponent implements OnInit {
     else {
 
       saveLeave.idEmployee=this.currentEmployee.id;
-    
-      this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+      this. numberDaysTotal=this.getMaxEndDate(saveLeave.startDateQuantity,saveLeave.endDateQuantity);
+      if(saveLeave.idLeaveType==1){
+        if(this.numberDaysTotal>this.LeaveTotal.numbertotalSickLeave) {
+         this.verifnumberSickLeave=true;
+        }
+        else {
+          this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
        
-        this.router.navigate(['leaves']);
- 
-    });
-  
-   
- 
-
+            this.router.navigate(['leaves']);
+          });
+        }
+     
+      }
+      if(saveLeave.idLeaveType==2){
+        if(this.numberDaysTotal>this.LeaveTotal.numbertotalPaidLeave) {
+         this.verifnumberPaidLeave=true;
+        }
+        else {
+          this.timeoffService.AddTimeoffBalances(saveLeave).then((data)=>{
+       
+            this.router.navigate(['leaves']);
+          });
+        }
+     
+      }
+       
   }
 
 }

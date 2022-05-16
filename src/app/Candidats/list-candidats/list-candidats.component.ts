@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { EmailToCandidat } from 'src/models/EmailToCandidat';
 import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { CandidatsService } from 'src/services/candidats.service';
-import { FileService } from 'src/services/file.service';
 import { LoginService } from 'src/services/login.service';
 
 @Component({
@@ -57,7 +56,7 @@ export class ListCandidatsComponent implements OnInit {
   }
   async filtersChangedHandler(filters) {
     this.dataSource.data = await this.candidatService.GetAllApplicationOffers();
-    const { type, Date } = filters;
+    const { type, Date,keywords } = filters;
     this.dataSource.data = this.dataSource.data.filter(data => {
      const typeCondition = type ? data.offer.type.includes(type) : true;
       let dateCondition = true;
@@ -66,7 +65,12 @@ export class ListCandidatsComponent implements OnInit {
        let date=formatDate(Date.toString(), 'dd-MM-yyyy','en-US');
        dateCondition =date.includes(data.assignmentDate);
        }
-      return typeCondition && dateCondition;
+       let keywordsCondition = true;
+       if (keywords) {
+         const words = keywords.split(' ');
+         keywordsCondition = words.some(word => data.offer.offerName.includes(word) || data.offer.offerDescription.includes(word));
+       }
+      return typeCondition && dateCondition && keywordsCondition;
     })
   }
  

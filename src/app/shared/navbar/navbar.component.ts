@@ -121,7 +121,18 @@ export class NavbarComponent implements OnInit {
       } 
       
     );  
-  }  
+  } 
+  
+  deleteNotification(msg){
+    console.log(msg);
+    this.notificationService.UpdateNotificationStatus(msg).then((data)=>{
+     this. getNotificationCount()
+      this.getNotificationMessage();
+    })
+      
+     
+
+  }
   
   
 

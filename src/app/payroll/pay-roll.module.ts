@@ -6,6 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { EmployeePayService } from 'src/services/employee-pay.service';
 import { AddEmployeePayComponent } from './add-employee-pay/add-employee-pay.component';
+import { FiltersPayrollComponent } from './filters-payroll/filters-payroll.component';
+
+
+
+
 
 
 const routes: Routes = [
@@ -16,7 +21,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [PayrollComponent,AddEmployeePayComponent],
+  declarations: [PayrollComponent,AddEmployeePayComponent,FiltersPayrollComponent],
   entryComponents: [
     AddEmployeePayComponent
 

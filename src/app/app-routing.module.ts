@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'departements', loadChildren: () => import('./Departements/departement.module').then(m => m.DepartementModule) },
   { path: 'Employees', loadChildren: () => import('./Employees/employee.module').then(m => m.EmployeeModule) },
   { path: 'leaves', loadChildren: () => import('./time-off-balances/timeoffbalances.module').then(m => m.TimeoffbalancesModule) },
+  { path: 'Calendar', loadChildren: () => import('./Holidays/holidays.module').then(m => m.HolidaysModule) },
   { path: 'Posts', loadChildren: () => import('./Posts/post.module').then(m => m.PostModule) },
   { path: 'Offers', loadChildren: () => import('./Offers/offer.module').then(m => m.OfferModule) },
   { path: 'candidat', pathMatch: 'full', component: TemplateCandidatComponent },

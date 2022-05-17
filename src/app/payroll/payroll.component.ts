@@ -56,7 +56,14 @@ export class PayrollComponent implements OnInit {
 
 
  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
 
   ngOnInit(): void {
@@ -73,6 +80,16 @@ export class PayrollComponent implements OnInit {
 
     }
 
+  }
+  async filtersChangedHandler(filters) {
+    this.dataSource.data = await this.employeePay.GetALL();
+    const { selectedYear, selectedMounth,selectedEmployee } = filters;
+    this.dataSource.data = this.dataSource.data.filter(res=> {
+      const selectedYearCondition =  selectedYear? res.year.includes(selectedYear) : true;
+      const selectedMounthCondition =  selectedMounth? res.mounth.includes(selectedMounth) : true;
+      const selectedEmployeeCondition =  selectedEmployee? res.idEmployee.includes(selectedEmployee) : true;
+      return selectedYearCondition && selectedMounthCondition && selectedEmployeeCondition ;
+    })
   }
 
 }

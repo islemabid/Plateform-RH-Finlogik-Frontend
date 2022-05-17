@@ -1,0 +1,33 @@
+<div class="filters">
+
+    <div class="filters__selectYear">
+     <!--mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Year</mat-label>
+        <mat-select [(ngModel)]="selectedYear">
+              <mat-option *ngFor="let year of years"  [value]="year" >{{year}}</mat-option>
+        </mat-select>
+      
+     </mat-form-field-->
+  
+
+    </div>
+    <div class="filters__selectMounth">
+     <!--mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Mounth</mat-label>
+        <mat-select [(ngModel)]="selectedMounth">
+              <mat-option *ngFor="let type of mounths"  [value]="type" >{{type}}</mat-option>
+        </mat-select>
+     </mat-form-field-->
+    </div>
+    <div class="filters__selectEmployee">
+     <!--mat-form-field class="example-full-width" appearance="fill">
+        <mat-label> Choose Employee</mat-label>
+        <mat-select [(ngModel)]="selectedEmployee">
+              <mat-option *ngFor="let type of employees"  [value]="type.id" >{{type.firstName}}{{type.lastName}}</mat-option>
+        </mat-select>
+     </mat-form-field-->
+    </div>
+    <div class="filters__submit">
+     <button  mat-raised-button color="primary" (click)="searchPayRollsHandler()">Search</button>
+    </div>
+ </div>

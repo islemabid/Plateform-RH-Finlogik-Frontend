@@ -38,6 +38,10 @@ import { AlertNotificationComponent } from './alert-notification/alert-notificat
 import { TemplateEmployeeComponent } from './Employees/template-employee/template-employee.component';
 import { TimeoffbalancesModule } from './time-off-balances/timeoffbalances.module';
 import { PayRollModule } from './payroll/pay-roll.module';
+import { HolidaysModule } from './Holidays/holidays.module';
+
+
+
 
 
 
@@ -71,8 +75,7 @@ export function tokenGetter() {
     UploadCvComponent,
     AlertNotificationComponent,
     TemplateEmployeeComponent,
-
-
+   
    
  
    
@@ -100,6 +103,7 @@ export function tokenGetter() {
     EmployeeModule,
     RoleModule,
     ContratModule,
+    HolidaysModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -1,0 +1,31 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    &__selectYear {
+        flex: 30% 0 0;
+    }
+    &__selectMounth {
+        flex: 35% 0 0;
+    }
+    &__selectEmployee {
+        flex:40% 0 0 ;
+    }
+
+
+    &__submit {
+        flex: 20% 0 0;
+        height: 100%;
+
+        button {
+            width: 100%;
+            height: calc(100% - 1.34375em);
+        }
+    }
+
+    .mat-form-field {
+        width: 100%;
+    }
+}

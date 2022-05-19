@@ -30,7 +30,12 @@
                   <mat-panel-description *ngIf="request.state=='rejected'">
                     <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
                   </mat-panel-description>
-               
+                  <mat-panel-description *ngIf="request.state=='canceled'">
+                    <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
+                  </mat-panel-description>
+                  <mat-panel-description *ngIf="request.state=='Waiting' || (request.state=='validated' &&  verifStatus(request.startDate))">
+                  <button mat-icon-button  type="button"  aria-label="Remove Selected File(s)" (click)="cancelRequest(request.id)">  <mat-icon>close</mat-icon>  </button>
+                </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="card text-center requestLeave__card">
 

@@ -75,6 +75,7 @@ export function tokenGetter() {
     UploadCvComponent,
     AlertNotificationComponent,
     TemplateEmployeeComponent,
+
    
    
  

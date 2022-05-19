@@ -9,24 +9,21 @@ import { NotificationCountResult, NotificationResult } from 'src/models/Notifica
 export class NotificationService {
 
 
-  public header = {
-    headers: new HttpHeaders({ 'Authorization': `Bearer ${JSON.parse(JSON.stringify(localStorage.getItem("jwt")))}` })
-
-  };
+ 
 
   constructor(private httpClient: HttpClient) { }
 
 
   getNotificationCount():Promise<NotificationCountResult> {  
-    return this.httpClient.get<NotificationCountResult>('https://localhost:7152/api/Notification/notificationcount', this.header).toPromise();
+    return this.httpClient.get<NotificationCountResult>('https://localhost:7152/api/Notification/notificationcount').toPromise();
   }  
   
   getNotificationMessage():Promise<NotificationResult[]> {  
   
-    return this.httpClient.get<NotificationResult[]>('https://localhost:7152/api/Notification/message', this.header).toPromise(); 
+    return this.httpClient.get<NotificationResult[]>('https://localhost:7152/api/Notification/message').toPromise(); 
       
   } 
   UpdateNotificationStatus(notif:any) :Promise<any> {
-    return this.httpClient.put<any>('https://localhost:7152/api/Notification',notif, this.header).toPromise(); 
+    return this.httpClient.put<any>('https://localhost:7152/api/Notification',notif).toPromise(); 
   }
 } 

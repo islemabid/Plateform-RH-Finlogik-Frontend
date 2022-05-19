@@ -7,6 +7,7 @@ import { TimeOffBalances } from 'src/models/TimeOffBalances';
 })
 export class TimeOffBalancesService {
   public tab: TimeOffBalances[] = [];
+  currentDate=new Date();
   public header = {
     headers: new HttpHeaders({ 'Authorization': `Bearer ${JSON.parse(JSON.stringify(localStorage.getItem("jwt")))}` })
 
@@ -36,6 +37,13 @@ export class TimeOffBalancesService {
   }
   GetLeaveTotalByIdEmployee(idEmployee:string): Promise<any> {
     return this.httpClient.get<any>('https://localhost:7152/api/TimeOffBalances/LeaveTotalByIdEmployee/'+idEmployee).toPromise();
+  }
+  cancelRequest(id:string): Promise<any> {
+    return this.httpClient.delete<any>('https://localhost:7152/api/TimeOffBalances/cancel/'+id).toPromise();
+  }
+  verifStatus(startDate){
+    startDate=new Date(startDate);
+    return startDate.getTime()>this.currentDate.getTime();
   }
 
 }

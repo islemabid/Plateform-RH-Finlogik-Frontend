@@ -15,6 +15,7 @@ import { TimeOffBalancesService } from 'src/services/time-off-balances.service';
 export class TimeOffBalancesComponent implements OnInit {
   isLoggedIn = false;
   idEmployee:string;
+  currentDate=new Date();
   role: any;
   decode: any;
    rh = false;
@@ -67,6 +68,13 @@ export class TimeOffBalancesComponent implements OnInit {
    });
 
   }
+  cancel(id) {
+    
+    this.timeOffBalancesService.DeleteTimeOffBalances(id).then(() => {
+       this.GetAllTimeOffBalances();
+    });
+ 
+   }
   async filtersChangedHandler(filters) {
     this.dataSource.data = await this.timeOffBalancesService.GetALL();
     const { type, endDate,startDate } = filters;
@@ -85,6 +93,10 @@ export class TimeOffBalancesComponent implements OnInit {
     
       return startdateCondition && enddateCondition && typeCondition;
     })
+  }
+  verifStatus(startDate){
+    startDate=new Date(startDate);
+    return startDate.getTime()>this.currentDate.getTime();
   }
 
 }

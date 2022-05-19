@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import {  formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
@@ -13,6 +13,7 @@ export class ListLeaveRequestComponent implements OnInit {
   panelOpenState = false;
   LeaveRequestList:any;
   isLoggedIn = false;
+  currentDate=new Date();
   idEmployee:string;
   LeaveTotal:any;
   currentEmployee:any;
@@ -32,6 +33,9 @@ export class ListLeaveRequestComponent implements OnInit {
         this.employee = true;
       }
     }
+ 
+   
+   
     this.GetConnectUser();
     this.GetLeavesRequestsByEmployee();
     this.GetLeaveTotalByIdEmployee();
@@ -43,6 +47,7 @@ export class ListLeaveRequestComponent implements OnInit {
      this.timeoffService.GetTimeOffBalancesListByEmployeeId(this.idEmployee)
       .then((data) => {
        this.LeaveRequestList=data;
+     
       
       });
   }
@@ -77,10 +82,17 @@ export class ListLeaveRequestComponent implements OnInit {
   GetLeaveTotalByIdEmployee(){
     this.timeoffService.GetLeaveTotalByIdEmployee(this.idEmployee).then((data)=>{
       this.LeaveTotal=data;
-      console.log(this.LeaveTotal);
+      
     });
   }
 
- 
+ cancelRequest(idRequest) {
+   this.timeoffService.cancelRequest(idRequest).then((data)=>{this.GetLeavesRequestsByEmployee();})
+    
+ }
+ verifStatus(startDate){
+   startDate=new Date(startDate);
+   return startDate.getTime()>this.currentDate.getTime();
+ }
   
 }

@@ -219,7 +219,7 @@
                 }
 
                 .ellipsis {
-                  max-width: 300px;
+                  max-width: 500px;
                   //overflow: hidden;
                   text-overflow: ellipsis;
                 }
@@ -242,7 +242,7 @@
               left: 20px;
               right: 20px;
               top: $navbar-height;
-              width: calc(100% - 40px);
+             // width: calc(100% - 40px);
             }
           }
         }

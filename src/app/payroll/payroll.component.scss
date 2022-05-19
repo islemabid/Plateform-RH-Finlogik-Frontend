@@ -14,7 +14,9 @@ table {
   height: 60px;
 
 
- 
+ &__input {
+   flex:40% 0 0;
+ }
 
   &__submit {
       flex: 20% 0 0;

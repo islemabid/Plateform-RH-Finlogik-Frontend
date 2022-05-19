@@ -108,6 +108,7 @@ export class NavbarComponent implements OnInit {
     this.notificationService.getNotificationCount().then(  
       notification => {  
         this.notification = notification;  
+        console.log(this.notification);
       }
     );  
   }

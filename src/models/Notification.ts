@@ -3,7 +3,7 @@ export interface NotificationCountResult {
 }  
   
 export interface NotificationResult {  
-    nameCandidat: string;  
+    message: string;  
     id:string;
     status:boolean;
    

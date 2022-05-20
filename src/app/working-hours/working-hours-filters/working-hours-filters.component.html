@@ -1,0 +1,24 @@
+<div class="filters">
+
+    <div class="filters__Date">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose  Date </mat-label>
+            <input matInput   [matDatepicker]="picker" [(ngModel)]="Date" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+    <div class="filters__select">
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="displaySelectEmployee">
+           <mat-label> Choose Employee</mat-label>
+           <mat-select [(ngModel)]="selectedType">
+                 <mat-option *ngFor="let type of Employees"  [value]="type.firstName+'type.lastName'" >{{type.firstName}}  {{type.lastName}}</mat-option>
+           </mat-select>
+        </mat-form-field>
+       </div>
+  
+    <div class="filters__search">
+           <button  mat-raised-button color="primary" (click)="searchHandler()">Search</button>
+    </div>
+</div>

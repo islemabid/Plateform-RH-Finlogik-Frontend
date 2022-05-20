@@ -14,29 +14,36 @@
     <mat-accordion  *ngFor="let request of LeaveRequestList" class="requestLeave__card__lists">
 
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
+            <mat-expansion-panel-header class="pannel">
+                <mat-panel-title class="pannel__request">
                  Request Num:  {{request.id}}
                 </mat-panel-title>
+                <div class="pannel__date">
                 <mat-panel-description>
                 From   {{request.startDate |date:'mediumDate'}}  TO    {{request.endDate |date:'mediumDate'}}  
                 </mat-panel-description>
-                <mat-panel-description *ngIf="request.state=='Waiting'">
+                </div>
+                <div class="pannel__state">
+                <mat-panel-description  *ngIf="request.state=='Waiting'">
                    <button style="border-radius:47%;"  mat-flat-button color="primary" >{{request.state}}</button>
                  </mat-panel-description>
-                 <mat-panel-description *ngIf="request.state=='validated'" >
+                 <mat-panel-description   *ngIf="request.state=='validated'" >
                     <button style="border-radius:47%;color: green;"  mat-flat-button  >{{request.state}}</button>
                   </mat-panel-description>
-                  <mat-panel-description *ngIf="request.state=='rejected'">
+                  <mat-panel-description  *ngIf="request.state=='rejected'">
                     <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
                   </mat-panel-description>
-                  <mat-panel-description *ngIf="request.state=='canceled'">
+                  <mat-panel-description  *ngIf="request.state=='canceled'">
                     <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
                   </mat-panel-description>
-                  <mat-panel-description *ngIf="request.state=='Waiting' || (request.state=='validated' &&  verifStatus(request.startDate))">
+                </div>
+                <div  class="pannel__cancel">
+                  <mat-panel-description  *ngIf="request.state=='Waiting' || (request.state=='validated' &&  verifStatus(request.startDate))">
                   <button mat-icon-button  type="button"  aria-label="Remove Selected File(s)" (click)="cancelRequest(request.id)">  <mat-icon>close</mat-icon>  </button>
-                </mat-panel-description>
+                 </mat-panel-description>
+                </div>
             </mat-expansion-panel-header>
+
             <div class="card text-center requestLeave__card">
 
                 <div class="card-body requestLeave__card__body">

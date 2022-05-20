@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Offers } from 'src/models/Offer';
+import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { LoginService } from 'src/services/login.service';
 import { OfferService } from 'src/services/offer.service';
 import { DialogModalOfferComponent } from '../dialog-modal-offer/dialog-modal-offer.component';
@@ -31,7 +32,7 @@ export class ListOffersComponent implements OnInit {
 
 
 
-  constructor(private offerService: OfferService,private acivateRoute: ActivatedRoute, private login: LoginService, private dialog: MatDialog) {
+  constructor(private offerService: OfferService,private acivateRoute: ActivatedRoute,private alertNotification:AlertNotificationService, private login: LoginService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.offerService.tab);
   }
 
@@ -110,8 +111,8 @@ export class ListOffersComponent implements OnInit {
     console.log(this.idOffer);
      if(!!this.code) {
     
-       this.offerService.PostOfferInLinkedin(this.code,OfferById).then(()=>{7
-       console.log("post added in linkedin");
+       this.offerService.PostOfferInLinkedin(this.code,OfferById).then(()=>{
+        this.alertNotification.showNotification("Offer post successfully  in linkedin !","OK");
        })
     }
   }

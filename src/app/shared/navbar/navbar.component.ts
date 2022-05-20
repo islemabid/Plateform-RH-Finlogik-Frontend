@@ -6,6 +6,9 @@ import { EmployeeService } from 'src/services/employee.service';
 import { LoginService } from 'src/services/login.service';
 import { NotificationService } from 'src/services/notification.service';
 import * as signalR from '@microsoft/signalr'; 
+import { Pointages } from 'src/models/Pointage';
+import { PointageService } from 'src/services/pointage.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +26,7 @@ export class NavbarComponent implements OnInit {
   decode: any;
   iduser: any;
   employeeInfo: any;
-  constructor(config: NgbDropdownConfig, private login: LoginService,private notificationService: NotificationService, private employeeService: EmployeeService, private router: Router) {
+  constructor(config: NgbDropdownConfig,private pointage:PointageService, private login: LoginService,private notificationService: NotificationService, private employeeService: EmployeeService, private router: Router) {
     config.placement = 'bottom-right';
   }
 
@@ -32,7 +35,7 @@ export class NavbarComponent implements OnInit {
       this.decode = this.login.decodejwt(localStorage.getItem("jwt"));
       this.iduser = this.decode["UserId"];
     }
-    console.log(this.iduser);
+    
     this.getUserByID();
     this.getNotificationCount();
     this.getNotificationMessage();
@@ -86,6 +89,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
+
   logout() {
     this.login.logOut();
   }
@@ -130,12 +134,26 @@ export class NavbarComponent implements OnInit {
      this. getNotificationCount()
       this.getNotificationMessage();
     })
-      
-     
 
+  
+  }
+  in(){
+    const PointageIn={
+      action:"In",
+      idEmployee:this.iduser
+    } as Pointages;
+
+    this.pointage.AddPointage(PointageIn).then((data)=>{console.log(data)});
   }
   
-  
+  out() {
+    const PointageOut={
+      action:"In",
+      idEmployee:this.iduser
+    } as Pointages;
+
+    this.pointage.AddPointage(PointageOut).then((data)=>{console.log(data)});
+  }
 
 
 }

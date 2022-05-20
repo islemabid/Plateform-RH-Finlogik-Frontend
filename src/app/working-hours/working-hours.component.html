@@ -1,0 +1,43 @@
+<div *ngIf="rh">
+  
+    <div class="filters">
+        <app-working-hours-filters [displaySelectEmployee]="true" (filtersChanged)="filtersChangedHandler($event)"></app-working-hours-filters> 
+        </div>
+
+   
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          
+
+          
+            <ng-container matColumnDef="FullName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> FullName </th>
+                <td mat-cell *matCellDef="let row"> {{row.employeeFullName}} </td>
+            </ng-container>
+
+       
+            <ng-container matColumnDef="IdEmployee">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> IdEmployee </th>
+                <td mat-cell *matCellDef="let row"> {{row.idEmployee}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.date|date:'mediumDate'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Hours">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> WorkingHours per Jour  </th>
+                <td mat-cell *matCellDef="let row"> {{row.hours}} </td>
+            </ng-container>
+
+          
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of WorkingHours"></mat-paginator>
+    </div>
+

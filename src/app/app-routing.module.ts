@@ -5,6 +5,8 @@ import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidat
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-offemployee/working-hours-offemployee.component';
+import { WorkingHoursComponent } from './working-hours/working-hours.component';
 
 
 
@@ -25,6 +27,10 @@ const routes: Routes = [
   { path: 'candidat', pathMatch: 'full', component: TemplateCandidatComponent },
   { path: 'candidat/:id/Apply', pathMatch: 'full', component: ApplyOfferComponent },
   { path: 'list-candidat', pathMatch: 'full', component: ListCandidatsComponent },
+  { path: 'AllWorkingHours', pathMatch: 'full', component: WorkingHoursComponent },
+  { path: 'AllWorkingHoursByEmployee', pathMatch: 'full', component: WorkingHoursOffemployeeComponent },
+  
+  
   
 
 

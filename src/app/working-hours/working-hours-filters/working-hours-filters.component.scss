@@ -1,0 +1,31 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+
+      &__Date {
+        flex:25% 0 0;
+      }
+      &__select {
+
+        flex: 25% 0 0 ;
+      }
+      &__search {
+        flex: 25% 0 0;
+        height: 100%;
+
+
+        button {
+          
+            width: 50%;
+            height: calc(100%-1,34375em);
+           
+        }
+    
+
+
+       
+      }
+   }

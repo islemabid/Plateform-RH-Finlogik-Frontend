@@ -68,14 +68,14 @@ export class PostsComponent implements OnInit {
   }
 
   GetAllPosts(): void {
-    console.log(localStorage.getItem("jwt"));
+   
 
     this.postService.GetALL()
       .then((data) => {
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        console.log(this.dataSource.data);
+      
 
       });
 

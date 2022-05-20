@@ -39,6 +39,9 @@ import { TemplateEmployeeComponent } from './Employees/template-employee/templat
 import { TimeoffbalancesModule } from './time-off-balances/timeoffbalances.module';
 import { PayRollModule } from './payroll/pay-roll.module';
 import { HolidaysModule } from './Holidays/holidays.module';
+import { WorkingHoursComponent } from './working-hours/working-hours.component';
+import { WorkingHoursFiltersComponent } from './working-hours/working-hours-filters/working-hours-filters.component';
+import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-offemployee/working-hours-offemployee.component';
 
 
 
@@ -75,6 +78,9 @@ export function tokenGetter() {
     UploadCvComponent,
     AlertNotificationComponent,
     TemplateEmployeeComponent,
+    WorkingHoursComponent,
+    WorkingHoursFiltersComponent,
+    WorkingHoursOffemployeeComponent,
 
    
    

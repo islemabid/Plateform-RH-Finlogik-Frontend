@@ -23,7 +23,7 @@ export class PayrollComponent implements OnInit {
 
   rh = false;
   dataSource: MatTableDataSource<EmployeePay> = new MatTableDataSource(this.employeePay.tab);
-  displayedColumns: string[] = ["Employee", "Mounth", "Year", "Salary", "MealTicket", "TicketPassGift","Prime","Check"];
+  displayedColumns: string[] = ["Employee", "Mounth", "Year", "Salary", "MealTicket", "TicketPassGift","Prime","Status","Check"];
 
   constructor(private employeePay: EmployeePayService, private login: LoginService, private dialog: MatDialog) {
 
@@ -38,7 +38,9 @@ export class PayrollComponent implements OnInit {
     });
   }
 
-
+  check(data) {
+    this.employeePay.UpdateEmployeePay(data).then((data)=>{this.GetEmployeePays()});
+  }
   GetEmployeePays(): void {
    
 

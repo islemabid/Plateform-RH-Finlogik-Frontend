@@ -28,6 +28,7 @@ export class AddEmployeePayComponent implements OnInit {
       year: ["", Validators.required],
       mounth: ["", Validators.required],
       idEmployee: ["", Validators.required],
+      status:["Not payed",Validators.required],
       prime: [0],
       ticketPassGift: [0],
       mealTicket: [0],

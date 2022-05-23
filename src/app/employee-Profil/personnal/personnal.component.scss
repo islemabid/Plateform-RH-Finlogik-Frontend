@@ -20,6 +20,32 @@
       height : 100px;
     
   }
-  
+  .profil {
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+
+ 
+ 
+
+
+  &__submit {
+      flex: 30% 0 0;
+      height: 100%;
+     
+
+      button {
+      
+          width: 100%;
+          height: calc(100% - 1.34375em);
+         
+      }
+     
+  }
+
+}
   
   

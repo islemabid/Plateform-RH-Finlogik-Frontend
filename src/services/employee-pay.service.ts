@@ -26,5 +26,9 @@ export class EmployeePayService {
   GetHistoryPaytsByIdEmployee(idEmployee:string): Promise<any[]>{
     return this.httpClient.get<any[]>('https://localhost:7152/api/EmployeePay/'+idEmployee, this.header).toPromise();
   }
+  UpdateEmployeePay(e: EmployeePay): Promise<EmployeePay> {
+    return this.httpClient.put<EmployeePay>('https://localhost:7152/api/EmployeePay', e, this.header).toPromise();
+
   }
+}
 

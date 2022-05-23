@@ -8,7 +8,7 @@ import { UpdateProfilComponent } from './update-profil/update-profil.component';
 
 
 const routes: Routes = [
-  { path: 'personal', pathMatch: 'full', component: PersonnalComponent },
+  { path: '', pathMatch: 'full', component: PersonnalComponent },
   {path:':id/edit',pathMatch:'full',component:UpdateProfilComponent}
 
 

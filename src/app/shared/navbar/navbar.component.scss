@@ -420,3 +420,15 @@
 
   font: 10px Arial, sans-serif;  
 }  
+.pointage {
+display: flex;
+justify-content:center;
+align-items: center;
+margin-top: -20px;
+&__in {
+ margin-right: -90%;
+}
+&__out {
+  margin-left: 100%;
+}
+}

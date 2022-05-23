@@ -6,7 +6,7 @@
         <div class="payroll__input">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Keywords</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Name ">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mounth ">
             </mat-form-field>
         </div>
         <div class="payroll__submit">
@@ -21,22 +21,18 @@
 
     <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- ID Column -->
-
-
-        <!-- Progress Column -->
+       
         <ng-container matColumnDef="Employee">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee </th>
             <td mat-cell *matCellDef="let row"> {{row.employeeFullName}} </td>
         </ng-container>
 
-        <!-- Name Column -->
+  
         <ng-container matColumnDef="Mounth">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Mounth </th>
             <td mat-cell *matCellDef="let row"> {{row.mounth}} </td>
         </ng-container>
 
-        <!-- Fruit Column -->
         <ng-container matColumnDef="Year">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
             <td mat-cell *matCellDef="let row"> {{row.year}} </td>
@@ -61,10 +57,22 @@
             <td mat-cell *matCellDef="let row"> {{row.prime}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row">
+           
+                <tr *ngIf="row.status=='Not payed'" style="color:red;">Not payed</tr>
+             
+                <tr *ngIf="row.status=='Payed'" style="color:green;">Payed</tr>
+            </td>
+        </ng-container>
         <ng-container matColumnDef="Check">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Check </th>
             <td mat-cell *matCellDef="let row">
-                <mat-slide-toggle></mat-slide-toggle>
+                <button   mat-icon-button  *ngIf="row.status =='Not payed'" color="primary" (click)="check(row)">
+                    <mat-icon>done</mat-icon>
+                </button>
+               
             </td>
         </ng-container>
 
@@ -77,5 +85,5 @@
 
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Employees"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of Pays"></mat-paginator>
 </div>

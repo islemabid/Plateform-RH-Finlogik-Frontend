@@ -28,13 +28,13 @@
                    <button style="border-radius:47%;"  mat-flat-button color="primary" >{{request.state}}</button>
                  </mat-panel-description>
                  <mat-panel-description   *ngIf="request.state=='validated'" >
-                    <button style="border-radius:47%;color: green;"  mat-flat-button  >{{request.state}}</button>
+                    <button style="border-radius:47%;"  mat-flat-button   color="accent" >{{request.state}}</button>
                   </mat-panel-description>
                   <mat-panel-description  *ngIf="request.state=='rejected'">
                     <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
                   </mat-panel-description>
                   <mat-panel-description  *ngIf="request.state=='canceled'">
-                    <button style="border-radius:47%;"  mat-flat-button color="warn" >{{request.state}}</button>
+                    <button style="border-radius:47%;color:black"  mat-flat-button >{{request.state}}</button>
                   </mat-panel-description>
                 </div>
                 <div  class="pannel__cancel">
@@ -157,4 +157,5 @@
 
         </mat-expansion-panel>
     </mat-accordion>
+    
 </div>

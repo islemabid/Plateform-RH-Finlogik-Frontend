@@ -1,0 +1,48 @@
+.update {
+    max-width: 1024px;
+    margin: 50px auto;
+  
+    &__profile {
+  
+     
+      
+      &__title {
+          height: 50px;
+          line-height: 25px;
+          display: flex;
+          justify-content: center;
+      }
+  
+      &__form {
+        max-width: 70%;
+        margin: 0 auto;
+  
+        .line {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+  
+          &__half {
+            flex: 45% 0 0;
+          }
+  
+          &__full {
+            flex: 100% 0 0;
+          }
+  
+  
+          &.line--center {
+            justify-content: center;
+  
+            .submit {
+              width: 200px;
+            }
+          }
+          
+  
+        
+        }
+      }
+    }
+  }

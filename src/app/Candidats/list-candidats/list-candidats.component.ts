@@ -4,10 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { EmailToCandidat } from 'src/models/EmailToCandidat';
+import { Email } from 'src/models/Email';
 import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { CandidatsService } from 'src/services/candidats.service';
 import { LoginService } from 'src/services/login.service';
+import { MailService } from 'src/services/mail.service';
 
 @Component({
   selector: 'app-list-candidats',
@@ -22,15 +23,15 @@ export class ListCandidatsComponent implements OnInit {
   decode: any;
   rh = false;
   applicationOfferDetail:any;
-  MailToCandidatAccepted:EmailToCandidat;
-  MailToCandidatRefused:EmailToCandidat;
+  MailToCandidatAccepted:Email;
+  MailToCandidatRefused:Email;
 
 
 
   dataSource: MatTableDataSource<any> = new MatTableDataSource(this.candidatService.tab);
   displayedColumns: string[] = ["FirstName", "LastName","Email","PhoneNumber", "CV","CoverLetter","AssignmentDate","Offer Name","Contrat Type","Actions"];
 
-  constructor(private candidatService:CandidatsService,private login: LoginService,private alertNotification:AlertNotificationService, private router: Router) { }
+  constructor(private candidatService:CandidatsService,private mailService:MailService,private login: LoginService,private alertNotification:AlertNotificationService, private router: Router) { }
 
   ngOnInit(): void {
     this.GetAllApplicationOffers();
@@ -85,8 +86,8 @@ export class ListCandidatsComponent implements OnInit {
       notre profil nous interésse,
       Seriez vous disponible la semaine prochaine pour un entretien téléphonique ?
       A très bientôt,`
-    } as EmailToCandidat;
-    this.candidatService.ReplyToCandidat(Mail).then(()=>{
+    } as Email;
+   this.mailService.sendMail(Mail).then(()=>{
     this.alertNotification.showNotification("Email sent successfully","OK");
    });
   }); 
@@ -104,10 +105,10 @@ export class ListCandidatsComponent implements OnInit {
      Nous vous remercions pour l'intérêt que vous portez à Finlogik et vous souhaitons d'aboutir rapidement dans vos recherches.
     Cordialement.
     `
-    } as EmailToCandidat;
-  this.candidatService.ReplyToCandidat(Mail).then(()=>{
+    } as Email;
+    this.mailService.sendMail(Mail).then(()=>{
     this.alertNotification.showNotification("Email sent successfully","OK");
-    //this.router.navigate(['/candidat']);
+   
  
   });
  }); 

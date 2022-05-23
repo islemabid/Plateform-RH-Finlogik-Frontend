@@ -185,15 +185,7 @@ export class DialogModalEmployeeComponent implements OnInit {
 
       });
   }
-/*{
-  let contrat={...this.form.value};
-  let ContratId=contrat.idContrat;
-  this.contratsservice.getContratById(ContratId).then((data)=>{
-    if(data.shortDescription!="CDI"){
-      return true;
-    }
 
-  })*/
 
 }
 

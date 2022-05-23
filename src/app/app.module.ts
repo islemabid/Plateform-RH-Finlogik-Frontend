@@ -42,6 +42,8 @@ import { HolidaysModule } from './Holidays/holidays.module';
 import { WorkingHoursComponent } from './working-hours/working-hours.component';
 import { WorkingHoursFiltersComponent } from './working-hours/working-hours-filters/working-hours-filters.component';
 import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-offemployee/working-hours-offemployee.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './forgot-password/update-password/update-password.component';
 
 
 
@@ -81,6 +83,8 @@ export function tokenGetter() {
     WorkingHoursComponent,
     WorkingHoursFiltersComponent,
     WorkingHoursOffemployeeComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent,
 
    
    

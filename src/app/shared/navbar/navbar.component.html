@@ -9,8 +9,10 @@
       (click)="toggleSidebar()">
       <span class="mdi mdi-menu"></span>
     </button>
-    <button (click)="in()">in</button>
-    <button (click)="out()">out</button>
+    <div class="pointage">
+    <button class="pointage__in"  mat-raised-button color="primary" (click)="in()">in</button>
+    <button class="pointage__out" mat-raised-button color="warn" (click)="out()">out</button>
+    </div>
     <ul class="navbar-nav navbar-nav-right" >
       <li   class="nav-item dropdown" ngbDropdown  *ngIf="displayNotificationIcon">
         <a   class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" ngbDropdownToggle >

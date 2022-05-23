@@ -8,6 +8,7 @@ export interface EmployeePay {
     idEmployee:string;
     year:string;
     mounth:string;
+    status:string;
 
 
 

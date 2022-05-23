@@ -1,36 +1,65 @@
+<div class="payroll">
 
-<div class="Timeline">
+    <div class="payroll__input">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Keywords</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mounth ">
+        </mat-form-field>
+    </div>
+   
 
-    <svg height="5" width="200">
-    <line x1="0" y1="0" x2="200" y2="0" style="stroke:#004165;stroke-width:5" />
-    Sorry, your browser does not support inline SVG.
-  </svg>
-    <div class="event1"  *ngFor="let p of EmployeePays">
-      
-      <div class="event1Bubble">
-        <div class="eventTime">
-          <!--div class="DayDigit"></div-->
-          <div class="Day">
-            {{p.mounth}}
-            <!--div class="MonthYear">february 2016</div-->
-          </div>
-        </div>
-        <div class="eventTitle"> fixedSalary :{{p.fixedSalary}}</div>
-      </div>
-    
-      <svg height="20" width="20">
-         <circle cx="10" cy="11" r="5" fill="#004165" />
-       </svg>
-       <!--mois-->
-      <div class="time">{{p.year}}</div>
-      
-    
-    
+</div>
 
-    <svg height="5" width="300">
-        <line x1="0" y1="0" x2="300" y2="0" style="stroke:#004165;stroke-width:5" />
-        Sorry, your browser does not support inline SVG.
-      </svg>
-    
-  </div>
-  </div>
+        <table mat-table [dataSource]="dataSource" matSort>
+
+     
+          <ng-container matColumnDef="Mounth">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Mounth </th>
+              <td mat-cell *matCellDef="let row"> {{row.mounth}} </td>
+          </ng-container>
+  
+         
+          <ng-container matColumnDef="Year">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
+              <td mat-cell *matCellDef="let row"> {{row.year}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Salary">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Salary </th>
+              <td mat-cell *matCellDef="let row"> {{row.fixedSalary}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="MealTicket">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> MealTicket </th>
+              <td mat-cell *matCellDef="let row"> {{row.mealTicket}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="TicketPassGift">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> TicketPassGift </th>
+              <td mat-cell *matCellDef="let row"> {{row.ticketPassGift}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Prime">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Prime </th>
+              <td mat-cell *matCellDef="let row"> {{row.prime}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row">
+           
+                <tr *ngIf="row.status=='Not payed'" style="color:red;">Not payed</tr>
+             
+                <tr *ngIf="row.status=='Payed'" style="color:green;">Payed</tr>
+            </td>
+        </ng-container>
+  
+  
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of employees"></mat-paginator>
+ 

@@ -4,6 +4,8 @@ import { ApplyOfferComponent } from './Candidats/apply-offer/apply-offer.compone
 import { ListCandidatsComponent } from './Candidats/list-candidats/list-candidats.component';
 import { TemplateCandidatComponent } from './Candidats/template-candidat/template-candidat.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './forgot-password/update-password/update-password.component';
 import { LoginComponent } from './login/login.component';
 import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-offemployee/working-hours-offemployee.component';
 import { WorkingHoursComponent } from './working-hours/working-hours.component';
@@ -29,6 +31,10 @@ const routes: Routes = [
   { path: 'list-candidat', pathMatch: 'full', component: ListCandidatsComponent },
   { path: 'AllWorkingHours', pathMatch: 'full', component: WorkingHoursComponent },
   { path: 'AllWorkingHoursByEmployee', pathMatch: 'full', component: WorkingHoursOffemployeeComponent },
+  { path: 'Forgotpasword/:email', pathMatch: 'full', component: UpdatePasswordComponent },
+  { path: 'Reset', pathMatch: 'full', component: ForgotPasswordComponent },
+  
+  
   
   
   

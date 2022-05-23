@@ -96,7 +96,7 @@ export class NavbarComponent implements OnInit {
 
 
   showProfil() {
-    this.router.navigate(['profil/personal']);
+    this.router.navigate(['profil']);
   }
 
 

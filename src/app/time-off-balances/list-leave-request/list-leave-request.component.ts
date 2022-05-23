@@ -48,6 +48,7 @@ export class ListLeaveRequestComponent implements OnInit {
       .then((data) => {
        this.LeaveRequestList=data;
      
+     
       
       });
   }

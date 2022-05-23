@@ -1,1 +1,75 @@
-<p>update-profil works!</p>
+
+
+
+<div class="update">
+    <mat-card  class="update__profile"> 
+       
+            <div class="mat-card-title update__profile__title"> </div>     
+            <form class="update__profile__form" [formGroup]="form" (ngSubmit)="update()">
+                <div class="line">
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>First Name </mat-label>
+                        <input matInput  placeholder="First Name" formControlName="firstName">
+                    </mat-form-field>
+                    <mat-form-field  class="line__half" appearance="outline">
+                        <mat-label> Last Name</mat-label>
+                        <input matInput  placeholder="Last Name" formControlName="lastName">
+                    </mat-form-field>
+                </div>
+                <div class="line">
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label> personnal Email</mat-label>
+                        <input matInput  placeholder="Email" formControlName="personnelEmail">
+                
+                    </mat-form-field>
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>personnal Phone</mat-label>
+                        <input matInput  placeholder="PhoneNumber" formControlName="personnelPhone">
+                    </mat-form-field>
+                </div>
+                <div class="line">
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>city</mat-label>
+                        <input matInput  placeholder="city" formControlName="city">
+                
+                    </mat-form-field>
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>region</mat-label>
+                        <input matInput  placeholder="region" formControlName="region">
+                    </mat-form-field>
+
+                </div>
+                <div class="line">
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>contry</mat-label>
+                        <input matInput  placeholder="contry" formControlName="contry">
+                
+                    </mat-form-field>
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>postal Code</mat-label>
+                        <input matInput  placeholder="postalCode" formControlName="postalCode">
+                    </mat-form-field>
+                    
+                </div>
+                <div class="line">
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>work Phone</mat-label>
+                        <input matInput  placeholder="workPhone" formControlName="workPhone">
+                
+                    </mat-form-field>
+                    <mat-form-field class="line__half" appearance="outline">
+                        <mat-label>cnss Number</mat-label>
+                        <input matInput  placeholder="cnssNumber" formControlName="cnssNumber">
+                    </mat-form-field>
+                    
+                </div>
+              
+              
+                <div class="line line--center">
+                    <button mat-raised-button color="primary" class="submit" type="submit">Update</button>
+                </div>
+            </form>
+           
+       
+    </mat-card>
+</div>

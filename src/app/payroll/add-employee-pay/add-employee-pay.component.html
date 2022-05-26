@@ -15,6 +15,9 @@
 
 
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.year.touched || submitted) && AddFormControl.year.errors?.required">
+                    Year is required
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
@@ -28,13 +31,16 @@
 
 
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.mounth.touched || submitted) && AddFormControl.mounth.errors?.required">
+                    Mounth is required
+                </mat-error>
             </mat-form-field>
 
 
          
 
             <mat-form-field appearance="outline">
-                <mat-label>mealTicket </mat-label>
+                <mat-label>meal Ticket </mat-label>
 
                 <input matInput  formControlName="mealTicket" >
 
@@ -51,6 +57,9 @@
 
 
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.idEmployee.touched || submitted) && AddFormControl.idEmployee.errors?.required">
+                    Employee is required
+                </mat-error>
             </mat-form-field>
              
             <mat-form-field appearance="outline">
@@ -68,7 +77,11 @@
             <mat-form-field appearance="outline">
                 <mat-label>Salary* </mat-label>
 
-                <input matInput placeholder="Slary" formControlName="fixedSalary"   >
+                <input matInput placeholder="Salary" formControlName="fixedSalary"   >
+                <mat-error *ngIf="(AddFormControl.fixedSalary.touched || submitted) && AddFormControl.fixedSalary.errors?.required">
+                    Salary is required
+                </mat-error>
+                
 
             </mat-form-field>
        
@@ -78,8 +91,8 @@
 
     </mat-dialog-content>
     <mat-dialog-actions>
-
-        <button mat-raised-button (click)="onsubmit()">Save</button>
+        <button   mat-raised-button mat-dialog-close color="warn">Cancel</button>  
+        <button mat-raised-button color="primary" (click)="onsubmit()">Save</button>
 
     </mat-dialog-actions>
 </div>

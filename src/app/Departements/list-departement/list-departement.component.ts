@@ -37,11 +37,9 @@ export class ListDepartementComponent implements OnInit {
   delete(id: string) {
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {})
-    // nlanci thread de type observable :no93ed netssana mba3d massakarha il user w nestana il retour de la type boolean 
     dialogRef.afterClosed().subscribe(
       isDeleted => {
         if (isDeleted) {
-          //exécute de code de la suppression 
           console.log(id);
           this.ms.RemoveDepById(id).then(() => this.GetDepartements());
 
@@ -51,14 +49,14 @@ export class ListDepartementComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalDepartementComponent, { width: "600px" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalDepartementComponent, { width: "350px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
         this.GetDepartements();
       }
     });
   }
   edit(row: any) {
-    this.dialog.open(DialogModalDepartementComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalDepartementComponent, { width: "350px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
         this.GetDepartements();
       }

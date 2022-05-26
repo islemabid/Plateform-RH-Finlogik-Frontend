@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MyErrorStateMatcher } from 'src/Helper/MyErrorStateMatcher ';
+
 import { ContratService } from 'src/services/contrat.service';
 import { DepartementService } from 'src/services/departement.service';
 import { EmployeeService } from 'src/services/employee.service';
@@ -17,18 +17,18 @@ import { RoleService } from 'src/services/role.service';
 export class DialogModalEmployeeComponent implements OnInit {
   public titre = "ADD New Employee";
   form: FormGroup;
-  ContratCondition:string;
   idPost: any;
   idContrat: any;
-  response: any;
-  matcher: any;
   type: string;
+  response:any;
   roles: any;
   posts: any;
   contrats: any;
+  email:any;
   action: string = "save";
   hide = true;
   deps: any;
+  contrat:string;
   gender: string[] = ["Femelle", "Male"];
   constructor(
     private roleservice: RoleService,
@@ -36,7 +36,6 @@ export class DialogModalEmployeeComponent implements OnInit {
     private depservice: DepartementService,
     private contratsservice: ContratService,
     private ms: EmployeeService,
-    private formBuilder: FormBuilder,
     private dialog: MatDialogRef<DialogModalEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any) { }
 
@@ -64,7 +63,6 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["workEmail"].setValue(this.editData.workEmail);
       this.form.controls["workPhone"].setValue(this.editData.workPhone);
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
-      this.form.controls["hoursPerWeek"].setValue(this.editData.hoursPerWeek);
       this.form.controls["idRole"].setValue(this.editData.idRole);
       this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
       this.form.controls["idContrat"].setValue(this.editData.idContrat);
@@ -80,21 +78,21 @@ export class DialogModalEmployeeComponent implements OnInit {
   GetAllRoles() {
     this.roleservice.GetALL().then((data) => {
       this.roles = data;
-      console.log(this.roles);
+    
     }
     )
   }
   GetAllDepartement() {
     this.depservice.GetALL().then((data) => {
       this.deps = data;
-      console.log(this.deps);
+      
     }
     )
   }
   GetAllPosts() {
     this.postservice.GetALL().then((data) => {
       this.posts = data;
-      console.log(this.posts);
+      
 
     })
   }
@@ -103,40 +101,47 @@ export class DialogModalEmployeeComponent implements OnInit {
   GetAllContrats() {
     this.contratsservice.GetALL().then((data) => {
       this.contrats = data;
-      console.log(this.contrats);
+     
     }
     )
   }
+  verifEmail(email){
+    this.ms.GetEmployeebyemail(email).then((data)=>{
+      return this.email==data;
+    })
+  }
+  get AddFormControl() {
+    return this.form.controls;
+  }
   initform(): void {
-    this.form = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
-      personnelEmail: ["", Validators.required],
-      personnelPhone: ["", Validators.required],
-      adress: ["", Validators.required],
-      password: ["", Validators.required],
-      diplome: ["", Validators.required],
-      birthDate: ["", Validators.required],
-      gender: ["", Validators.required],
-      city: ["", Validators.required],
-      region: ["", Validators.required],
-      contry: ["", Validators.required],
-      postalCode: ["", Validators.required],
-      Cin: ["", Validators.required],
-      workEmail: ["", Validators.required],
-      workPhone: ["", Validators.required],
-      cnssNumber: ["", Validators.required],
-      hoursPerWeek: ["", Validators.required],
-      imageUrl: ["", Validators.required],
-      idRole: ["", Validators.required],
-      idPost: ["", Validators.required],
-      idContrat: ["", Validators.required],
-      idDepartement: ["", Validators.required],
-      endDate: [""],
+    this.form = new FormGroup({
+      firstName: new FormControl('',[ Validators.required]),
+      lastName:   new FormControl('', [Validators.required]),
+      personnelEmail:  new FormControl('',[Validators.required,Validators.email]),
+      personnelPhone: new FormControl('',[Validators.required,Validators.maxLength(8)]),
+      adress:new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required,Validators.minLength(6)]),
+      diplome: new FormControl('',[Validators.required]),
+      birthDate: new FormControl('',[Validators.required]),
+      gender: new FormControl('',[Validators.required]),
+      city: new FormControl('',[Validators.required]),
+      region: new FormControl('',[Validators.required]),
+      contry: new FormControl('',[Validators.required]),
+      postalCode: new FormControl('',[Validators.required]),
+      Cin: new FormControl('',[Validators.required,Validators.maxLength(8)]),
+      workEmail: new FormControl('',[Validators.required,Validators.email]),
+      workPhone:new FormControl('',[Validators.required]),
+      cnssNumber: new FormControl('',[Validators.required]),
+      imageUrl:new FormControl('',[Validators.required]),
+      idRole: new FormControl('',[Validators.required]),
+      idPost:new FormControl('',[Validators.required]),
+      idContrat: new FormControl('',[Validators.required]),
+      idDepartement: new FormControl('',[Validators.required]),
+      endDate: new FormControl(null)
 
 
     });
-    //this.matcher = new MyErrorStateMatcher();
+   
 
 
 
@@ -150,10 +155,11 @@ export class DialogModalEmployeeComponent implements OnInit {
 
       console.log(this.form.value);
       const saveEmp = { ...this.form.value }
-
+       saveEmp.birthDate=new Date(saveEmp.birthDate.toLocaleString("en-US", {timeZone: 'Europe/Brussels'}));
       saveEmp.imageUrl = this.response
-
-      //.then na3mlouha wa9t c'et bon il resultat fil resolve w nhebou ya3mel 7aja o5ra , 
+      if(this.contrat!="2"){
+        saveEmp.endDate=null;
+      }
       this.ms.saveEmp(saveEmp)
         .then((data) => {
           console.log(data);
@@ -173,9 +179,9 @@ export class DialogModalEmployeeComponent implements OnInit {
   }
   edit() {
     let id = this.editData.id;
+    this.contrat=this.editData.idContrat;
     const EditEmp = { ...this.form.value, id }
-    console.log(EditEmp);
-    EditEmp.imageUrl = this.response
+    EditEmp.imageUrl = this.response;
     this.ms.EditEmp(EditEmp)
       .then((data) => {
         console.log(data);

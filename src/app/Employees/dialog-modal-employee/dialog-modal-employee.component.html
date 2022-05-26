@@ -6,12 +6,17 @@
             <mat-form-field appearance="outline">
                 <mat-label>First Name </mat-label>
                 <input matInput placeholder="firstName" formControlName="firstName">
-
+                <mat-error *ngIf="(AddFormControl.firstName.touched || submitted) && AddFormControl.firstName.errors?.required">
+                    First Name is required
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last Name </mat-label>
                 <input matInput placeholder="lastName" formControlName="lastName">
+                <mat-error *ngIf="(AddFormControl.lastName.touched || submitted) && AddFormControl.lastName.errors?.required">
+                    Last Name is required
+                </mat-error>
 
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -19,13 +24,17 @@
                 <input matInput [matDatepicker]="picker1" placeholder="birthDate" formControlName="birthDate">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
-
-
+                <mat-error *ngIf="(AddFormControl.birthDate.touched || submitted) && AddFormControl.birthDate.errors?.required">
+                    Birth Date is required
+                </mat-error>
+               
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field  hintLabel="Max 8 numbers" appearance="outline">
                 <mat-label>Cin </mat-label>
-                <input matInput placeholder="Cin" formControlName="Cin">
-
+                <input matInput #input maxlength="8" placeholder="Cin" formControlName="Cin">
+                <mat-error *ngIf="(AddFormControl.Cin.touched || submitted) && AddFormControl.Cin.errors?.required">
+                    Cin is required
+                </mat-error>
             </mat-form-field>
             <label id="example-radio-group-label">
                 Choose Gender
@@ -43,37 +52,58 @@
             <mat-form-field appearance="outline">
                 <mat-label>Personnel Email </mat-label>
                 <input matInput placeholder="Ex. pat@example.com" formControlName="personnelEmail" type="email">
-
+                <mat-error  *ngIf="(AddFormControl.personnelEmail.touched || submitted) && AddFormControl.personnelEmail.errors?.required">
+                        Personnel Email is required
+                </mat-error>
+                <mat-error  *ngIf="AddFormControl.personnelEmail.touched && AddFormControl.personnelEmail.errors?.email">
+                   Enter a valid email address
+                </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Work Email </mat-label>
-                <input matInput placeholder="Ex. pat@example.com" formControlName="workEmail" type="email">
-
+                <input matInput placeholder="Ex. pat@example.com"  formControlName="workEmail" type="email">
+                <mat-error  *ngIf="(AddFormControl.workEmail.touched || submitted) && AddFormControl.workEmail.errors?.required">
+                    Work Email is required
+                  </mat-error>
+                  <mat-error  *ngIf="AddFormControl.workEmail.touched && AddFormControl.workEmail.errors?.email">
+                   Enter a valid email address
+                  </mat-error>
             </mat-form-field>
 
 
-            <mat-form-field appearance="outline">
+            <mat-form-field  appearance="outline">
                 <mat-label>Password </mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <mat-error *ngIf="(AddFormControl.password.touched || submitted) && AddFormControl.password.errors?.required">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="AddFormControl.password.touched && AddFormControl.password.errors?.invalidPassword">
+                   Password should have minimum 6 characters
+                  </mat-error>
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label> PersonnelPhone </mat-label>
-                <span matPrefix>+216 &nbsp;</span>
+               
                 <input type="tel" matInput placeholder="personnelPhone" formControlName="personnelPhone"  placeholder="24-446-215">
-
+                <mat-error *ngIf="(AddFormControl.personnelPhone.touched || submitted) && AddFormControl.personnelPhone.errors?.required">
+                    personnel Phone is required
+                </mat-error>
+              
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Work Phone </mat-label>
-                <span matPrefix>+216 &nbsp;</span>
+              
                 <input  type="tel" matInput placeholder="workPhone" formControlName="workPhone" placeholder="24-446-215">
-
+                <mat-error *ngIf="(AddFormControl.workPhone.touched || submitted) && AddFormControl.workPhone.errors?.required">
+                    work Phone is required
+                </mat-error>
             </mat-form-field>
 
 
@@ -81,7 +111,7 @@
             <mat-form-field appearance="outline">
                 <mat-label>Contrat Type </mat-label>
 
-                <mat-select formControlName="idContrat"  placeholder="Contrat Type">
+                <mat-select [(ngModel)]="contrat" formControlName="idContrat"  placeholder="Contrat Type">
                     <mat-option *ngFor="let i of contrats" [value]="i.id" >
                         {{i.shortDescription}}
 
@@ -89,6 +119,9 @@
 
 
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.idContrat.touched || submitted) && AddFormControl.idContrat.errors?.required">
+                    Contrat Type is required
+                </mat-error>
             </mat-form-field>
 
 
@@ -96,13 +129,18 @@
             <mat-form-field appearance="outline">
                 <mat-label>Diplome </mat-label>
                 <input matInput placeholder="diplome" formControlName="diplome">
-
+                <mat-error *ngIf="(AddFormControl.diplome.touched || submitted) && AddFormControl.diplome.errors?.required">
+                    Diplome is required
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Adress </mat-label>
 
                 <input matInput placeholder="adress" formControlName="adress">
+                <mat-error *ngIf="(AddFormControl.adress.touched || submitted) && AddFormControl.adress.errors?.required">
+                    Adress is required
+                </mat-error>
 
             </mat-form-field>
 
@@ -110,25 +148,35 @@
             <mat-form-field appearance="outline">
                 <mat-label>City </mat-label>
                 <input matInput placeholder="city" formControlName="city">
-
+                <mat-error *ngIf="(AddFormControl.city.touched || submitted) && AddFormControl.city.errors?.required">
+                    City is required
+                </mat-error>
+                
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label>region </mat-label>
+                <mat-label>Region </mat-label>
                 <input matInput placeholder="region" formControlName="region">
+                <mat-error *ngIf="(AddFormControl.region.touched || submitted) && AddFormControl.region.errors?.required">
+                    Region is required
+                </mat-error>
 
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Contry</mat-label>
                 <input matInput placeholder="contry" formControlName="contry">
-
+                <mat-error *ngIf="(AddFormControl.contry.touched || submitted) && AddFormControl.contry.errors?.required">
+                    Contry is required
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Postal Code </mat-label>
                 <input matInput placeholder="postalCode" formControlName="postalCode">
-
+                <mat-error *ngIf="(AddFormControl.postalCode.touched || submitted) && AddFormControl.postalCode.errors?.required">
+                    Postal Code  is required
+                </mat-error>
             </mat-form-field>
 
 
@@ -138,7 +186,9 @@
             <mat-form-field appearance="outline">
                 <mat-label>CNSS Number </mat-label>
                 <input matInput placeholder="cnssNumber" formControlName="cnssNumber">
-
+                <mat-error *ngIf="(AddFormControl.cnssNumber.touched || submitted) && AddFormControl.cnssNumber.errors?.required">
+                    CNSS Number   is required
+                </mat-error>
             </mat-form-field>
 
 
@@ -153,29 +203,31 @@
 
 
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.idDepartement.touched || submitted) && AddFormControl.idDepartement.errors?.required">
+                    Departement  is required
+                </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Hours per Week</mat-label>
-                <input matInput placeholder="hoursPerWeek" formControlName="hoursPerWeek">
-
-            </mat-form-field>
+        
 
 
             <mat-form-field appearance="outline">
+                <mat-label>Role </mat-label>
                 <mat-select formControlName="idRole" placeholder="Role">
                     <mat-option *ngFor="let i of roles" [value]="i.id">
                         {{i.name}}
                     </mat-option>
                 </mat-select>
 
-
+                <mat-error *ngIf="(AddFormControl.idRole.touched || submitted) && AddFormControl.idRole.errors?.required">
+                    Role  is required
+                </mat-error>
             </mat-form-field>
            
 
             
                 <mat-form-field appearance="outline">
-                    <mat-label>Posts </mat-label>
+                    <mat-label>Post </mat-label>
 
                     <mat-select formControlName="idPost" placeholder="posts">
                         <mat-option *ngFor="let i of posts" [value]="i.id">
@@ -185,11 +237,14 @@
 
 
                     </mat-select>
+                    <mat-error *ngIf="(AddFormControl.idPost.touched || submitted) && AddFormControl.idPost.errors?.required">
+                        Post  is required
+                    </mat-error>
                 </mat-form-field>
             
                 <app-upload  (onUploadFinished)="uploadFinished($event)"></app-upload>
             <!--lezem  condition d'affichage -->
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" *ngIf="contrat!='2'">
                 <mat-label>End Date </mat-label>
                 <input matInput [matDatepicker]="picker2" placeholder="End Date Contrat" formControlName="endDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -201,8 +256,8 @@
 
     </mat-dialog-content>
     <mat-dialog-actions>
-
-        <button mat-raised-button (click)="onsubmit()">{{action}}</button>
+        <button   mat-raised-button mat-dialog-close color="warn">Cancel</button>  
+        <button mat-raised-button color="primary" (click)="onsubmit()">{{action}}</button>
 
     </mat-dialog-actions>
 </div>

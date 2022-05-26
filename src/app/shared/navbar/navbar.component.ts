@@ -148,7 +148,7 @@ export class NavbarComponent implements OnInit {
   
   out() {
     const PointageOut={
-      action:"In",
+      action:"Out",
       idEmployee:this.iduser
     } as Pointages;
 

@@ -26,7 +26,6 @@ export class ListEmployeeComponent implements OnInit {
   isLoggedIn = false;
   role: any;
   decode: any;
-
   rh = false;
   dataSource: MatTableDataSource<Employees> = new MatTableDataSource(this.ms.tab);
   displayedColumns: string[] = ["Image", "FullName", "Email", "Adress", "PhoneNumber", "Actions"];
@@ -39,7 +38,6 @@ export class ListEmployeeComponent implements OnInit {
   delete(id: string) {
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {})
-    // nlanci thread de type observable :no93ed netssana mba3d massakarha il user w nestana il retour de la type boolean 
     dialogRef.afterClosed().subscribe(
       isDeleted => {
         if (isDeleted) {

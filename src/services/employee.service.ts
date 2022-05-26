@@ -24,7 +24,7 @@ export class EmployeeService {
     return this.httpClient.get<any>('https://localhost:7152/api/Employee/'+ id, this.header).toPromise();
 
   }
-  getEmpByEmail(email: string): Promise<any> {
+  forgotPassword(email: string): Promise<any> {
     return this.httpClient.get<any>('https://localhost:7152/api/Employee/forgotPassword/'+ email).toPromise();
 
   }
@@ -53,6 +53,7 @@ export class EmployeeService {
 
 
   }
-  
-
+  GetEmployeebyemail(email:string): Promise<any> {
+    return this.httpClient.get<any>('https://localhost:7152/api/Employee/Email/'+ email).toPromise();
+  }
 }

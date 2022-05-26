@@ -49,8 +49,10 @@ export class DialogModalPostComponent implements OnInit {
       shortDescription: ["", Validators.required]
 
     });
-   
+  }
 
+  get AddFormControl() {
+    return this.form.controls;
   }
 
   onsubmit() {

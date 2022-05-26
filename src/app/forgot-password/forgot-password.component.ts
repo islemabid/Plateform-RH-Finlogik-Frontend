@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   async resetpassword(){
    
-   await this.employeeService.getEmpByEmail(this.email).then((data)=>this.employee=data);
+   await this.employeeService.forgotPassword(this.email).then((data)=>this.employee=data);
    
    let Mail = {
     ToEmail:this.employee.workEmail,

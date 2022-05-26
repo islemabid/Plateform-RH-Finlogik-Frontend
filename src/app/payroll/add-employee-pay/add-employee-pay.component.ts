@@ -37,7 +37,7 @@ export class AddEmployeePayComponent implements OnInit {
 
   }
   onsubmit() {
-    //.then na3mlouha wa9t c'et bon il resultat fil resolve w nhebou ya3mel 7aja o5ra , 
+
     this.employeePay.saveEmp(this.form.value)
       .then((data) => {
         console.log(data);
@@ -61,6 +61,8 @@ export class AddEmployeePayComponent implements OnInit {
 
 
   }
-
+  get AddFormControl() {
+    return this.form.controls;
+  }
 
 }

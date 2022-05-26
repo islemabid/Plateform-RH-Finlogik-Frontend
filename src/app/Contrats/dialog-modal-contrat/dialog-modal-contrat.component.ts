@@ -52,13 +52,12 @@ export class DialogModalContratComponent implements OnInit {
  
 
   }
-
+  get AddFormControl() {
+    return this.form.controls;
+  }
   onsubmit() {
     if (!this.editData) {
-      console.log(this.form.value);
       const saveContrat = { ...this.form.value }
-
-      //.then na3mlouha wa9t c'et bon il resultat fil resolve w nhebou ya3mel 7aja o5ra , 
       this.contratService.saveContrat(saveContrat)
         .then((data) => {
           console.log(data);

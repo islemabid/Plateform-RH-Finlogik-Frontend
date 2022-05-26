@@ -44,7 +44,9 @@ export class DialogModalDepartementComponent implements OnInit {
     });
    
   }
-
+  get AddFormControl() {
+    return this.form.controls;
+  }
   onsubmit() {
     if (!this.editData) {
       console.log(this.form.value);

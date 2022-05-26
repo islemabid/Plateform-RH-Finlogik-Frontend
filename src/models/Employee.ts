@@ -16,7 +16,6 @@ export interface Employees {
     workEmail: string;
     workPhone: string;
     cnssNumber: string;
-    hoursPerWeek: string;
     imageUrl: string;
     birthDate: string;
     endDate: string;

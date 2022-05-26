@@ -53,14 +53,14 @@ export class PostsComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalPostComponent, { width: "600px" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalPostComponent, { width: "350px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
         this.GetAllPosts();
       }
     });
   }
   edit(row: any) {
-    this.dialog.open(DialogModalPostComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalPostComponent, { width: "350px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
         this.GetAllPosts();
       }

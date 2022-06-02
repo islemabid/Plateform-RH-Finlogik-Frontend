@@ -13,9 +13,8 @@ export class DialogModalDepartementComponent implements OnInit {
   public titre = "ADD New Departement";
   form: FormGroup;
   response: any;
-  matcher: any;
-
   action: string = "save";
+  invalid=false;
 
   constructor(
 
@@ -26,7 +25,6 @@ export class DialogModalDepartementComponent implements OnInit {
 
   ngOnInit(): void {
     this.initform();
-    console.log(this.editData);
     if (this.editData) {
       this.titre = "Update Departement"
       this.action = "edit";
@@ -53,9 +51,10 @@ export class DialogModalDepartementComponent implements OnInit {
       const saveDep = { ...this.form.value }
       this.departementservice.saveDep(saveDep)
         .then((data) => {
-          console.log(data);
           this.form.reset();
           this.dialog.close('Save');
+        }).catch(err=> {
+          this.invalid=true;
         });
     }
     else {
@@ -70,7 +69,6 @@ export class DialogModalDepartementComponent implements OnInit {
 
     this.departementservice.EditDep(EditDep)
       .then((data) => {
-        console.log(data);
         this.form.reset();
         this.dialog.close('Update');
 

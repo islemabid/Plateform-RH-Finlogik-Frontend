@@ -49,9 +49,11 @@
 
         &.line--center {
           justify-content: center;
+         
 
           .submit {
-            width: 200px;
+            width: 100px;
+            margin:10px;
           }
         }
         

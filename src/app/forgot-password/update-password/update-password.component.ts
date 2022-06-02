@@ -26,5 +26,7 @@ export class UpdatePasswordComponent implements OnInit {
   reset(){
     this.employeeService.EditPassword(this.form.value).then((data)=>this.route.navigate(['login']));
   }
-
+  get AddFormControl() {
+    return this.form.controls;
+  }
 }

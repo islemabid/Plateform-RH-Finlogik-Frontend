@@ -30,7 +30,7 @@ export class ContratService {
 
   GetALL(): Promise<Contrats[]> {
 
-    return this.httpClient.get<any[]>('https://localhost:7152/api/Contrat/all', this.header).toPromise();
+    return this.httpClient.get<any[]>('https://localhost:7152/api/Contrat/all').toPromise();
 
 
   }

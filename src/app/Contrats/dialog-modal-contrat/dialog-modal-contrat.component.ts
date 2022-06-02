@@ -16,6 +16,7 @@ export class DialogModalContratComponent implements OnInit {
   contrats: any;
   action: string = "save";
   hide = true;
+  invalid=false;
 
   constructor(
     private contratService: ContratService,
@@ -63,8 +64,8 @@ export class DialogModalContratComponent implements OnInit {
           console.log(data);
           this.form.reset();
           this.dialog.close('Save');
-
-
+        }).catch(err => {
+          this.invalid=true;
 
         });
 

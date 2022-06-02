@@ -2,51 +2,79 @@
     <mat-dialog-content>
 
         <form [formGroup]="form">
-
-            <mat-form-field appearance="outline">
-                <mat-label> Name </mat-label>
+            <mat-error *ngIf="invalid" >Fill the required fields!</mat-error>
+            <div class="line">
+            <mat-form-field   class="line__half"  appearance="outline">
+                <mat-label> Name* </mat-label>
                 <input matInput placeholder="Name" formControlName="OfferName">
+                <mat-error *ngIf="(AddFormControl.OfferName.touched || submitted) && AddFormControl.OfferName.errors?.required">
+                    Name is required
+                </mat-error>
 
             </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Description </mat-label>
-                <textarea  matInput  placeholder="description" formControlName="OfferDescription"></textarea>
-
-            </mat-form-field>
-            
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label> Contract Type</mat-label>
+          
+            <mat-form-field class="line__half" appearance="outline">
+                <mat-label> Contract Type*</mat-label>
                 <mat-select formControlName="type" >
                       <mat-option *ngFor="let type of contractTypes"  [value]="type.shortDescription" >{{type.shortDescription}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="(AddFormControl.type.touched || submitted) && AddFormControl.type.errors?.required">
+                    Contract Type is required
+                </mat-error>
              </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OfferMinExperience </mat-label>
+            </div>
+            <!--div>
+                <label> Choose options* </label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [formControl]="IsDeleted">
+                  <mat-radio-button  class="example-radio-button" value="1">Activate</mat-radio-button>
+                  <mat-radio-button class="example-radio-button" value="0">UnActivate</mat-radio-button>
+                  <mat-error *ngIf="(AddFormControl.IsDeleted.touched || submitted) && AddFormControl.IsDeleted.errors?.required">
+                    Choose options is required
+                </mat-error>
+                </mat-radio-group>
+              </div-->
+            <div class="line">
+            <mat-form-field  class="line__half" appearance="outline">
+                <mat-label>Min Experience* </mat-label>
                 <input matInput  placeholder="MinExperience" formControlName="OfferMinExperience" type="number">
-
+                <mat-error *ngIf="(AddFormControl.OfferMinExperience.touched || submitted) && AddFormControl.OfferMinExperience.errors?.required">
+                    Min Experience is required
+                </mat-error>
             </mat-form-field>
+             
+        
 
-            <mat-form-field appearance="fill">
-                <mat-label>Choose a Expiration Date</mat-label>
+            <mat-form-field class="line__half" appearance="outline">
+                <mat-label>Choose a Expiration Date*</mat-label>
                 <input matInput [matDatepicker]="picker"  formControlName="ExpirationDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="(AddFormControl.ExpirationDate.touched || submitted) && AddFormControl.ExpirationDate.errors?.required">
+                    Expiration Date is required
+                </mat-error>
               </mat-form-field>
-              <div>
-                <label> Offer IsActive: </label>
-                <mat-radio-group [formControl]="IsDeleted">
-                  <mat-radio-button value="False">Activate</mat-radio-button>
-                  <mat-radio-button value="True">UnActivate</mat-radio-button>
-                </mat-radio-group>
-              </div>
+            </div>
+            <div class="line">
+            <mat-form-field class="line__full" appearance="outline">
+                <mat-label>Description* </mat-label>
+                <textarea  matInput  placeholder="description" formControlName="OfferDescription"></textarea>
+                <mat-error *ngIf="(AddFormControl.OfferDescription.touched || submitted) && AddFormControl.OfferDescription.errors?.required">
+                    Description is required
+                </mat-error>
+            </mat-form-field>
+           </div>
+        
+         
 
         </form>
 
     </mat-dialog-content>
     <mat-dialog-actions>
 
-        <button mat-raised-button (click)="onsubmit()">{{action}}</button>
+        <div class="line line--center">
+            <button   mat-raised-button mat-dialog-close  class="submit"  color="warn">Cancel</button>  
+            <button mat-raised-button color="primary" class="submit"   (click)="onsubmit()">{{action}}</button>
+   </div>
 
     </mat-dialog-actions>
 </div>

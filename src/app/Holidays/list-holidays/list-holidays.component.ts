@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { HolidaysService } from 'src/services/holidays.service';
@@ -10,7 +10,7 @@ import { HolidaysService } from 'src/services/holidays.service';
 })
 export class ListHolidaysComponent implements OnInit {
 
-  Events: any[] = [{"title":"","startDate":new Date(),"endDate":new Date(),"color":""}]
+  Events: any[];
   calendarOptions: CalendarOptions = {
     headerToolbar: {
       left: 'prev,next today',
@@ -23,28 +23,30 @@ export class ListHolidaysComponent implements OnInit {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    events:this.Events
+    events:[]
   };
   constructor(private holidayService:HolidaysService) {}
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr);
   }
-  ngOnInit() {
-    setTimeout(() => {
-     this.holidayService.GetAllHolidays().then((data)=>{
-       console.log(data);
-       this.Events.push({"title":data.name,"startDate":data.startDate,"endDate":data.endDate,"color":"#FF0000"});
-       console.log(this.Events);
+  getallHolidays(){
+    this.holidayService.GetAllHolidays().then(data=>{
+      let event=[];
+      event.push(data);
+      console.log(event);
+    
       
-      });
-    }, 2200);
-    setTimeout(() => {
+    })
+  }
+  ngOnInit() {
+      this.getallHolidays();
+     
       this.calendarOptions = {
         initialView: 'dayGridMonth',
         dateClick: this.onDateClick.bind(this),
         events: this.Events,
       };
-    }, 2500);
+    
   }
 
 

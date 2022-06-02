@@ -13,4 +13,8 @@ export class MailService {
    
     return this.httpClient.post<any>('https://localhost:7152/api/Mail/Send', mail).toPromise();
   }
+  sendMailCandidat(mail:Email): Promise<any> {
+   
+    return this.httpClient.post<any>('https://localhost:7152/api/Mail/SendCandidatMail', mail).toPromise();
+  }
 }

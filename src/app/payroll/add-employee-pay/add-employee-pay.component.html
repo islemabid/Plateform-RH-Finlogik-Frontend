@@ -1,7 +1,7 @@
 <div class="example-container">
   
     <mat-dialog-content>
-
+        <mat-error *ngIf="invalid" >Fill the required fields !</mat-error>
         <form [formGroup]="form">
               
               <mat-form-field appearance="outline">
@@ -40,7 +40,7 @@
          
 
             <mat-form-field appearance="outline">
-                <mat-label>meal Ticket </mat-label>
+                <mat-label>Dinner Gift Cards </mat-label>
 
                 <input matInput  formControlName="mealTicket" >
 
@@ -63,9 +63,9 @@
             </mat-form-field>
              
             <mat-form-field appearance="outline">
-                <mat-label>ticketPassGift </mat-label>
+                <mat-label>Gift Cards </mat-label>
 
-                <input matInput placeholder="ticketPassGift" formControlName="ticketPassGift"  >
+                <input matInput formControlName="ticketPassGift"  >
 
             </mat-form-field>
             <mat-form-field appearance="outline">
@@ -74,7 +74,8 @@
                 <input matInput placeholder="prime" formControlName="prime" >
 
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <div class="line">
+            <mat-form-field   class="line__half" appearance="outline">
                 <mat-label>Salary* </mat-label>
 
                 <input matInput placeholder="Salary" formControlName="fixedSalary"   >
@@ -84,7 +85,7 @@
                 
 
             </mat-form-field>
-       
+           </div>
        
            
         </form>

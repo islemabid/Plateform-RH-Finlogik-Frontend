@@ -16,6 +16,7 @@ export class DialogModalOfferComponent implements OnInit {
   response: any;
   action: string = "save";
   contractTypes:any;
+  invalid=false;
 
   constructor (
    private offerservice: OfferService,
@@ -47,11 +48,14 @@ export class DialogModalOfferComponent implements OnInit {
       OfferName: ["", Validators.required],
       OfferDescription: ["", Validators.required],
       type: ["", Validators.required],
-      OfferMinExperience: [""],
+      OfferMinExperience: ["", Validators.required],
       ExpirationDate: ["", Validators.required],
-      IsDeleted:[Validators.required]
+      IsDeleted:[0,Validators.required]
     });
     
+  }
+  get AddFormControl() {
+    return this.form.controls;
   }
   
   GetAllContrats() {
@@ -68,11 +72,14 @@ export class DialogModalOfferComponent implements OnInit {
       const saveOffer = { ...this.form.value }
       this.offerservice.saveOffer(saveOffer)
         .then((data) => {
-          console.log(data);
+         
           this.form.reset();
           this.dialog.close('Save');
-        });
-    }
+        }).catch(err=> {
+      
+            this.invalid=true;});
+        }
+        
     else {
       this.edit();
     }

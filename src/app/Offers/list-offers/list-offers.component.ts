@@ -39,11 +39,9 @@ export class ListOffersComponent implements OnInit {
   delete(id: string) {
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {})
-    // nlanci thread de type observable :no93ed netssana mba3d massakarha il user w nestana il retour de la type boolean 
     dialogRef.afterClosed().subscribe(
       isDeleted => {
         if (isDeleted) {
-          //exécute de code de la suppression 
           console.log(id);
           this.offerService.RemoveOfferById(id).then(() => this.GetOffers());
 
@@ -53,7 +51,7 @@ export class ListOffersComponent implements OnInit {
     )
   }
   create() {
-    this.dialog.open(DialogModalOfferComponent, { width: "500px" }).afterClosed().subscribe(val => {
+    this.dialog.open(DialogModalOfferComponent, { width: "600px" }).afterClosed().subscribe(val => {
       if (val == 'Save') {
         this.GetOffers();
       }

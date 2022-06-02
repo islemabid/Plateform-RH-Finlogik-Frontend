@@ -2,7 +2,7 @@
     <mat-dialog-content>
 
         <form [formGroup]="form">
-
+            <mat-error *ngIf="invalid" >Fill the required fields !</mat-error>
             <mat-form-field appearance="outline">
                 <mat-label> Name </mat-label>
                 <input matInput  placeholder="Name" formControlName="shortDescription">

@@ -28,6 +28,8 @@ export class DialogModalEmployeeComponent implements OnInit {
   action: string = "save";
   hide = true;
   deps: any;
+  invalid=false;
+  verif=false;
   contrat:string;
   gender: string[] = ["Femelle", "Male"];
   constructor(
@@ -67,8 +69,10 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
       this.form.controls["idContrat"].setValue(this.editData.idContrat);
       this.form.controls["idPost"].setValue(this.editData.idPost);
+      if(this.editData.idContrat!=2){this.form.controls["endDate"].setValue(this.editData.endDate);}
+      
     }
-    console.log(this.form.value);
+   
 
     this.GetAllRoles();
     this.GetAllPosts();
@@ -148,30 +152,35 @@ export class DialogModalEmployeeComponent implements OnInit {
   }
   public uploadFinished = (event: any) => {
     this.response = event.toString();
-    console.log(this.response.toString());
+    
   }
   onsubmit() {
     if (!this.editData) {
-
-      console.log(this.form.value);
       const saveEmp = { ...this.form.value }
        saveEmp.birthDate=new Date(saveEmp.birthDate.toLocaleString("en-US", {timeZone: 'Europe/Brussels'}));
       saveEmp.imageUrl = this.response
-      if(this.contrat!="2"){
+      if(this.contrat=="2"){
         saveEmp.endDate=null;
       }
+   
       this.ms.saveEmp(saveEmp)
         .then((data) => {
-          console.log(data);
-          this.form.reset();
-          this.dialog.close('Save');
+      
+          
+              this.form.reset();
+              this.dialog.close('Save');
+        
+        
+         }).catch(err=> {
+        
+           if(err="user found"){
+             this.verif=true;
+           }
 
-
-
-        });
-
-
-    }
+           
+       
+        });}
+    
     else {
       this.edit();
     }
@@ -184,11 +193,8 @@ export class DialogModalEmployeeComponent implements OnInit {
     EditEmp.imageUrl = this.response;
     this.ms.EditEmp(EditEmp)
       .then((data) => {
-        console.log(data);
         this.form.reset();
         this.dialog.close('Update');
-
-
       });
   }
 

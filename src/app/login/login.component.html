@@ -4,7 +4,9 @@
       <div class="auth-form-light text-left py-5 px-4 px-sm-5">
         <h1 style="text-align:center">Login To your Account !</h1>
         <form class="pt-3" [formGroup]="form" (ngSubmit)="login()">
-           <mat-error *ngIf="invalidLogin" >Invalid username or password </mat-error>
+           <mat-error *ngIf="invalidLogin" >Invalid Email or password </mat-error>
+          
+           
           <div class="form-group">
             <mat-error  *ngIf="(loginFormControl.email.touched || submitted) && loginFormControl.email.errors?.required">
               Email is required
@@ -12,6 +14,7 @@
             <mat-error  *ngIf="loginFormControl.email.touched && loginFormControl.email.errors?.email">
              Enter a valid email address
             </mat-error>
+       
            
             <div class="input-group mb-2">
               <div class="input-group-prepend">

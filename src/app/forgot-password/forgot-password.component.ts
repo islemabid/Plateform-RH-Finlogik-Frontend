@@ -25,15 +25,10 @@ export class ForgotPasswordComponent implements OnInit {
    let Mail = {
     ToEmail:this.employee.workEmail,
      Subject: `Forgot your password? We can help.`,
-    Body: `Bonjour ${this.employee.firstName},   Forgot your password? No worries, we’ve got you covered. Click the link below to reset your password.`
-    .link("http://localhost:4200/Forgotpasword/"+this.email)} as Email;
-    this.mailService.sendMail(Mail).then(()=>{
-    this.alertNotification.showNotification("check our gmail","OK");
-   
- 
-  });
-
-  }
- 
-
+    Body:`Hello ${this.employee.firstName}`
+    } as Email;
+  this.mailService.sendMail(Mail).then(()=>{
+  this.alertNotification.showNotification("check our gmail","OK");
+ });
+}
 }

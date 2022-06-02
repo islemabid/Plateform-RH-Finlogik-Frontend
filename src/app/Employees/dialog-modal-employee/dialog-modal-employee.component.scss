@@ -12,3 +12,24 @@
   .example-radio-button {
     margin: 5px;
   }
+  .line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &__half {
+      flex: 45% 0 0;
+    }
+
+    &__full {
+      flex: 100% 0 0;
+    }
+    &.line--center {
+      justify-content: center;
+
+      .submit {
+        width: 100px;
+      }
+    }
+  }

@@ -29,21 +29,20 @@ export class LoginComponent implements OnInit {
     })
   }
   login() {
+  
     this.loginService.authentication(this.form.value)
       .then(response => {
-        console.log(response);
         const token = (<any>response).token;
-        console.log(token);
         localStorage.setItem("jwt", token);
         this.decodedToken = this.loginService.decodejwt(token);
         this.role = this.decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
         this.loginService.userRole.emit(this.role);
-        console.log(this.role);
         this.router.navigate(['Employees']);
       }).catch(err => {
         this.invalidLogin = true;
         console.log(err);
       });
+    
   }
   get loginFormControl() {
     return this.form.controls;

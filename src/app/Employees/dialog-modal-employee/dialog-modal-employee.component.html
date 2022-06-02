@@ -2,7 +2,8 @@
     <mat-dialog-content>
 
         <form [formGroup]="form">
-
+            <mat-error *ngIf="invalid" >Fill the required fields!</mat-error>
+            <mat-error *ngIf="verif">   Employee already exists!</mat-error>
             <mat-form-field appearance="outline">
                 <mat-label>First Name </mat-label>
                 <input matInput placeholder="firstName" formControlName="firstName">
@@ -241,23 +242,33 @@
                         Post  is required
                     </mat-error>
                 </mat-form-field>
-            
-                <app-upload  (onUploadFinished)="uploadFinished($event)"></app-upload>
-            <!--lezem  condition d'affichage -->
-            <mat-form-field appearance="outline" *ngIf="contrat!='2'">
+                
+                
+            <div class="line">
+            <mat-form-field  class="ine__half" appearance="outline" *ngIf="contrat!='2'">
                 <mat-label>End Date </mat-label>
                 <input matInput [matDatepicker]="picker2" placeholder="End Date Contrat" formControlName="endDate">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
-
+             
 
             </mat-form-field>
+            </div>
+            <div class="line">
+                <div class="line__half">
+                    <app-upload  (onUploadFinished)="uploadFinished($event)"></app-upload>
+
+                </div>
+            </div>
+          
         </form>
 
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button   mat-raised-button mat-dialog-close color="warn">Cancel</button>  
-        <button mat-raised-button color="primary" (click)="onsubmit()">{{action}}</button>
-
+        <div class="line line--center">
+                  <button   mat-raised-button mat-dialog-close  class="submit"  color="warn">Cancel</button>  
+                  <button mat-raised-button color="primary" class="submit"   (click)="onsubmit()">{{action}}</button>
+         </div>
+         
     </mat-dialog-actions>
 </div>

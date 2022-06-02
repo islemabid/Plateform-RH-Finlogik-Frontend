@@ -87,7 +87,7 @@ export class ListCandidatsComponent implements OnInit {
       Seriez vous disponible la semaine prochaine pour un entretien téléphonique ?
       A très bientôt,`
     } as Email;
-   this.mailService.sendMail(Mail).then(()=>{
+   this.mailService.sendMailCandidat(Mail).then(()=>{
     this.alertNotification.showNotification("Email sent successfully","OK");
    });
   }); 
@@ -106,7 +106,7 @@ export class ListCandidatsComponent implements OnInit {
     Cordialement.
     `
     } as Email;
-    this.mailService.sendMail(Mail).then(()=>{
+    this.mailService.sendMailCandidat(Mail).then(()=>{
     this.alertNotification.showNotification("Email sent successfully","OK");
    
  

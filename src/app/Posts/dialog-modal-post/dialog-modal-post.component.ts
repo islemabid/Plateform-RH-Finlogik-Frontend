@@ -16,6 +16,7 @@ export class DialogModalPostComponent implements OnInit {
   posts: any;
   action: string = "save";
   hide = true;
+  invalid=false;
 
   constructor(
     private postService: PostService,
@@ -39,7 +40,7 @@ export class DialogModalPostComponent implements OnInit {
   GetAllPosts() {
     this.postService.GetALL().then((data) => {
       this.posts = data;
-      console.log(this.posts);
+     
     }
     )
   }
@@ -58,18 +59,15 @@ export class DialogModalPostComponent implements OnInit {
   onsubmit() {
     if (!this.editData) {
       console.log(this.form.value);
-      const savePost = { ...this.form.value }
-
-      //.then na3mlouha wa9t c'et bon il resultat fil resolve w nhebou ya3mel 7aja o5ra , 
+      const savePost = { ...this.form.value } 
       this.postService.savePost(savePost)
         .then((data) => {
-          console.log(data);
+        
           this.form.reset();
           this.dialog.close('Save');
-
-
-
-        });
+         }).catch(err=>{
+           this.invalid=true;
+         })
 
 
     }

@@ -12,6 +12,7 @@ import { EmployeeService } from 'src/services/employee.service';
 })
 export class AddEmployeePayComponent implements OnInit {
   form: FormGroup;
+  invalid=false;
   years = ["2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"];
   mounths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   employees:any;
@@ -40,23 +41,18 @@ export class AddEmployeePayComponent implements OnInit {
 
     this.employeePay.saveEmp(this.form.value)
       .then((data) => {
-        console.log(data);
         this.form.reset();
         this.dialog.close('Save');
-
-
-
-      });
-
-
-  }
+       }).catch((err)=>{
+        this.invalid=true;
+       });
+}
   
   GetEmployees(): void {
        this.employee.GetALL()
       .then((data) => {
        this.employees=data;
-       console.log(this.employee);
-       
+      
       });
 
 

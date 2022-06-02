@@ -44,6 +44,7 @@ import { WorkingHoursFiltersComponent } from './working-hours/working-hours-filt
 import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-offemployee/working-hours-offemployee.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './forgot-password/update-password/update-password.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 

@@ -31,16 +31,15 @@ export class ListHolidaysComponent implements OnInit {
   }
   getallHolidays(){
     this.holidayService.GetAllHolidays().then(data=>{
-      let event=[];
-      event.push(data);
-      console.log(event);
+     
+      this.Events=data;
     
       
     })
   }
   ngOnInit() {
       this.getallHolidays();
-     
+      console.log(this.Events);
       this.calendarOptions = {
         initialView: 'dayGridMonth',
         dateClick: this.onDateClick.bind(this),

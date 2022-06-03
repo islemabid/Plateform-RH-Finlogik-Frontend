@@ -162,7 +162,11 @@ export class DialogModalEmployeeComponent implements OnInit {
       if(this.contrat=="2"){
         saveEmp.endDate=null;
       }
-   
+      if(this.form.invalid){
+        this.invalid=true;
+      }
+      if(this.form.valid)
+      {
       this.ms.saveEmp(saveEmp)
         .then((data) => {
       
@@ -172,15 +176,16 @@ export class DialogModalEmployeeComponent implements OnInit {
         
         
          }).catch(err=> {
-        
-           if(err="user found"){
-             this.verif=true;
-           }
+              this.verif=true;
+     
+          
+           
+         
 
            
        
         });}
-    
+      }
     else {
       this.edit();
     }

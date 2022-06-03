@@ -15,6 +15,7 @@ export class DialogModalDepartementComponent implements OnInit {
   response: any;
   action: string = "save";
   invalid=false;
+  submitted = false;
 
   constructor(
 
@@ -46,6 +47,7 @@ export class DialogModalDepartementComponent implements OnInit {
     return this.form.controls;
   }
   onsubmit() {
+    this.submitted=true;
     if (!this.editData) {
       console.log(this.form.value);
       const saveDep = { ...this.form.value }

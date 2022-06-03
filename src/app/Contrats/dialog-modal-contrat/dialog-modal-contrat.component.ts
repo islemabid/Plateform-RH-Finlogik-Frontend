@@ -17,6 +17,7 @@ export class DialogModalContratComponent implements OnInit {
   action: string = "save";
   hide = true;
   invalid=false;
+  submitted = false;
 
   constructor(
     private contratService: ContratService,
@@ -57,6 +58,7 @@ export class DialogModalContratComponent implements OnInit {
     return this.form.controls;
   }
   onsubmit() {
+    this.submitted=true;
     if (!this.editData) {
       const saveContrat = { ...this.form.value }
       this.contratService.saveContrat(saveContrat)

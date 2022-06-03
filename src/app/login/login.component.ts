@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   decodedToken: any;
   isLoggedIn = false;
   role: any;
+  submitted = false;
 
   ngOnInit() {
     const token: string = localStorage.getItem("jwt");
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     })
   }
   login() {
-  
+   this.submitted=true;
     this.loginService.authentication(this.form.value)
       .then(response => {
         const token = (<any>response).token;

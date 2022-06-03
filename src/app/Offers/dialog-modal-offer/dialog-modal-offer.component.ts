@@ -17,6 +17,7 @@ export class DialogModalOfferComponent implements OnInit {
   action: string = "save";
   contractTypes:any;
   invalid=false;
+  submitted = false;
 
   constructor (
    private offerservice: OfferService,
@@ -68,6 +69,7 @@ export class DialogModalOfferComponent implements OnInit {
 
   onsubmit() {
     if (!this.editData) {
+      this.submitted=true;
       console.log(this.form.value);
       const saveOffer = { ...this.form.value }
       this.offerservice.saveOffer(saveOffer)

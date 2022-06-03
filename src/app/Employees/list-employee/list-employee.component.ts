@@ -58,6 +58,7 @@ export class ListEmployeeComponent implements OnInit {
     });
   }
   edit(row: any) {
+    console.log(row);
     this.dialog.open(DialogModalEmployeeComponent, { width: "600px", data: row }).afterClosed().subscribe(val => {
       if (val == 'Update') {
         this.GetEmployees();

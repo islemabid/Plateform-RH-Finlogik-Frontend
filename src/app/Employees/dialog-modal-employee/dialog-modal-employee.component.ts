@@ -41,9 +41,15 @@ export class DialogModalEmployeeComponent implements OnInit {
     private dialog: MatDialogRef<DialogModalEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     this.initform();
+    await Promise.all([
+      this.GetAllRoles(),
+      this.GetAllPosts(),
+      this.GetAllContrats(),
+      this.GetAllDepartement()
+    ]);
 
     if (this.editData) {
       this.titre = "Update Employee"
@@ -67,17 +73,12 @@ export class DialogModalEmployeeComponent implements OnInit {
       this.form.controls["cnssNumber"].setValue(this.editData.cnssNumber);
       this.form.controls["idRole"].setValue(this.editData.idRole);
       this.form.controls["idDepartement"].setValue(this.editData.idDepartement);
-      this.form.controls["idContrat"].setValue(this.editData.idContrat);
+      this.form.controls["idContrat"].setValue('Freelance');
       this.form.controls["idPost"].setValue(this.editData.idPost);
       if(this.editData.idContrat!=2){this.form.controls["endDate"].setValue(this.editData.endDate);}
       
     }
    
-
-    this.GetAllRoles();
-    this.GetAllPosts();
-    this.GetAllContrats();
-    this.GetAllDepartement();
   }
   GetAllRoles() {
     this.roleservice.GetALL().then((data) => {
@@ -136,7 +137,7 @@ export class DialogModalEmployeeComponent implements OnInit {
       workEmail: new FormControl('',[Validators.required,Validators.email]),
       workPhone:new FormControl('',[Validators.required]),
       cnssNumber: new FormControl('',[Validators.required]),
-      imageUrl:new FormControl('',[Validators.required]),
+      imageUrl:new FormControl(''),
       idRole: new FormControl('',[Validators.required]),
       idPost:new FormControl('',[Validators.required]),
       idContrat: new FormControl('',[Validators.required]),

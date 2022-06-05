@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Email } from 'src/models/Email';
 import { AlertNotificationService } from 'src/services/alert-notification.service';
 import { EmployeeService } from 'src/services/employee.service';
@@ -11,16 +12,32 @@ import { MailService } from 'src/services/mail.service';
 })
 export class ForgotPasswordComponent implements OnInit {
  employee:any;
- email:string;
-  constructor( private employeeService : EmployeeService,private mailService:MailService,private alertNotification:AlertNotificationService) { }
+ form:FormGroup;
+ invalid=false;
+  constructor( private employeeService : EmployeeService,private formBuilder: FormBuilder,private mailService:MailService,private alertNotification:AlertNotificationService) { }
 
  
   ngOnInit(): void {
-  
+    this.form = this.formBuilder.group({
+      workEmail: ["", Validators.required,Validators.email],
+      
+     
+     
+    })
+  }
+  get AddFormControl() {
+    return this.form.controls;
   }
   async resetpassword(){
-   
-   await this.employeeService.forgotPassword(this.email).then((data)=>this.employee=data);
+ 
+  
+   let obj={...this.form.value};
+   await this.employeeService.forgotPassword(obj.workEmail)
+   .then((data)=>this.employee=data)
+   .catch(err=>{
+      this.invalid=true;
+
+   })
    
    let Mail = {
     ToEmail:this.employee.workEmail,

@@ -9,20 +9,18 @@
         flex:30% 0 0 ;
     }
      &__date  {
-        flex: 40% 0 0;
+        flex: 60% 0 0;
      }
      &__state{
-         flex:20% 0 0 ;
+         flex:30% 0 0 ;
      }
      &__cancel {
-         flex: 10% 0 0 ;;
+         flex: 20% 0 0 ;;
      }
 }  
 .requestLeave {
     max-width: 1024px;
-    //margin:50px;
-   //margin: 50px auto;
-
+  
    &__card {
        &__header {
            height: 50px;

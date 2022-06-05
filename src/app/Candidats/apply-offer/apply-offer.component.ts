@@ -23,13 +23,16 @@ export class ApplyOfferComponent implements OnInit {
   offer:any;
   apply:boolean=false;
   
-  constructor(private offerservice:OfferService,private route : Router,private candidatservice:CandidatsService,private alertNotification:AlertNotificationService,private acivateRoute: ActivatedRoute) { }
+  constructor(private offerservice:OfferService,private route : Router,
+    private candidatservice:CandidatsService,private alertNotification:AlertNotificationService,
+    private acivateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentid = this.acivateRoute.snapshot.params.id;
     this.GetOfferById();
     this.initform();
   }
+
 
   
 

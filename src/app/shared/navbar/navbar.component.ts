@@ -8,6 +8,7 @@ import { NotificationService } from 'src/services/notification.service';
 import * as signalR from '@microsoft/signalr'; 
 import { Pointages } from 'src/models/Pointage';
 import { PointageService } from 'src/services/pointage.service';
+import { AlertNotificationService } from 'src/services/alert-notification.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
   decode: any;
   iduser: any;
   employeeInfo: any;
-  constructor(config: NgbDropdownConfig,private pointage:PointageService, private login: LoginService,private notificationService: NotificationService, private employeeService: EmployeeService, private router: Router) {
+  constructor(config: NgbDropdownConfig,private pointage:PointageService,private alertNotification:AlertNotificationService, private login: LoginService,private notificationService: NotificationService, private employeeService: EmployeeService, private router: Router) {
     config.placement = 'bottom-right';
   }
 
@@ -103,7 +104,7 @@ export class NavbarComponent implements OnInit {
   getUserByID() {
     this.employeeService.getEmpById(this.iduser).then((data) => {
       this.employeeInfo = data;
-      console.log(this.employeeInfo);
+  
     }
     )
   }
@@ -112,7 +113,7 @@ export class NavbarComponent implements OnInit {
     this.notificationService.getNotificationCount().then(  
       notification => {  
         this.notification = notification;  
-        console.log(this.notification);
+        
       }
     );  
   }
@@ -122,14 +123,13 @@ export class NavbarComponent implements OnInit {
     this.notificationService.getNotificationMessage().then(  
       messages => {  
         this.messages = messages; 
-        console.log(this.messages);
+       
       } 
       
     );  
   } 
   
   deleteNotification(msg){
-    console.log(msg);
     this.notificationService.UpdateNotificationStatus(msg).then((data)=>{
      this. getNotificationCount()
       this.getNotificationMessage();
@@ -143,7 +143,9 @@ export class NavbarComponent implements OnInit {
       idEmployee:this.iduser
     } as Pointages;
 
-    this.pointage.AddPointage(PointageIn).then((data)=>{console.log(data)});
+    this.pointage.AddPointage(PointageIn).then((data)=>{
+      this.alertNotification.showNotification("you have to click on the In button  "," ok!");
+    });
   }
   
   out() {
@@ -152,7 +154,8 @@ export class NavbarComponent implements OnInit {
       idEmployee:this.iduser
     } as Pointages;
 
-    this.pointage.AddPointage(PointageOut).then((data)=>{console.log(data)});
+    this.pointage.AddPointage(PointageOut).then((data)=>{this.alertNotification.showNotification("you have to click on the Out button  "," ok!");
+  });
   }
 
 

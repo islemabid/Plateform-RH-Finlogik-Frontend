@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EmployeeService } from 'src/services/employee.service';
 
@@ -9,10 +9,11 @@ import { EmployeeService } from 'src/services/employee.service';
 })
 export class WorkingHoursFiltersComponent implements OnInit {
   @Output() filtersChanged: EventEmitter<object> = new EventEmitter<object>();
-  Date:Date;
   Employees:any;
   selectedType:string;
-  @Input() displaySelectEmployee: boolean = true;
+ 
+  
+  
   constructor(private ms: EmployeeService) { }
 
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class WorkingHoursFiltersComponent implements OnInit {
   }
   searchHandler() {
     
-    this.filtersChanged.emit({ type: this.selectedType,  Date:this.Date});
+    this.filtersChanged.emit({ type: this.selectedType});
   }
 
 }

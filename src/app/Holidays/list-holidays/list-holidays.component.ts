@@ -1,7 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { ConsoleLogger } from '@microsoft/signalr/dist/esm/Utils';
 import { HolidaysService } from 'src/services/holidays.service';
 
 
@@ -28,25 +27,19 @@ export class ListHolidaysComponent implements OnInit {
     events:[]
   };
   constructor(private holidayService:HolidaysService) {}
-  onDateClick(res: any) {
-    alert('Clicked on date : ' + res.dateStr);
-  }
+
   getallHolidays(){
     this.holidayService.GetAllHolidays().then(data=>{
        this.Events=data;
-       console.log(this.Events);
        this.calendarOptions = {
         initialView: 'dayGridMonth',
-        dateClick: this.onDateClick.bind(this),
-        events: this.Events.map(event => ({ title: event.title, date: event.start.split('T')[0] })),
+        events: this.Events.map(event => ({ title: event.title, date: event.date.split('T')[0] })),
       };
     })
   }
   ngOnInit() {
       this.getallHolidays();
-   
-    
-  }
-
+   }
+  
 
 }

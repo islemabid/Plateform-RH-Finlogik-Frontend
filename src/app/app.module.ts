@@ -45,6 +45,9 @@ import { WorkingHoursOffemployeeComponent } from './working-hours/working-hours-
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './forgot-password/update-password/update-password.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
 
 
 
@@ -99,6 +102,7 @@ export function tokenGetter() {
     OfferModule,
     BrowserModule,
     AppRoutingModule,
+    FullCalendarModule,
     NgbModule,
     ProfilModule,
     BrowserAnimationsModule,

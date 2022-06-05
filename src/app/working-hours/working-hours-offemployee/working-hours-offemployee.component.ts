@@ -1,10 +1,6 @@
-import { formatDate } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { WorkingHours } from 'src/models/WorkingHours';
-import { EmployeeService } from 'src/services/employee.service';
+
+import { Component, OnInit } from '@angular/core';
+
 import { LoginService } from 'src/services/login.service';
 import { PointageService } from 'src/services/pointage.service';
 
@@ -16,21 +12,18 @@ import { PointageService } from 'src/services/pointage.service';
 })
 export class WorkingHoursOffemployeeComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+ 
   isLoggedIn = false;
   role: any;
   idEmployee:string;
   decode: any;
-   employee = false;
-   employeeFullName:string;
-  dataSource: MatTableDataSource<WorkingHours> = new MatTableDataSource(this.ms.tab);
-  displayedColumns: string[] = [  "Date", "Hours"];
+  Events:any[];
+  employee = false;
+  employeeFullName:string;
+  calendarOptions: { initialView: string; events: any[]; };
 
-  constructor(private ms: PointageService, private login: LoginService,private employeeService:EmployeeService) {
 
-    this.dataSource = new MatTableDataSource(this.ms.tab);
-  }
+  constructor(private ms: PointageService, private login: LoginService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem("jwt")) {
@@ -47,30 +40,15 @@ export class WorkingHoursOffemployeeComponent implements OnInit {
   }
 
 
-  async filtersChangedHandler(filters){
-    this.dataSource.data = await this.ms.GetallWorkingHoursOfAllEmployees();
-    const { type, Date } = filters;
-    
-    this.dataSource.data = this.dataSource.data.filter(data => {
-      const typeCondition = type ? data.idEmployee.includes(type) : true;
-      let dateCondition = true;
-      if (Date) {
-       let date= formatDate( Date.toString(), 'dd-MM-yyyy','en-US');
-       data.date= formatDate( data.date, 'dd-MM-yyyy','en-US');
-       
-       dateCondition =date.includes(data.date);
-       }
-       return typeCondition && dateCondition ;
-  });
 
-  }
   GetAllWorkingHoursOffEmployee(){
     this.ms.GetAllWorkingHoursByIdEmployee(this.idEmployee)
     .then((data) => {
-      this.dataSource.data = data;
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      console.log(this.dataSource.data);
+      this.Events=data;
+      this.calendarOptions = {
+       initialView: 'dayGridMonth',
+       events:this.Events.map(event => ({ title: event.hours+" h ", date: event.date.split('T')[0] }))
+     };
 
     });
   }

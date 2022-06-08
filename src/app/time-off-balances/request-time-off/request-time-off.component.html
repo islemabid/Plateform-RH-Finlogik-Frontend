@@ -32,6 +32,9 @@
                                                     {{i.description}}
                                                 </mat-option>
                                             </mat-select>
+                                            <mat-error *ngIf="(AddFormControl.idLeaveType.touched || submitted) && AddFormControl.idLeaveType.errors?.required">
+                                                Leave Type is required
+                                            </mat-error>
                                         </mat-form-field>
                                     </td>
 
@@ -91,6 +94,9 @@
                             <input matInput [matDatepicker]="picker1"  formControlName="startDate" [(ngModel)]="leaves.start.date">
                             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                             <mat-datepicker #picker1></mat-datepicker>
+                            <mat-error *ngIf="(AddFormControl.startDate.touched || submitted) && AddFormControl.startDate.errors?.required">
+                                start Date is required
+                            </mat-error>
                         </mat-form-field>
                        
                     </td>
@@ -108,6 +114,9 @@
                                 <input matInput  [min]="leaves.start.date" [matDatepicker]="picker2"  formControlName="endDate"[(ngModel)]="leaves.end.date">
                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                 <mat-datepicker #picker2></mat-datepicker>
+                                <mat-error *ngIf="(AddFormControl.endDate.touched || submitted) && AddFormControl.endDate.errors?.required">
+                                    End Date is required
+                                </mat-error>
                             </mat-form-field>
                         
                         </td>
@@ -142,6 +151,10 @@
                                         <mat-option *ngFor="let quantity of quantities.sameDate" [value]="quantity">
                                             {{quantity}}
                                         </mat-option>
+                                        <mat-error *ngIf="(AddFormControl.startDateQuantity.touched || submitted) && AddFormControl.startDateQuantity.errors?.required">
+                                             Choose Start date Quantity is required 
+                                        </mat-error>
+                                        
                                     </mat-select>
                                 </mat-form-field>
                             </td>
@@ -159,6 +172,9 @@
                                                 {{quantity}}
                                             </mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="(AddFormControl.startDateQuantity.touched || submitted) && AddFormControl.startDateQuantity.errors?.required">
+                                            Choose Start date Quantity is required 
+                                       </mat-error>
                                     </mat-form-field>
                                 </td>
 
@@ -175,6 +191,9 @@
                                             <mat-option *ngFor="let quantity of quantities.end" [value]="quantity">
                                                 {{quantity}}
                                             </mat-option>
+                                            <mat-error *ngIf="(AddFormControl.endDateQuantity.touched || submitted) && AddFormControl.endDateQuantity.errors?.required">
+                                                Choose End date Quantity is required 
+                                           </mat-error>
                                         </mat-select>
                                     </mat-form-field>
                                 </td>

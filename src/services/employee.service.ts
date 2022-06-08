@@ -37,9 +37,9 @@ export class EmployeeService {
   }
 
 
-  GetALL(): Promise<Employees[]> {
+  GetALL(): Promise<any> {
 
-    return this.httpClient.get<any[]>('https://localhost:7152/api/Employee/all', this.header).toPromise();
+    return this.httpClient.get<any>('https://localhost:7152/api/Employee/all', this.header).toPromise();
 
 
   }
@@ -53,7 +53,5 @@ export class EmployeeService {
 
 
   }
-  GetEmployeebyemail(email:string): Promise<any> {
-    return this.httpClient.get<any>('https://localhost:7152/api/Employee/Email/'+ email).toPromise();
-  }
+
 }

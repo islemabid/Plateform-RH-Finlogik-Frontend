@@ -1,3 +1,7 @@
 .example-container .mat-form-field + .mat-form-field {
     margin-left: 10px;
   }
+  .error {
+    display: flex;
+    justify-content: center;
+  }

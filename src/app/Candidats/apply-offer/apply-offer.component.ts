@@ -21,6 +21,7 @@ export class ApplyOfferComponent implements OnInit {
   candidatId:any;
   response:any;
   offer:any;
+  invalid:boolean=false;
   apply:boolean=false;
   
   constructor(private offerservice:OfferService,private route : Router,
@@ -49,7 +50,7 @@ export class ApplyOfferComponent implements OnInit {
     this.form = new FormGroup({
       firstName :new FormControl("", [Validators.required]),
       lastName :new FormControl("", [Validators.required]),
-      email:new FormControl("", [Validators.required]),
+      email:new FormControl("", [Validators.required,Validators.email]),
       phoneNumber:new FormControl("", [Validators.required]),
       cvUrl :new FormControl("",[Validators.required]),
       coverLetter:new FormControl("",[Validators.required]),
@@ -57,11 +58,16 @@ export class ApplyOfferComponent implements OnInit {
     });
   }
    
+  get AddFormControl() {
+    return this.form.controls;
+  }
  async  save(){
-
+  if(this.form.invalid){
+    this.invalid=true;
+  }
    this.candidat = this.form.value as Candidat;
    this.candidatservice.AddCandidat(this.candidat).then(async (data)=>{
-    this.candidatId = data.toString();
+   this.candidatId = data.toString();
     const applicationOffers = {
       CoverLetter:this.candidat.coverLetter,
       IdCandidat: this.candidatId,

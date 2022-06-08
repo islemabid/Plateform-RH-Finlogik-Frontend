@@ -219,9 +219,13 @@
                 }
 
                 .ellipsis {
-                  max-width: 500px;
+                  max-width: 600px;
                   //overflow: hidden;
                   text-overflow: ellipsis;
+                }
+                .icon {
+                  flex:60% 0 0;
+                  
                 }
                 .rtl & {
                   i{

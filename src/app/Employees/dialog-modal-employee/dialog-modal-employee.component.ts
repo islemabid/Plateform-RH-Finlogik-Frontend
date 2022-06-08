@@ -110,11 +110,7 @@ export class DialogModalEmployeeComponent implements OnInit {
     }
     )
   }
-  verifEmail(email){
-    this.ms.GetEmployeebyemail(email).then((data)=>{
-      return this.email==data;
-    })
-  }
+
   get AddFormControl() {
     return this.form.controls;
   }
@@ -153,8 +149,8 @@ export class DialogModalEmployeeComponent implements OnInit {
   }
   public uploadFinished = (event: any) => {
     this.response = event.toString();
-    
   }
+
   onsubmit() {
     if (!this.editData) {
       const saveEmp = { ...this.form.value }
@@ -170,33 +166,26 @@ export class DialogModalEmployeeComponent implements OnInit {
       {
       this.ms.saveEmp(saveEmp)
         .then((data) => {
-      
-          
-              this.form.reset();
-              this.dialog.close('Save');
+           this.form.reset();
+           this.dialog.close('Save');
         
-        
-         }).catch(err=> {
+     }).catch(err=> {
               this.verif=true;
      
-          
-           
-         
-
-           
-       
-        });}
-      }
+     });}
+    }
     else {
       this.edit();
     }
 
   }
+  
   edit() {
     let id = this.editData.id;
     this.contrat=this.editData.idContrat;
     const EditEmp = { ...this.form.value, id }
     EditEmp.imageUrl = this.response;
+    EditEmp.birthDate=new Date(EditEmp.birthDate.toLocaleString("en-US", {timeZone: 'Europe/Brussels'}));
     this.ms.EditEmp(EditEmp)
       .then((data) => {
         this.form.reset();

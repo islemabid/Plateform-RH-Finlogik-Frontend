@@ -27,6 +27,10 @@
     &__form {
       max-width: 70%;
       margin: 0 auto;
+      &__error {
+        display: flex;
+        justify-content: center;
+      }
 
       .line {
         display: flex;

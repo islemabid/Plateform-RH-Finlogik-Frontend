@@ -3,36 +3,60 @@
         <app-card-offer [offer]="offer" [displayApply]="false">
             <div class="mat-card-title apply__offer__title"> Please fill this form for applying !</div>     
             <form class="apply__offer__form" [formGroup]="form" (ngSubmit)="save()">
+                <mat-error *ngIf="invalid" class=" apply__offer__form__error" >Fill the required fields!</mat-error>
                 <div class="line">
                     <mat-form-field class="line__half" appearance="outline">
-                        <mat-label>First Name </mat-label>
+                        <mat-label>First Name *</mat-label>
                         <input matInput  placeholder="First Name" formControlName="firstName">
+                        <mat-error *ngIf="(AddFormControl.firstName.touched || submitted) && AddFormControl.firstName.errors?.required">
+                            First Name is required
+                        </mat-error>
                     </mat-form-field>
                     <mat-form-field  class="line__half" appearance="outline">
-                        <mat-label> Last Name</mat-label>
+                        <mat-label> Last Name *</mat-label>
                         <input matInput  placeholder="Last Name" formControlName="lastName">
+                        <mat-error *ngIf="(AddFormControl.lastName.touched || submitted) && AddFormControl.lastName.errors?.required">
+                            Last Name is required
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="line">
                     <mat-form-field class="line__half" appearance="outline">
                         <mat-label> Email</mat-label>
                         <input matInput  placeholder="Email" formControlName="email">
+                        <mat-error  *ngIf="(AddFormControl.email.touched || submitted) && AddFormControl.email.errors?.required">
+                         Email is required
+                    </mat-error>
+                    <mat-error  *ngIf="AddFormControl.email.touched && AddFormControl.email.errors?.email">
+                       Enter a valid email address
+                    </mat-error>
                 
                     </mat-form-field>
                     <mat-form-field class="line__half" appearance="outline">
-                        <mat-label> PhoneNumber</mat-label>
+                        <mat-label> Phone Number *</mat-label>
                         <input matInput  placeholder="PhoneNumber" formControlName="phoneNumber">
+                        <mat-error *ngIf="(AddFormControl.phoneNumber.touched || submitted) && AddFormControl.phoneNumber.errors?.required">
+                            phone Number is required
+                        </mat-error>
+                      
                     </mat-form-field>
                 </div>
                 <div class="line">
                     <mat-form-field class="line__full" appearance="outline">
-                        <mat-label> Cover Letter </mat-label>
+                        <mat-label> Cover Letter * </mat-label>
                         <textarea matInput class="textarea" placeholder="Please type your cover letter here." formControlName="coverLetter"></textarea>
+                        <mat-error *ngIf="(AddFormControl.coverLetter.touched || submitted) && AddFormControl.coverLetter.errors?.required">
+                            cover Letter is required
+                        </mat-error>
                     </mat-form-field>    
                 </div>
                 <div class="line">
                     <div class="line__half">
                         <app-upload-cv  (onUploadFinished)="uploadFinished($event)"></app-upload-cv>
+                        <mat-error *ngIf="(AddFormControl.cvUrl.touched || submitted) && AddFormControl.cvUrl.errors?.required">
+                          CV  is required
+                        </mat-error>
+                        
                     </div>
                 </div>
                 <div class="line line--center">

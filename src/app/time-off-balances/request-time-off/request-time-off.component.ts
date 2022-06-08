@@ -84,7 +84,9 @@ export class RequestTimeOffComponent implements OnInit {
     });
   }
   
- 
+  get AddFormControl() {
+    return this.form.controls;
+  }
   getMaxEndDate(startDateQuantity,endDateQuantity) {
 
     let start=new Date(this.leaves.start.date);

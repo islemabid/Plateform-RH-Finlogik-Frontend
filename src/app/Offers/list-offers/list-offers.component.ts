@@ -87,6 +87,7 @@ export class ListOffersComponent implements OnInit {
   }
   GetLinkedinApi(idoffer:any) {
    
+    
     window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78garf686nkvua&redirect_uri=http://localhost:4200/Offers&scope=r_liteprofile%20r_emailaddress%20w_member_social&state="+idoffer;
 
     }

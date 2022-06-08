@@ -20,19 +20,15 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       workEmail: ["", Validators.required,Validators.email],
-      
-     
-     
-    })
+      });
   }
   get AddFormControl() {
     return this.form.controls;
   }
-  async resetpassword(){
- 
-  
-   let obj={...this.form.value};
-   await this.employeeService.forgotPassword(obj.workEmail)
+resetpassword(){
+  let obj={...this.form.value};
+  console.log(obj);
+   this.employeeService.forgotPassword(obj.workEmail)
    .then((data)=>this.employee=data)
    .catch(err=>{
       this.invalid=true;

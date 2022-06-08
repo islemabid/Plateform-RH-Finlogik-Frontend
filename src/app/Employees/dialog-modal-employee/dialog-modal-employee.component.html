@@ -1,9 +1,9 @@
 <div class="example-container">
     <mat-dialog-content>
 
-        <form [formGroup]="form">
-            <mat-error *ngIf="invalid" >Fill the required fields!</mat-error>
-            <mat-error *ngIf="verif">   Employee already exists!</mat-error>
+        <form [formGroup]="form" class="form">
+            <mat-error *ngIf="invalid" class="error" >Fill the required fields!</mat-error>
+            <mat-error *ngIf="verif"  class="error"> Employee already exists!</mat-error>
             <mat-form-field appearance="outline">
                 <mat-label>First Name </mat-label>
                 <input matInput placeholder="firstName" formControlName="firstName">
@@ -11,6 +11,8 @@
                     First Name is required
                 </mat-error>
             </mat-form-field>
+
+
 
             <mat-form-field appearance="outline">
                 <mat-label>Last Name </mat-label>

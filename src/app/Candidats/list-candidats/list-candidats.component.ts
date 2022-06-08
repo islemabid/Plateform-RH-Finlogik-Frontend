@@ -83,7 +83,7 @@ export class ListCandidatsComponent implements OnInit {
       Subject: `Candidature ${this.applicationOfferDetail.offer.offerName} ${this.applicationOfferDetail.offer.type}`,
       Body: `Bonjour ${this.applicationOfferDetail.candidat.firstName},
       merci d'avoir postulé pour le poste de ${this.applicationOfferDetail.offer.offerName},
-      notre profil nous interésse,
+      votre profil nous interésse,
       Seriez vous disponible la semaine prochaine pour un entretien téléphonique ?
       A très bientôt,`
     } as Email;
@@ -103,7 +103,7 @@ export class ListCandidatsComponent implements OnInit {
     Nous avons étudié votre  candidature
     et nous sommes au regret de vous annoncer ne pas pouvoir y donner une suite favorable.
      Nous vous remercions pour l'intérêt que vous portez à Finlogik et vous souhaitons d'aboutir rapidement dans vos recherches.
-    Cordialement.
+ 
     `
     } as Email;
     this.mailService.sendMailCandidat(Mail).then(()=>{
